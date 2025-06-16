@@ -1,0 +1,3296 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>증권사 컨센서스 데이터 분석 시스템</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a2a6c, #2a4085, #26619c);
+            color: white;
+            position: relative;
+        }
+        .title {
+            font-weight: 900;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.3;
+        }
+        .subtitle {
+            font-weight: 500;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+        .icon-grid {
+            position: absolute;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.07;
+            pointer-events: none;
+        }
+        .icon-grid::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://i.imgur.com/y2ghjHK.png');
+            background-size: 80px 80px;
+            opacity: 0.5;
+        }
+        .content-layer {
+            position: relative;
+            z-index: 1;
+        }
+        .graph-icon {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide flex flex-col justify-center items-center p-16">
+        <div class="icon-grid"></div>
+        
+        <div class="content-layer flex flex-col items-center justify-center w-full h-full">
+            <!-- 상단 아이콘 그룹 -->
+            <div class="flex items-center justify-center mb-8">
+                <i class="fas fa-chart-line graph-icon text-5xl mx-2"></i>
+                <i class="fas fa-chart-pie graph-icon text-5xl mx-2"></i>
+                <i class="fas fa-chart-bar graph-icon text-5xl mx-2"></i>
+            </div>
+            
+            <!-- 메인 제목 -->
+            <h1 class="title text-center text-5xl mb-6">증권사 컨센서스 데이터 분석 시스템</h1>
+            <h2 class="title text-center text-4xl mb-10">& AI 투자 의견 서비스</h2>
+            
+            <!-- 구분선 -->
+            <div class="w-24 h-1 bg-white opacity-80 mb-8"></div>
+            
+            <!-- 부제목 및 설명 -->
+            <div class="subtitle text-center max-w-3xl mb-10">
+                <p class="text-xl mb-4">프로젝트 발표자료</p>
+                <ul class="flex flex-col items-center list-none">
+                    <li class="flex items-center my-1">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        <span>데이터 수집·분석 자동화 플랫폼</span>
+                    </li>
+                    <li class="flex items-center my-1">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        <span>AI 기반 투자 의견 제공</span>
+                    </li>
+                    <li class="flex items-center my-1">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        <span>웹서비스 대시보드 및 실 서비스 목업 포함</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- 하단 금융 아이콘 -->
+            <div class="flex items-center justify-center mt-4">
+                <i class="fas fa-robot text-3xl mx-2 opacity-80"></i>
+                <i class="fas fa-database text-3xl mx-2 opacity-80"></i>
+                <i class="fas fa-search-dollar text-3xl mx-2 opacity-80"></i>
+                <i class="fas fa-file-contract text-3xl mx-2 opacity-80"></i>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>목차</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a2a6c, #2a4085, #26619c);
+            color: white;
+            position: relative;
+        }
+        .title {
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.3;
+        }
+        .icon-grid {
+            position: absolute;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.07;
+            pointer-events: none;
+        }
+        .icon-grid::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://i.imgur.com/y2ghjHK.png');
+            background-size: 80px 80px;
+            opacity: 0.5;
+        }
+        .content-layer {
+            position: relative;
+            z-index: 1;
+        }
+        .toc-item {
+            transition: transform 0.2s;
+        }
+        .toc-item:hover {
+            transform: translateX(5px);
+        }
+        .toc-icon {
+            opacity: 0.9;
+            width: 24px;
+            text-align: center;
+            margin-right: 12px;
+        }
+        .toc-number {
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.9);
+            margin-right: 12px;
+            width: 25px;
+            text-align: right;
+        }
+        .vertical-line {
+            width: 3px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide flex flex-col justify-start p-16">
+        <div class="icon-grid"></div>
+        
+        <div class="content-layer flex flex-col w-full h-full">
+            <!-- 상단 제목 영역 -->
+            <div class="mb-10">
+                <h1 class="title text-4xl">목차</h1>
+                <div class="w-16 h-1 bg-white opacity-70 mt-3"></div>
+            </div>
+            
+            <!-- 목차 컨텐츠 영역 -->
+            <div class="flex">
+                <!-- 좌측 세로 라인 -->
+                <div class="vertical-line mr-10"></div>
+                
+                <!-- 목차 리스트 -->
+                <div class="grid grid-cols-2 gap-x-10 gap-y-5 flex-grow">
+                    <!-- 왼쪽 컬럼 -->
+                    <div>
+                        <div class="toc-item flex items-center py-2">
+                            <span class="toc-number">1.</span>
+                            <i class="fas fa-bookmark toc-icon"></i>
+                            <span>프로젝트 개요 및 배경</span>
+                        </div>
+                        <div class="toc-item flex items-center py-2">
+                            <span class="toc-number">2.</span>
+                            <i class="fas fa-bullseye toc-icon"></i>
+                            <span>현황 분석 및 목표</span>
+                        </div>
+                        <div class="toc-item flex items-center py-2">
+                            <span class="toc-number">3.</span>
+                            <i class="fas fa-sitemap toc-icon"></i>
+                            <span>시스템 아키텍처</span>
+                        </div>
+                        <div class="toc-item flex items-center py-2">
+                            <span class="toc-number">4.</span>
+                            <i class="fas fa-filter toc-icon"></i>
+                            <span>데이터 전처리</span>
+                        </div>
+                        <div class="toc-item flex items-center py-2">
+                            <span class="toc-number">5.</span>
+                            <i class="fas fa-database toc-icon"></i>
+                            <span>빅데이터 집계</span>
+                        </div>
+                        <div class="toc-item flex items-center py-2">
+                            <span class="toc-number">6.</span>
+                            <i class="fas fa-comments toc-icon"></i>
+                            <span>감성 분석</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 오른쪽 컬럼 -->
+                    <div>
+                        <div class="toc-item flex items-center py-2">
+                            <span class="toc-number">7.</span>
+                            <i class="fas fa-robot toc-icon"></i>
+                            <span>AI Agent</span>
+                        </div>
+                        <div class="toc-item flex items-center py-2">
+                            <span class="toc-number">8.</span>
+                            <i class="fas fa-search toc-icon"></i>
+                            <span>유사도/전문검색</span>
+                        </div>
+                        <div class="toc-item flex items-center py-2">
+                            <span class="toc-number">9.</span>
+                            <i class="fas fa-tachometer-alt toc-icon"></i>
+                            <span>웹서비스 목업 – 대시보드</span>
+                        </div>
+                        <div class="toc-item flex items-center py-2">
+                            <span class="toc-number">10.</span>
+                            <i class="fas fa-chart-line toc-icon"></i>
+                            <span>웹서비스 목업 – 종목 분석 페이지</span>
+                        </div>
+                        <div class="toc-item flex items-center py-2">
+                            <span class="toc-number">11.</span>
+                            <i class="fas fa-users-cog toc-icon"></i>
+                            <span>개발 일정 및 팀 구성</span>
+                        </div>
+                        <div class="toc-item flex items-center py-2">
+                            <span class="toc-number">12.</span>
+                            <i class="fas fa-chart-pie toc-icon"></i>
+                            <span>기대효과 및 향후 발전방향</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 하단 아이콘 -->
+            <div class="flex items-center justify-center mt-auto pt-8">
+                <i class="fas fa-file-alt text-2xl mx-2 opacity-60"></i>
+                <i class="fas fa-chart-bar text-2xl mx-2 opacity-60"></i>
+                <i class="fas fa-search-dollar text-2xl mx-2 opacity-60"></i>
+                <i class="fas fa-robot text-2xl mx-2 opacity-60"></i>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로젝트 개요 및 배경</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a2a6c, #2a4085, #26619c);
+            color: white;
+            position: relative;
+        }
+        .title {
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.3;
+        }
+        .icon-grid {
+            position: absolute;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.07;
+            pointer-events: none;
+        }
+        .icon-grid::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://i.imgur.com/y2ghjHK.png');
+            background-size: 80px 80px;
+            opacity: 0.5;
+        }
+        .content-layer {
+            position: relative;
+            z-index: 1;
+        }
+        .content-item {
+            border-left: 3px solid rgba(255, 255, 255, 0.4);
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        .content-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+            color: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.1);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .stat-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide flex">
+        <div class="icon-grid"></div>
+        
+        <div class="content-layer flex w-full">
+            <!-- 좌측 제목 영역 -->
+            <div class="w-1/3 bg-opacity-20 bg-blue-900 p-16 flex flex-col">
+                <h1 class="title text-4xl mb-6">프로젝트 개요 및 배경</h1>
+                <div class="w-16 h-1 bg-white opacity-70 mb-8"></div>
+                
+                <div class="stat-box mb-6">
+                    <p class="text-sm text-blue-200 mb-2">개인 투자자 수</p>
+                    <p class="text-3xl font-bold">1,000만+</p>
+                    <p class="text-xs text-blue-200 mt-1">전년 대비 35% 증가</p>
+                </div>
+                
+                <div class="mt-auto">
+                    <img src="https://i.imgur.com/9XcDJPf.png" alt="투자자 증가 그래프" class="w-full opacity-80">
+                </div>
+            </div>
+            
+            <!-- 우측 컨텐츠 영역 -->
+            <div class="w-2/3 p-16 flex flex-col justify-center">
+                <div class="content-item">
+                    <div class="content-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">개인 투자자 증가와 정보 비대칭 문제</h3>
+                    <p class="text-gray-100">주식시장에 참여하는 개인 투자자 수는 지속적으로 증가하고 있으나, 전문 증권사와 개인 투자자 간의 정보 격차는 여전히 큰 문제로 남아있습니다.</p>
+                </div>
+                
+                <div class="content-item">
+                    <div class="content-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">증권사 리포트 접근성 및 정보 통합의 한계</h3>
+                    <p class="text-gray-100">전문적인 증권사 리포트는 특정 회원이나 유료 서비스 가입자만 접근 가능하며, 여러 증권사의 분산된 정보를 통합적으로 분석하기 어렵습니다.</p>
+                </div>
+                
+                <div class="content-item">
+                    <div class="content-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">전문가 수준의 투자 정보 제공 서비스 필요성</h3>
+                    <p class="text-gray-100">개인 투자자들이 전문가 수준의 투자 정보를 손쉽게 접근하고 분석할 수 있는 인공지능 기반 통합 서비스의 개발이 필요합니다.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>현황 분석 및 목표</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a2a6c, #2a4085, #26619c);
+            color: white;
+            position: relative;
+        }
+        .title {
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.3;
+        }
+        .icon-grid {
+            position: absolute;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.07;
+            pointer-events: none;
+        }
+        .icon-grid::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://i.imgur.com/y2ghjHK.png');
+            background-size: 80px 80px;
+            opacity: 0.5;
+        }
+        .content-layer {
+            position: relative;
+            z-index: 1;
+        }
+        .comparison-box {
+            border-radius: 8px;
+            padding: 20px;
+            position: relative;
+        }
+        .comparison-box::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: -30px;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-left: 30px solid rgba(255, 255, 255, 0.1);
+        }
+        .status-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .bullet-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .bullet-icon {
+            margin-right: 12px;
+            font-size: 14px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .progress-container {
+            margin-top: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            height: 10px;
+            position: relative;
+        }
+        .progress-bar {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            border-radius: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide flex">
+        <div class="icon-grid"></div>
+        
+        <div class="content-layer flex w-full">
+            <!-- 좌측 제목 영역 -->
+            <div class="w-1/3 bg-opacity-20 bg-blue-900 p-16 flex flex-col">
+                <h1 class="title text-4xl mb-6">현황 분석 및 목표</h1>
+                <div class="w-16 h-1 bg-white opacity-70 mb-8"></div>
+                
+                <div class="bg-white bg-opacity-10 rounded-lg p-5 mb-8">
+                    <p class="text-sm text-blue-200 mb-1">증권사 리포트 접근성</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-blue-200">개인 투자자</span>
+                        <span class="text-xs text-blue-200">전문 투자자</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar bg-red-500" style="width: 30%;"></div>
+                    </div>
+                    <p class="text-xs text-blue-200 mt-2">개인 투자자 접근성: 약 30% 수준</p>
+                </div>
+                
+                <div class="bg-white bg-opacity-10 rounded-lg p-5 mb-8">
+                    <p class="text-sm text-blue-200 mb-1">정보 통합 정도</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-blue-200">현재</span>
+                        <span class="text-xs text-blue-200">목표</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar bg-yellow-500" style="width: 20%;"></div>
+                    </div>
+                    <p class="text-xs text-blue-200 mt-2">현재 통합 수준: 약 20% 수준</p>
+                </div>
+                
+                <div class="mt-auto flex justify-center">
+                    <img src="https://i.imgur.com/YDBgncY.png" alt="데이터 통합 일러스트" class="w-48 opacity-80">
+                </div>
+            </div>
+            
+            <!-- 우측 컨텐츠 영역 -->
+            <div class="w-2/3 p-16 flex flex-col justify-center">
+                <div class="flex space-x-5">
+                    <!-- 현재 상황 -->
+                    <div class="comparison-box bg-red-900 bg-opacity-30 flex-1">
+                        <div class="status-icon bg-red-800 bg-opacity-50">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">현재 상황</h3>
+                        
+                        <ul class="bullet-list list-none p-0">
+                            <li>
+                                <div class="bullet-icon bg-red-700 bg-opacity-50">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <span>분산된 증권사 리포트로 통합 분석 어려움</span>
+                            </li>
+                            <li>
+                                <div class="bullet-icon bg-red-700 bg-opacity-50">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <span>개인 투자자의 전문 정보 접근성 제한</span>
+                            </li>
+                            <li>
+                                <div class="bullet-icon bg-red-700 bg-opacity-50">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                </div>
+                                <span>유료 서비스 가입 필요로 비용 부담</span>
+                            </li>
+                            <li>
+                                <div class="bullet-icon bg-red-700 bg-opacity-50">
+                                    <i class="fas fa-chart-pie"></i>
+                                </div>
+                                <span>정보 단편화로 전체적인 시장 통찰력 부족</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 목표 상태 -->
+                    <div class="comparison-box bg-green-900 bg-opacity-30 flex-1">
+                        <div class="status-icon bg-green-800 bg-opacity-50">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">목표 상태</h3>
+                        
+                        <ul class="bullet-list list-none p-0">
+                            <li>
+                                <div class="bullet-icon bg-green-700 bg-opacity-50">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <span>다양한 증권사 컨센서스 데이터 자동 수집 통합</span>
+                            </li>
+                            <li>
+                                <div class="bullet-icon bg-green-700 bg-opacity-50">
+                                    <i class="fas fa-unlock"></i>
+                                </div>
+                                <span>개인 투자자의 무료 정보 접근성 향상</span>
+                            </li>
+                            <li>
+                                <div class="bullet-icon bg-green-700 bg-opacity-50">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <span>AI 기반 종목별 투자 의견 자동 생성 제공</span>
+                            </li>
+                            <li>
+                                <div class="bullet-icon bg-green-700 bg-opacity-50">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <span>종합적 시장 분석과 인사이트 시각화</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mt-10 bg-blue-900 bg-opacity-30 p-6 rounded-lg">
+                    <h4 class="text-lg font-bold mb-3">핵심 목표 지표</h4>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold mb-1">20+</div>
+                            <p class="text-sm text-blue-200">증권사 데이터 통합</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold mb-1">100%</div>
+                            <p class="text-sm text-blue-200">정보 접근성 제공</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold mb-1">AI</div>
+                            <p class="text-sm text-blue-200">기반 투자 추천</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시스템 아키텍처</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a2a6c, #2a4085, #26619c);
+            color: white;
+            position: relative;
+        }
+        .title {
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.3;
+        }
+        .icon-grid {
+            position: absolute;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.07;
+            pointer-events: none;
+        }
+        .icon-grid::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://i.imgur.com/y2ghjHK.png');
+            background-size: 80px 80px;
+            opacity: 0.5;
+        }
+        .content-layer {
+            position: relative;
+            z-index: 1;
+        }
+        .architecture-node {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .architecture-node:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        .architecture-icon {
+            font-size: 28px;
+            color: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.1);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+        .flow-arrow {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 24px;
+        }
+        .tech-badge {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 500;
+            margin-right: 4px;
+            margin-bottom: 4px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="icon-grid"></div>
+        
+        <div class="content-layer flex flex-col p-16">
+            <!-- 상단 제목 영역 -->
+            <div class="mb-8">
+                <h1 class="title text-4xl">시스템 아키텍처</h1>
+                <div class="w-16 h-1 bg-white opacity-70 mt-3"></div>
+                <p class="mt-3 text-blue-100 opacity-90">데이터 수집부터 AI 투자 의견 생성까지의 통합 시스템</p>
+            </div>
+            
+            <!-- 아키텍처 다이어그램 -->
+            <div class="flex-grow flex flex-col justify-center">
+                <div class="grid grid-cols-3 gap-6 relative">
+                    <!-- 데이터 소스 노드 -->
+                    <div class="architecture-node col-span-3 mb-6">
+                        <div class="architecture-icon mx-auto">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3 class="text-center text-xl font-bold mb-2">데이터 소스</h3>
+                        <div class="flex flex-wrap justify-center">
+                            <span class="tech-badge">증권사 웹사이트</span>
+                            <span class="tech-badge">리포트 PDF</span>
+                            <span class="tech-badge">컨센서스 데이터</span>
+                            <span class="tech-badge">기업 공시 정보</span>
+                            <span class="tech-badge">뉴스 기사</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 화살표 1 -->
+                    <div class="flow-arrow flex justify-center col-span-3" style="margin-top: -20px; margin-bottom: -20px;">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+                    
+                    <!-- 데이터 수집 노드 -->
+                    <div class="architecture-node">
+                        <div class="architecture-icon mx-auto">
+                            <i class="fas fa-spider"></i>
+                        </div>
+                        <h3 class="text-center text-lg font-bold mb-2">데이터 수집</h3>
+                        <p class="text-center text-sm mb-3">웹 크롤링 및 API 연동</p>
+                        <div class="flex flex-wrap justify-center">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Selenium</span>
+                            <span class="tech-badge">BeautifulSoup</span>
+                            <span class="tech-badge">Scrapy</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 데이터 저장 노드 -->
+                    <div class="architecture-node">
+                        <div class="architecture-icon mx-auto">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3 class="text-center text-lg font-bold mb-2">데이터 저장</h3>
+                        <p class="text-center text-sm mb-3">구조화된 DB 관리</p>
+                        <div class="flex flex-wrap justify-center">
+                            <span class="tech-badge">PostgreSQL</span>
+                            <span class="tech-badge">TimescaleDB</span>
+                            <span class="tech-badge">Redis</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 데이터 전처리 노드 -->
+                    <div class="architecture-node">
+                        <div class="architecture-icon mx-auto">
+                            <i class="fas fa-filter"></i>
+                        </div>
+                        <h3 class="text-center text-lg font-bold mb-2">데이터 전처리</h3>
+                        <p class="text-center text-sm mb-3">정제 및 표준화</p>
+                        <div class="flex flex-wrap justify-center">
+                            <span class="tech-badge">Pandas</span>
+                            <span class="tech-badge">NumPy</span>
+                            <span class="tech-badge">정규화</span>
+                            <span class="tech-badge">표준화</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 화살표 2 -->
+                    <div class="flow-arrow flex justify-center col-span-3" style="margin-top: -20px; margin-bottom: -20px;">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+                    
+                    <!-- 데이터 분석 노드 -->
+                    <div class="architecture-node col-span-3 grid grid-cols-2 gap-4">
+                        <div>
+                            <div class="architecture-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2">빅데이터 집계</h3>
+                            <p class="text-sm mb-3">종목별 컨센서스 통합 분석</p>
+                            <div class="flex flex-wrap">
+                                <span class="tech-badge">통계 분석</span>
+                                <span class="tech-badge">시계열 분석</span>
+                                <span class="tech-badge">신뢰도 평가</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="architecture-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2">감성 분석</h3>
+                            <p class="text-sm mb-3">리포트 내용 분석 및 핵심 추출</p>
+                            <div class="flex flex-wrap">
+                                <span class="tech-badge">NLP</span>
+                                <span class="tech-badge">BERT</span>
+                                <span class="tech-badge">KoBERT</span>
+                                <span class="tech-badge">텍스트 마이닝</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 화살표 3 -->
+                    <div class="flow-arrow flex justify-center col-span-3" style="margin-top: -20px; margin-bottom: -20px;">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+                    
+                    <!-- AI 의견 생성 노드 -->
+                    <div class="architecture-node col-span-3 mb-6">
+                        <div class="architecture-icon mx-auto">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3 class="text-center text-xl font-bold mb-2">AI 투자 의견 생성</h3>
+                        <p class="text-center text-sm mb-3">로컬 LLM 기반 투자 의견 자동 생성</p>
+                        <div class="flex flex-wrap justify-center">
+                            <span class="tech-badge">로컬 LLM API</span>
+                            <span class="tech-badge">GPT</span>
+                            <span class="tech-badge">Transformer</span>
+                            <span class="tech-badge">프롬프트 엔지니어링</span>
+                            <span class="tech-badge">RAG</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 화살표 4 -->
+                    <div class="flow-arrow flex justify-center col-span-3" style="margin-top: -20px; margin-bottom: -20px;">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+                    
+                    <!-- 사용자 인터페이스 노드 -->
+                    <div class="architecture-node col-span-3 grid grid-cols-3 gap-4">
+                        <div>
+                            <div class="architecture-icon mx-auto">
+                                <i class="fas fa-desktop"></i>
+                            </div>
+                            <h3 class="text-center text-lg font-bold mb-1">웹 대시보드</h3>
+                            <div class="flex flex-wrap justify-center">
+                                <span class="tech-badge">React</span>
+                                <span class="tech-badge">D3.js</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="architecture-icon mx-auto">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h3 class="text-center text-lg font-bold mb-1">모바일 앱</h3>
+                            <div class="flex flex-wrap justify-center">
+                                <span class="tech-badge">React Native</span>
+                                <span class="tech-badge">Flutter</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="architecture-icon mx-auto">
+                                <i class="fas fa-paper-plane"></i>
+                            </div>
+                            <h3 class="text-center text-lg font-bold mb-1">알림 서비스</h3>
+                            <div class="flex flex-wrap justify-center">
+                                <span class="tech-badge">텔레그램 봇</span>
+                                <span class="tech-badge">푸시 알림</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터 전처리</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a2a6c, #2a4085, #26619c);
+            color: white;
+            position: relative;
+        }
+        .title {
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.3;
+        }
+        .icon-grid {
+            position: absolute;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.07;
+            pointer-events: none;
+        }
+        .icon-grid::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://i.imgur.com/y2ghjHK.png');
+            background-size: 80px 80px;
+            opacity: 0.5;
+        }
+        .content-layer {
+            position: relative;
+            z-index: 1;
+        }
+        .process-step {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+        .process-step:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(5px);
+        }
+        .step-number {
+            position: absolute;
+            left: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #3b82f6;
+            color: white;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .process-icon {
+            font-size: 28px;
+            color: rgba(255, 255, 255, 0.9);
+            background: rgba(59, 130, 246, 0.3);
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+        }
+        .code-example {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 14px;
+            margin-top: 10px;
+            color: #a5f3fc;
+            position: relative;
+            overflow-x: auto;
+        }
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 12px;
+        }
+        .before, .after {
+            background: rgba(0, 0, 0, 0.15);
+            padding: 12px;
+            border-radius: 8px;
+        }
+        .before {
+            border-left: 3px solid #ef4444;
+        }
+        .after {
+            border-left: 3px solid #10b981;
+        }
+        .flow-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide flex">
+        <div class="icon-grid"></div>
+        
+        <div class="content-layer flex w-full">
+            <!-- 좌측 제목 영역 -->
+            <div class="w-1/3 bg-opacity-20 bg-blue-900 p-16 flex flex-col">
+                <h1 class="title text-4xl mb-6">데이터 전처리</h1>
+                <div class="w-16 h-1 bg-white opacity-70 mb-8"></div>
+                
+                <p class="text-blue-100 mb-8">
+                    증권사 컨센서스 데이터를 분석하기 위한 필수 전처리 과정으로, 데이터의 표준화와 정규화를 통해 일관된 분석 기반을 마련합니다.
+                </p>
+                
+                <div class="bg-white bg-opacity-10 p-5 rounded-lg border border-white border-opacity-20 mt-auto">
+                    <h3 class="text-lg font-semibold mb-3">전처리 핵심 지표</h3>
+                    <div class="flex items-center mb-2">
+                        <div class="w-3 h-3 rounded-full bg-green-400 mr-2"></div>
+                        <span>표준화율</span>
+                        <span class="ml-auto font-bold">98.7%</span>
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <div class="w-3 h-3 rounded-full bg-yellow-400 mr-2"></div>
+                        <span>데이터 정합성</span>
+                        <span class="ml-auto font-bold">99.2%</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 rounded-full bg-blue-400 mr-2"></div>
+                        <span>처리 속도</span>
+                        <span class="ml-auto font-bold">2.3s/종목</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 우측 컨텐츠 영역 -->
+            <div class="w-2/3 p-16 flex flex-col justify-center">
+                <div class="process-step pl-8">
+                    <div class="step-number">1</div>
+                    <div class="flex items-start">
+                        <div class="process-icon">
+                            <i class="fas fa-broom"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">증권사 컨센서스 데이터 정제 및 표준화</h3>
+                            <p class="text-gray-100 mb-2">각 증권사별 상이한 데이터 형식과 구조를 통일된 형태로 변환하여 일관된 분석이 가능하도록 처리합니다.</p>
+                            <div class="before-after">
+                                <div class="before">
+                                    <div class="text-xs text-gray-400 mb-1">변환 전 (다양한 포맷)</div>
+                                    <div>메리츠: CSV / 키움: JSON / 한투: XML</div>
+                                </div>
+                                <div class="after">
+                                    <div class="text-xs text-gray-400 mb-1">변환 후 (표준 포맷)</div>
+                                    <div>통일된 JSON 구조</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flow-arrow">
+                    <i class="fas fa-arrow-down"></i>
+                </div>
+                
+                <div class="process-step pl-8">
+                    <div class="step-number">2</div>
+                    <div class="flex items-start">
+                        <div class="process-icon">
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">종목코드, 증권사명, 투자의견 용어 통일</h3>
+                            <p class="text-gray-100 mb-2">같은 의미를 가진 다양한 표현을 단일 표준으로 매핑하여 데이터 일관성을 확보합니다.</p>
+                            <div class="code-example">
+                                "Buy" = "매수" = "BUY" = "Strong Buy" → <span class="text-green-300 font-bold">"BUY"</span><br>
+                                "Hold" = "중립" = "HOLD" = "Neutral" → <span class="text-yellow-300 font-bold">"HOLD"</span><br>
+                                "Sell" = "매도" = "SELL" = "Underperform" → <span class="text-red-300 font-bold">"SELL"</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flow-arrow">
+                    <i class="fas fa-arrow-down"></i>
+                </div>
+                
+                <div class="process-step pl-8">
+                    <div class="step-number">3</div>
+                    <div class="flex items-start">
+                        <div class="process-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">목표가 및 현재가 숫자 데이터 정규화</h3>
+                            <p class="text-gray-100 mb-2">서로 다른 단위와 표기법으로 제공되는 숫자 데이터를 표준화하고 이상치를 처리합니다.</p>
+                            <div class="before-after">
+                                <div class="before">
+                                    <div class="text-xs text-gray-400 mb-1">변환 전</div>
+                                    <div>₩85,000 / 85,000원 / 8.5만원<br>1,050,000 → 105만원</div>
+                                </div>
+                                <div class="after">
+                                    <div class="text-xs text-gray-400 mb-1">변환 후</div>
+                                    <div>85000 (정수형)<br>1050000 (정수형)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 bg-blue-900 bg-opacity-30 p-4 rounded-lg border-l-4 border-blue-400">
+                    <div class="flex items-center">
+                        <i class="fas fa-lightbulb text-yellow-300 text-xl mr-3"></i>
+                        <div>
+                            <div class="font-bold">전처리 자동화</div>
+                            <p class="text-sm">모든 전처리 과정은 자동화된 파이프라인으로 구현되어 일별 데이터 수집 시 자동 적용됩니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>빅데이터 집계</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a2a6c, #2a4085, #26619c);
+            color: white;
+            position: relative;
+        }
+        .title {
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.3;
+        }
+        .icon-grid {
+            position: absolute;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.07;
+            pointer-events: none;
+        }
+        .icon-grid::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://i.imgur.com/y2ghjHK.png');
+            background-size: 80px 80px;
+            opacity: 0.5;
+        }
+        .content-layer {
+            position: relative;
+            z-index: 1;
+        }
+        .content-item {
+            border-left: 3px solid rgba(255, 255, 255, 0.4);
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        .content-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+            color: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.1);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .chart-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 16px;
+            height: 200px;
+            position: relative;
+        }
+        .data-aggregation {
+            position: relative;
+            margin-top: 12px;
+        }
+        .data-flow-arrow {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -15px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 24px;
+        }
+        .data-source {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            padding: 8px;
+            text-align: center;
+            font-size: 12px;
+            margin: 0 4px;
+            flex: 1;
+        }
+        .data-result {
+            background: rgba(100, 200, 255, 0.2);
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide flex">
+        <div class="icon-grid"></div>
+        
+        <div class="content-layer flex w-full">
+            <!-- 좌측 제목 영역 -->
+            <div class="w-1/3 bg-opacity-20 bg-blue-900 p-16 flex flex-col">
+                <h1 class="title text-4xl mb-6">빅데이터 집계</h1>
+                <div class="w-16 h-1 bg-white opacity-70 mb-8"></div>
+                
+                <div class="chart-box mb-6">
+                    <p class="text-sm text-blue-200 mb-2">수집된 리포트 수</p>
+                    <p class="text-3xl font-bold">24,500+</p>
+                    <p class="text-xs text-blue-200 mt-1">증권사 일일 평균 35건</p>
+                    <canvas id="reportChart" class="mt-3"></canvas>
+                </div>
+                
+                <div class="data-aggregation mt-4">
+                    <div class="flex mb-6">
+                        <div class="data-source">
+                            <i class="fas fa-file-alt mb-2"></i>
+                            <div>증권사 A</div>
+                        </div>
+                        <div class="data-source">
+                            <i class="fas fa-file-alt mb-2"></i>
+                            <div>증권사 B</div>
+                        </div>
+                        <div class="data-source">
+                            <i class="fas fa-file-alt mb-2"></i>
+                            <div>증권사 C</div>
+                        </div>
+                    </div>
+                    <div class="data-flow-arrow">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="data-result mt-3">
+                        <i class="fas fa-database mr-2"></i>통합 컨센서스 데이터
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 우측 컨텐츠 영역 -->
+            <div class="w-2/3 p-16 flex flex-col justify-center">
+                <div class="content-item">
+                    <div class="content-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">종목별 컨센서스 통합 분석</h3>
+                    <p class="text-gray-100">여러 증권사에서 발행한 개별 리포트 데이터를 수집하여 종목별로 통합합니다. 투자의견, 목표가, 실적전망 등을 표준화하여 종합적인 투자 판단 데이터를 생성합니다.</p>
+                </div>
+                
+                <div class="content-item">
+                    <div class="content-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">증권사별 신뢰도 가중치 적용</h3>
+                    <p class="text-gray-100">과거 목표가 적중률, 예측 정확도 등을 기반으로 각 증권사별 신뢰도 점수를 계산합니다. 이 점수를 컨센서스 취합 시 가중치로 적용하여 더 신뢰성 높은 통합 데이터를 제공합니다.</p>
+                </div>
+                
+                <div class="content-item">
+                    <div class="content-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">시계열 분석을 통한 패턴 감지</h3>
+                    <p class="text-gray-100">목표가 변동 추이, 투자의견 변화 패턴을 시계열로 분석합니다. 증권사들의 의견 변화 방향성과 속도를 감지하여 시장 트렌드를 선제적으로 파악할 수 있는 인사이트를 제공합니다.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 리포트 수집 추이 차트
+        const reportCtx = document.getElementById('reportChart').getContext('2d');
+        const reportChart = new Chart(reportCtx, {
+            type: 'line',
+            data: {
+                labels: ['1월', '2월', '3월', '4월', '5월', '6월'],
+                datasets: [{
+                    label: '월별 수집 리포트',
+                    data: [3200, 3500, 4100, 3900, 4800, 5000],
+                    borderColor: 'rgba(255, 255, 255, 0.8)',
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    borderWidth: 2,
+                    tension: 0.3,
+                    pointBackgroundColor: 'rgba(100, 200, 255, 0.8)'
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        display: false
+                    },
+                    x: {
+                        display: true,
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            color: 'rgba(255, 255, 255, 0.7)',
+                            font: {
+                                size: 8
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>감성 분석 및 리포트 요약</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a2a6c, #2a4085, #26619c);
+            color: white;
+            position: relative;
+        }
+        .title {
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.3;
+        }
+        .icon-grid {
+            position: absolute;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.07;
+            pointer-events: none;
+        }
+        .icon-grid::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://i.imgur.com/y2ghjHK.png');
+            background-size: 80px 80px;
+            opacity: 0.5;
+        }
+        .content-layer {
+            position: relative;
+            z-index: 1;
+        }
+        .content-item {
+            border-left: 3px solid rgba(255, 255, 255, 0.4);
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        .content-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+            color: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.1);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .stat-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 12px;
+        }
+        .sentiment-badge {
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+            margin-right: 6px;
+        }
+        .sentiment-positive {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10B981;
+        }
+        .sentiment-negative {
+            background: rgba(239, 68, 68, 0.2);
+            color: #EF4444;
+        }
+        .sentiment-neutral {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3B82F6;
+        }
+        .report-card {
+            background: rgba(255, 255, 255, 0.07);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid rgba(255, 255, 255, 0.2);
+        }
+        .importance-meter {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+        .importance-fill {
+            height: 100%;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide flex">
+        <div class="icon-grid"></div>
+        
+        <div class="content-layer flex w-full">
+            <!-- 좌측 제목 영역 -->
+            <div class="w-1/3 bg-opacity-20 bg-blue-900 p-16 flex flex-col">
+                <h1 class="title text-4xl mb-6">감성 분석 및 리포트 요약</h1>
+                <div class="w-16 h-1 bg-white opacity-70 mb-8"></div>
+                
+                <div class="stat-box mb-6">
+                    <p class="text-sm text-blue-200 mb-2">AI 분석 정확도</p>
+                    <p class="text-3xl font-bold">92.5%</p>
+                    <p class="text-xs text-blue-200 mt-1">5,000+ 리포트 기반</p>
+                </div>
+                
+                <div class="stat-box mb-6">
+                    <p class="text-sm text-blue-200 mb-2">평균 처리 시간</p>
+                    <p class="text-3xl font-bold">1.2초</p>
+                    <p class="text-xs text-blue-200 mt-1">리포트당</p>
+                </div>
+                
+                <div class="mt-4">
+                    <canvas id="sentimentDistChart" height="180"></canvas>
+                </div>
+            </div>
+            
+            <!-- 우측 컨텐츠 영역 -->
+            <div class="w-2/3 p-16 flex flex-col justify-center">
+                <div class="content-item">
+                    <div class="content-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">리포트 내 긍정/부정 요소 자동 추출</h3>
+                    <p class="text-gray-100 mb-3">자연어 처리 알고리즘을 통해 증권사 리포트 내 긍정적/부정적 표현과 문맥을 자동 식별하고 분류합니다.</p>
+                    <div class="flex flex-wrap mt-2">
+                        <span class="sentiment-badge sentiment-positive"><i class="fas fa-arrow-up mr-1"></i> 매출 성장</span>
+                        <span class="sentiment-badge sentiment-positive"><i class="fas fa-plus-circle mr-1"></i> 시장 점유율</span>
+                        <span class="sentiment-badge sentiment-negative"><i class="fas fa-arrow-down mr-1"></i> 비용 증가</span>
+                        <span class="sentiment-badge sentiment-neutral"><i class="fas fa-minus mr-1"></i> 업계 경쟁</span>
+                    </div>
+                </div>
+                
+                <div class="content-item">
+                    <div class="content-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">투자 근거 및 위험 요소 자동 분류</h3>
+                    <p class="text-gray-100 mb-3">전문가 리포트에서 언급된 투자 근거와 위험 요소를 AI가 자동으로 추출하고 중요도별로 분류합니다.</p>
+                    
+                    <div class="grid grid-cols-2 gap-4 mt-3">
+                        <div class="report-card">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-bold text-green-300"><i class="fas fa-check-circle mr-1"></i> 투자 근거</span>
+                                <span class="text-xs">중요도</span>
+                            </div>
+                            <p class="text-sm mb-2">글로벌 반도체 수요 증가로 인한 매출 상승 기대</p>
+                            <div class="importance-meter">
+                                <div class="importance-fill bg-green-400" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="report-card">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-bold text-red-300"><i class="fas fa-exclamation-circle mr-1"></i> 위험 요소</span>
+                                <span class="text-xs">중요도</span>
+                            </div>
+                            <p class="text-sm mb-2">원자재 가격 상승으로 인한 제조 원가 증가 우려</p>
+                            <div class="importance-meter">
+                                <div class="importance-fill bg-red-400" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="content-item">
+                    <div class="content-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">핵심 내용 요약 및 중요도 평가</h3>
+                    <p class="text-gray-100 mb-3">수십 페이지의 리포트를 AI가 분석하여 핵심 내용을 추출하고 중요도를 자동 평가합니다.</p>
+                    
+                    <div class="report-card">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h4 class="text-sm font-bold mb-2">삼성전자 반도체 부문 실적 전망</h4>
+                                <p class="text-xs text-gray-300">글로벌 반도체 시장은 AI 수요 증가로 호조를 보이는 가운데, 삼성전자는 3나노 공정 양산을 통해 시장 점유율 확대가 기대됨. 다만 공급 과잉 우려는 단기적 리스크로 작용할 수 있음.</p>
+                            </div>
+                            <div class="ml-4 flex-shrink-0">
+                                <div class="rounded-full bg-green-500 text-white w-12 h-12 flex items-center justify-center font-bold">A+</div>
+                                <div class="text-xs text-center mt-1">신뢰도</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 감성 분석 분포 차트
+        const sentimentCtx = document.getElementById('sentimentDistChart').getContext('2d');
+        const sentimentChart = new Chart(sentimentCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['긍정', '중립', '부정'],
+                datasets: [{
+                    data: [62, 25, 13],
+                    backgroundColor: [
+                        'rgba(16, 185, 129, 0.7)',
+                        'rgba(59, 130, 246, 0.7)',
+                        'rgba(239, 68, 68, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(16, 185, 129, 1)',
+                        'rgba(59, 130, 246, 1)',
+                        'rgba(239, 68, 68, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#FFFFFF',
+                            font: {
+                                size: 11
+                            }
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: '증권사 리포트 감성 분석 분포',
+                        color: '#FFFFFF',
+                        font: {
+                            size: 12
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent 및 종목 추천</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a2a6c, #2a4085, #26619c);
+            color: white;
+            position: relative;
+        }
+        .title {
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.3;
+        }
+        .icon-grid {
+            position: absolute;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.07;
+            pointer-events: none;
+        }
+        .icon-grid::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://i.imgur.com/y2ghjHK.png');
+            background-size: 80px 80px;
+            opacity: 0.5;
+        }
+        .content-layer {
+            position: relative;
+            z-index: 1;
+        }
+        .content-item {
+            border-left: 3px solid rgba(255, 255, 255, 0.4);
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        .content-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+            color: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.1);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .ai-demo-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            padding: 15px;
+        }
+        .telegram-message {
+            background: white;
+            border-radius: 12px;
+            color: #333;
+            padding: 15px;
+            max-width: 300px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .recommendation-card {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            border-radius: 8px;
+            padding: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            margin-top: 12px;
+        }
+        .badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+        }
+        .badge-buy {
+            background: #dcf5e9;
+            color: #0f766e;
+        }
+        .badge-hold {
+            background: #eff6ff;
+            color: #1e40af;
+        }
+        .badge-sell {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide flex">
+        <div class="icon-grid"></div>
+        
+        <div class="content-layer flex w-full">
+            <!-- 좌측 제목 영역 -->
+            <div class="w-1/3 bg-opacity-20 bg-blue-900 p-16 flex flex-col">
+                <h1 class="title text-4xl mb-6">AI Agent · 종목 추천</h1>
+                <div class="w-16 h-1 bg-white opacity-70 mb-8"></div>
+                
+                <!-- AI 기반 모델 시각화 -->
+                <div class="mt-6">
+                    <div class="ai-demo-card flex items-center mb-4 p-3">
+                        <i class="fas fa-robot text-3xl mr-3"></i>
+                        <div>
+                            <div class="font-semibold">로컬 LLM API</div>
+                            <div class="text-xs text-blue-200">자체 AI 투자 의견 생성</div>
+                        </div>
+                    </div>
+                    
+                    <div class="ai-demo-card flex items-center mb-4 p-3">
+                        <i class="fas fa-database text-3xl mr-3"></i>
+                        <div>
+                            <div class="font-semibold">컨센서스 DB</div>
+                            <div class="text-xs text-blue-200">다중 의견 통합 분석</div>
+                        </div>
+                    </div>
+                    
+                    <div class="ai-demo-card flex items-center p-3">
+                        <i class="fab fa-telegram-plane text-3xl mr-3"></i>
+                        <div>
+                            <div class="font-semibold">텔레그램 봇 알림</div>
+                            <div class="text-xs text-blue-200">실시간 투자 의견 전송</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-auto">
+                    <div class="text-xs text-blue-200 mb-2">평균 정확도</div>
+                    <div class="text-3xl font-bold">82.6%</div>
+                    <div class="text-xs text-blue-200 opacity-80 mt-1">과거 6개월 추천 종목 기준</div>
+                </div>
+            </div>
+            
+            <!-- 우측 컨텐츠 영역 -->
+            <div class="w-2/3 p-16 flex flex-col justify-center">
+                <div class="content-item">
+                    <div class="content-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">로컬 LLM 기반 종목별 투자 의견 자동 생성</h3>
+                    <p class="text-gray-100 mb-4">자체 구축된 로컬 LLM API를 활용하여 증권사 컨센서스 데이터를 바탕으로 종목별 투자 의견을 자동 생성합니다. AI가 복잡한 금융 데이터를 분석하고 종합하여 일관성 있는 투자 근거를 제시합니다.</p>
+                    
+                    <div class="recommendation-card">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-bold text-gray-800">삼성전자 (005930)</span>
+                            <span class="badge badge-buy"><i class="fas fa-arrow-up mr-1"></i> 매수</span>
+                        </div>
+                        <p class="text-gray-600 text-sm">메모리 반도체 가격 회복세와 AI 서버향 HBM 수요 확대로 2분기부터 실적 개선 전망. 8개 증권사 중 7개사 매수 의견으로 컨센서스 강화. 목표가 92,500원으로 현재가 대비 8.8% 상승여력.</p>
+                    </div>
+                </div>
+                
+                <div class="content-item">
+                    <div class="content-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">컨센서스 기반 매수/매도/보유 추천</h3>
+                    <p class="text-gray-100">각 증권사의 신뢰도 점수를 가중치로 적용하여 종합 투자 의견을 도출합니다. 목표가, 현재가, 투자 근거, 위험 요소 등을 종합적으로 분석하여 합리적인 투자 판단을 제공합니다.</p>
+                    
+                    <div class="flex items-center mt-3 space-x-4">
+                        <div class="bg-opacity-30 bg-green-700 rounded-md p-2 flex flex-col items-center">
+                            <i class="fas fa-arrow-circle-up text-green-300 text-xl mb-1"></i>
+                            <span class="text-xs text-green-100">매수 추천</span>
+                            <span class="text-lg font-bold">65%</span>
+                        </div>
+                        <div class="bg-opacity-30 bg-blue-700 rounded-md p-2 flex flex-col items-center">
+                            <i class="fas fa-minus-circle text-blue-300 text-xl mb-1"></i>
+                            <span class="text-xs text-blue-100">보유 추천</span>
+                            <span class="text-lg font-bold">25%</span>
+                        </div>
+                        <div class="bg-opacity-30 bg-red-700 rounded-md p-2 flex flex-col items-center">
+                            <i class="fas fa-arrow-circle-down text-red-300 text-xl mb-1"></i>
+                            <span class="text-xs text-red-100">매도 추천</span>
+                            <span class="text-lg font-bold">10%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="content-item">
+                    <div class="content-icon">
+                        <i class="fab fa-telegram-plane"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">텔레그램 봇을 통한 일일 투자 추천 알림</h3>
+                    <p class="text-gray-100">매일 아침 시장 오픈 전, 당일 주목해야 할 종목과 투자 근거를 텔레그램 메시지로 발송합니다. 실시간 중요 투자 의견 변화나 목표가 수정 정보도 즉시 알림 받을 수 있습니다.</p>
+                    
+                    <div class="telegram-message mt-3">
+                        <div class="flex items-center mb-3">
+                            <i class="fab fa-telegram-plane text-blue-500 text-lg mr-2"></i>
+                            <span class="font-bold text-gray-800">컨센서스 AI 봇</span>
+                        </div>
+                        <div class="text-gray-800 text-sm mb-2">
+                            <span class="font-semibold">📊 오늘의 추천 종목 (2025.6.12)</span>
+                        </div>
+                        <div class="bg-gray-100 rounded-md p-3 text-sm">
+                            <div class="font-bold mb-1">SK하이닉스 (000660) - 강력매수 ⭐⭐⭐⭐⭐</div>
+                            <div class="text-gray-600 text-xs mb-2">목표가: 165,000원 (현재가 대비 +16.2%)</div>
+                            <div class="text-gray-600 text-xs">AI 반도체 수요 증가와 HBM 공급 부족으로 인한 ASP 상승. 7개 증권사 컨센서스 기준 전망 유망. 자세한 내용은 상세보기를 참조하세요.</div>
+                            <div class="bg-blue-500 text-white text-xs mt-3 rounded text-center py-1 px-2">상세 리포트 보기</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹서비스 목업 – 통합 대시보드</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a2a6c, #2a4085, #26619c);
+            color: white;
+            position: relative;
+        }
+        .title {
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.3;
+        }
+        .icon-grid {
+            position: absolute;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.07;
+            pointer-events: none;
+        }
+        .icon-grid::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://i.imgur.com/y2ghjHK.png');
+            background-size: 80px 80px;
+            opacity: 0.5;
+        }
+        .content-layer {
+            position: relative;
+            z-index: 1;
+        }
+        .browser-frame {
+            background: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .browser-header {
+            background: #e0e0e0;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .browser-buttons {
+            display: flex;
+            margin-right: 15px;
+        }
+        .browser-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .browser-button.red {
+            background-color: #ff5f56;
+        }
+        .browser-button.yellow {
+            background-color: #ffbd2e;
+        }
+        .browser-button.green {
+            background-color: #27c93f;
+        }
+        .browser-url-bar {
+            background: #fff;
+            border-radius: 4px;
+            padding: 6px 12px;
+            flex-grow: 1;
+            font-size: 14px;
+            color: #333;
+        }
+        .dashboard {
+            background: #f9fafc;
+            padding: 15px;
+            overflow-y: auto;
+            max-height: 520px; /* Ensure it fits on slide */
+        }
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e0e4ec;
+        }
+        .dashboard-title {
+            color: #333;
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .stat-card {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            height: 100%;
+        }
+        .chart-container {
+            position: relative;
+            height: 200px;
+        }
+        .consensus-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .consensus-table th, .consensus-table td {
+            padding: 8px 12px;
+            text-align: left;
+            font-size: 13px;
+            border-bottom: 1px solid #e0e4ec;
+        }
+        .consensus-table th {
+            color: #6b7280;
+            font-weight: 600;
+        }
+        .consensus-table td {
+            color: #333;
+        }
+        .badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .badge-buy {
+            background: #dcf5e9;
+            color: #0f766e;
+        }
+        .badge-hold {
+            background: #eff6ff;
+            color: #1e40af;
+        }
+        .badge-sell {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+        .feature-highlight {
+            position: absolute;
+            padding: 10px 15px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            font-size: 14px;
+            z-index: 10;
+            border-left: 3px solid #3b82f6;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide flex flex-col p-12">
+        <div class="icon-grid"></div>
+        
+        <div class="content-layer flex flex-col w-full h-full">
+            <!-- 상단 제목 영역 -->
+            <div class="mb-6">
+                <h1 class="title text-3xl">웹서비스 목업 – 통합 대시보드</h1>
+                <div class="w-16 h-1 bg-white opacity-70 mt-3"></div>
+                <p class="mt-3 text-blue-100 opacity-90">종목별 컨센서스와 투자 의견을 한눈에 파악할 수 있는 대시보드 인터페이스</p>
+            </div>
+            
+            <!-- 브라우저 프레임 목업 -->
+            <div class="browser-frame flex-grow">
+                <!-- 브라우저 헤더 -->
+                <div class="browser-header">
+                    <div class="browser-buttons">
+                        <div class="browser-button red"></div>
+                        <div class="browser-button yellow"></div>
+                        <div class="browser-button green"></div>
+                    </div>
+                    <div class="browser-url-bar">https://consensus-analyzer.finance/dashboard</div>
+                </div>
+                
+                <!-- 대시보드 콘텐츠 -->
+                <div class="dashboard">
+                    <!-- 대시보드 헤더 -->
+                    <div class="dashboard-header">
+                        <div class="dashboard-title flex items-center">
+                            <i class="fas fa-chart-line mr-2 text-blue-600"></i>
+                            컨센서스 통합 대시보드
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-gray-100 rounded-md px-3 py-1 mr-2 text-sm text-gray-600">
+                                <i class="fas fa-calendar-alt mr-1"></i>
+                                2025년 6월 12일
+                            </div>
+                            <button class="bg-blue-600 text-white rounded-md px-3 py-1 text-sm flex items-center">
+                                <i class="fas fa-sync-alt mr-1"></i> 새로고침
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- 상단 통계 카드 -->
+                    <div class="grid grid-cols-4 gap-4 mt-4">
+                        <div class="stat-card">
+                            <h3 class="text-sm text-gray-500 mb-1">오늘 추천 종목</h3>
+                            <div class="flex items-end justify-between">
+                                <div class="text-lg font-bold text-gray-800">삼성전자</div>
+                                <div class="text-blue-600 font-bold">
+                                    <i class="fas fa-arrow-up"></i> 매수
+                                </div>
+                            </div>
+                            <div class="text-sm text-gray-500 mt-2">8개 증권사 컨센서스</div>
+                        </div>
+                        <div class="stat-card">
+                            <h3 class="text-sm text-gray-500 mb-1">금일 목표가 상향</h3>
+                            <div class="flex items-end justify-between">
+                                <div class="text-lg font-bold text-gray-800">12개 종목</div>
+                                <div class="text-green-600">
+                                    <i class="fas fa-arrow-up"></i> 5%
+                                </div>
+                            </div>
+                            <div class="text-sm text-gray-500 mt-2">전일 대비</div>
+                        </div>
+                        <div class="stat-card">
+                            <h3 class="text-sm text-gray-500 mb-1">금일 목표가 하향</h3>
+                            <div class="flex items-end justify-between">
+                                <div class="text-lg font-bold text-gray-800">4개 종목</div>
+                                <div class="text-red-600">
+                                    <i class="fas fa-arrow-down"></i> 2%
+                                </div>
+                            </div>
+                            <div class="text-sm text-gray-500 mt-2">전일 대비</div>
+                        </div>
+                        <div class="stat-card">
+                            <h3 class="text-sm text-gray-500 mb-1">신규 리포트</h3>
+                            <div class="flex items-end justify-between">
+                                <div class="text-lg font-bold text-gray-800">28개</div>
+                                <button class="text-xs text-blue-600">전체보기</button>
+                            </div>
+                            <div class="text-sm text-gray-500 mt-2">오늘 기준</div>
+                        </div>
+                    </div>
+                    
+                    <!-- 차트 영역 -->
+                    <div class="grid grid-cols-2 gap-4 mt-4">
+                        <div class="stat-card relative">
+                            <h3 class="text-sm font-medium text-gray-700 mb-3">
+                                <i class="fas fa-chart-line mr-1 text-blue-600"></i>
+                                종목별 목표가 대비 현재가
+                            </h3>
+                            <div class="chart-container">
+                                <canvas id="targetPriceChart"></canvas>
+                            </div>
+                            <!-- 하이라이트 설명 -->
+                            <div class="feature-highlight" style="top: 60px; left: 40px;">
+                                <div class="font-bold mb-1">목표가 대비 현재가 분석</div>
+                                <div class="text-xs">종목별 목표가와 현재가의 차이를 시각화하여 투자 기회 판단</div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <h3 class="text-sm font-medium text-gray-700 mb-3">
+                                <i class="fas fa-chart-pie mr-1 text-blue-600"></i>
+                                증권사별 투자의견 분포
+                            </h3>
+                            <div class="chart-container">
+                                <canvas id="opinionDistChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 하단 테이블 -->
+                    <div class="stat-card mt-4 relative">
+                        <h3 class="text-sm font-medium text-gray-700 mb-3">
+                            <i class="fas fa-table mr-1 text-blue-600"></i>
+                            주요 종목 컨센서스 요약
+                        </h3>
+                        <div class="overflow-x-auto">
+                            <table class="consensus-table">
+                                <thead>
+                                    <tr>
+                                        <th>종목명</th>
+                                        <th>현재가</th>
+                                        <th>평균 목표가</th>
+                                        <th>상승여력</th>
+                                        <th>투자의견</th>
+                                        <th>신뢰도</th>
+                                        <th>컨센서스 수</th>
+                                        <th>상세보기</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="font-medium">삼성전자</td>
+                                        <td>85,000원</td>
+                                        <td>92,500원</td>
+                                        <td class="text-green-600">+8.8%</td>
+                                        <td><span class="badge badge-buy">매수</span></td>
+                                        <td>
+                                            <div class="flex">
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star-half-alt text-yellow-400"></i>
+                                            </div>
+                                        </td>
+                                        <td>8개</td>
+                                        <td><button class="text-blue-600 text-xs">상세보기</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-medium">SK하이닉스</td>
+                                        <td>142,000원</td>
+                                        <td>165,000원</td>
+                                        <td class="text-green-600">+16.2%</td>
+                                        <td><span class="badge badge-buy">강력매수</span></td>
+                                        <td>
+                                            <div class="flex">
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                            </div>
+                                        </td>
+                                        <td>7개</td>
+                                        <td><button class="text-blue-600 text-xs">상세보기</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-medium">현대차</td>
+                                        <td>210,000원</td>
+                                        <td>228,000원</td>
+                                        <td class="text-green-600">+8.6%</td>
+                                        <td><span class="badge badge-buy">매수</span></td>
+                                        <td>
+                                            <div class="flex">
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="far fa-star text-yellow-400"></i>
+                                            </div>
+                                        </td>
+                                        <td>6개</td>
+                                        <td><button class="text-blue-600 text-xs">상세보기</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-medium">네이버</td>
+                                        <td>310,000원</td>
+                                        <td>325,000원</td>
+                                        <td class="text-green-600">+4.8%</td>
+                                        <td><span class="badge badge-hold">보유</span></td>
+                                        <td>
+                                            <div class="flex">
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="far fa-star text-yellow-400"></i>
+                                                <i class="far fa-star text-yellow-400"></i>
+                                            </div>
+                                        </td>
+                                        <td>5개</td>
+                                        <td><button class="text-blue-600 text-xs">상세보기</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- 하이라이트 설명 -->
+                        <div class="feature-highlight" style="bottom: 40px; right: 40px;">
+                            <div class="font-bold mb-1">종목별 컨센서스 요약</div>
+                            <div class="text-xs">여러 증권사의 분석을 통합하여 종합적인 투자 판단 제공</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 목표가 차트
+        const targetPriceCtx = document.getElementById('targetPriceChart').getContext('2d');
+        const targetPriceChart = new Chart(targetPriceCtx, {
+            type: 'bar',
+            data: {
+                labels: ['삼성전자', 'SK하이닉스', '현대차', '네이버', 'LG화학'],
+                datasets: [
+                    {
+                        label: '현재가',
+                        data: [85000, 142000, 210000, 310000, 520000],
+                        backgroundColor: 'rgba(37, 99, 235, 0.7)',
+                        borderColor: 'rgba(37, 99, 235, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: '목표가',
+                        data: [92500, 165000, 228000, 325000, 580000],
+                        backgroundColor: 'rgba(5, 150, 105, 0.7)',
+                        borderColor: 'rgba(5, 150, 105, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        grid: {
+                            display: true,
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            boxWidth: 12,
+                            font: {
+                                size: 11
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        
+        // 투자의견 분포 차트
+        const opinionDistCtx = document.getElementById('opinionDistChart').getContext('2d');
+        const opinionDistChart = new Chart(opinionDistCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['매수', '보유', '매도'],
+                datasets: [{
+                    data: [65, 25, 10],
+                    backgroundColor: [
+                        'rgba(5, 150, 105, 0.7)',
+                        'rgba(59, 130, 246, 0.7)',
+                        'rgba(220, 38, 38, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(5, 150, 105, 1)',
+                        'rgba(59, 130, 246, 1)',
+                        'rgba(220, 38, 38, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            boxWidth: 12,
+                            font: {
+                                size: 11
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹서비스 목업 – 종목 분석 및 컨센서스 비교</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a2a6c, #2a4085, #26619c);
+            color: white;
+            position: relative;
+        }
+        .title {
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.3;
+        }
+        .icon-grid {
+            position: absolute;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.07;
+            pointer-events: none;
+        }
+        .icon-grid::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://i.imgur.com/y2ghjHK.png');
+            background-size: 80px 80px;
+            opacity: 0.5;
+        }
+        .content-layer {
+            position: relative;
+            z-index: 1;
+        }
+        .browser-frame {
+            background: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .browser-header {
+            background: #e0e0e0;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .browser-buttons {
+            display: flex;
+            margin-right: 15px;
+        }
+        .browser-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .browser-button.red {
+            background-color: #ff5f56;
+        }
+        .browser-button.yellow {
+            background-color: #ffbd2e;
+        }
+        .browser-button.green {
+            background-color: #27c93f;
+        }
+        .browser-url-bar {
+            background: #fff;
+            border-radius: 4px;
+            padding: 6px 12px;
+            flex-grow: 1;
+            font-size: 14px;
+            color: #333;
+        }
+        .dashboard {
+            background: #f9fafc;
+            padding: 15px;
+            overflow-y: auto;
+            max-height: 520px; /* Ensure it fits on slide */
+        }
+        .stock-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e0e4ec;
+        }
+        .stock-title {
+            color: #333;
+            font-size: 22px;
+            font-weight: 700;
+        }
+        .stat-card {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            height: 100%;
+        }
+        .chart-container {
+            position: relative;
+            height: 180px;
+        }
+        .consensus-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .consensus-table th, .consensus-table td {
+            padding: 8px 12px;
+            text-align: left;
+            font-size: 13px;
+            border-bottom: 1px solid #e0e4ec;
+        }
+        .consensus-table th {
+            color: #6b7280;
+            font-weight: 600;
+        }
+        .consensus-table td {
+            color: #333;
+        }
+        .badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .badge-buy {
+            background: #dcf5e9;
+            color: #0f766e;
+        }
+        .badge-hold {
+            background: #eff6ff;
+            color: #1e40af;
+        }
+        .badge-sell {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+        .feature-highlight {
+            position: absolute;
+            padding: 10px 15px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            font-size: 14px;
+            z-index: 10;
+            border-left: 3px solid #3b82f6;
+        }
+        .report-card {
+            border-left: 3px solid #3b82f6;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            background: #f8fafc;
+        }
+        .sentiment-pill {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            margin-right: 5px;
+        }
+        .sentiment-positive {
+            background: #dcf5e9;
+            color: #0f766e;
+        }
+        .sentiment-negative {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide flex flex-col p-12">
+        <div class="icon-grid"></div>
+        
+        <div class="content-layer flex flex-col w-full h-full">
+            <!-- 상단 제목 영역 -->
+            <div class="mb-6">
+                <h1 class="title text-3xl">웹서비스 목업 – 종목 분석 및 컨센서스 비교</h1>
+                <div class="w-16 h-1 bg-white opacity-70 mt-3"></div>
+                <p class="mt-3 text-blue-100 opacity-90">특정 종목에 대한 상세 분석 및 증권사별 투자의견 비교</p>
+            </div>
+            
+            <!-- 브라우저 프레임 목업 -->
+            <div class="browser-frame flex-grow">
+                <!-- 브라우저 헤더 -->
+                <div class="browser-header">
+                    <div class="browser-buttons">
+                        <div class="browser-button red"></div>
+                        <div class="browser-button yellow"></div>
+                        <div class="browser-button green"></div>
+                    </div>
+                    <div class="browser-url-bar">https://consensus-analyzer.finance/stock/005930</div>
+                </div>
+                
+                <!-- 종목 상세 분석 콘텐츠 -->
+                <div class="dashboard">
+                    <!-- 종목 헤더 -->
+                    <div class="stock-header">
+                        <div class="flex items-center">
+                            <div class="stock-title flex items-center">
+                                <i class="fas fa-microchip mr-2 text-blue-600"></i>
+                                삼성전자 (005930)
+                            </div>
+                            <span class="ml-3 badge badge-buy">매수</span>
+                            <span class="ml-2 text-sm text-gray-500">KOSPI</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-gray-100 rounded-md px-3 py-1 mr-2 text-sm text-gray-600">
+                                <i class="fas fa-calendar-alt mr-1"></i>
+                                2025년 6월 12일
+                            </div>
+                            <button class="bg-blue-600 text-white rounded-md px-3 py-1 text-sm flex items-center">
+                                <i class="fas fa-bell mr-1"></i> 알림설정
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- 주가 요약 정보 -->
+                    <div class="grid grid-cols-5 gap-3 mt-4">
+                        <div class="stat-card">
+                            <h3 class="text-xs text-gray-500 mb-1">현재가</h3>
+                            <div class="text-lg font-bold text-gray-800">85,000원</div>
+                            <div class="text-xs text-green-600 mt-1">
+                                <i class="fas fa-arrow-up"></i> 800원 (0.95%)
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <h3 class="text-xs text-gray-500 mb-1">평균 목표가</h3>
+                            <div class="text-lg font-bold text-gray-800">92,500원</div>
+                            <div class="text-xs text-green-600 mt-1">
+                                <i class="fas fa-arrow-up"></i> 8.8% 상승여력
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <h3 class="text-xs text-gray-500 mb-1">52주 최고/최저</h3>
+                            <div class="text-sm font-bold text-gray-800">87,200원 / 65,300원</div>
+                            <div class="text-xs text-gray-500 mt-1">현재 최고가의 97.5%</div>
+                        </div>
+                        <div class="stat-card">
+                            <h3 class="text-xs text-gray-500 mb-1">시가총액</h3>
+                            <div class="text-sm font-bold text-gray-800">498조 3,500억원</div>
+                            <div class="text-xs text-gray-500 mt-1">KOSPI 1위</div>
+                        </div>
+                        <div class="stat-card">
+                            <h3 class="text-xs text-gray-500 mb-1">컨센서스 신뢰도</h3>
+                            <div class="flex mt-1">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star-half-alt text-yellow-400"></i>
+                            </div>
+                            <div class="text-xs text-gray-500 mt-1">8개 증권사 평가</div>
+                        </div>
+                    </div>
+                    
+                    <!-- 차트 영역 -->
+                    <div class="grid grid-cols-2 gap-4 mt-4 relative">
+                        <div class="stat-card">
+                            <h3 class="text-sm font-medium text-gray-700 mb-3">
+                                <i class="fas fa-chart-line mr-1 text-blue-600"></i>
+                                주가 및 목표가 추이
+                            </h3>
+                            <div class="chart-container">
+                                <canvas id="priceChart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <h3 class="text-sm font-medium text-gray-700 mb-3">
+                                <i class="fas fa-bullseye mr-1 text-blue-600"></i>
+                                증권사별 목표가 분포
+                            </h3>
+                            <div class="chart-container">
+                                <canvas id="targetPriceDistChart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <!-- 하이라이트 설명 -->
+                        <div class="feature-highlight" style="top: 60px; left: 40px;">
+                            <div class="font-bold mb-1">목표가 변화 추이</div>
+                            <div class="text-xs">시간에 따른 증권사들의 목표가 조정을 추적하여 투자 타이밍 포착</div>
+                        </div>
+                    </div>
+                    
+                    <!-- 컨센서스 테이블 -->
+                    <div class="stat-card mt-4">
+                        <h3 class="text-sm font-medium text-gray-700 mb-3">
+                            <i class="fas fa-table mr-1 text-blue-600"></i>
+                            증권사별 컨센서스 비교
+                        </h3>
+                        <div class="overflow-x-auto">
+                            <table class="consensus-table">
+                                <thead>
+                                    <tr>
+                                        <th>증권사</th>
+                                        <th>투자의견</th>
+                                        <th>목표가</th>
+                                        <th>상승여력</th>
+                                        <th>변경일</th>
+                                        <th>신뢰도</th>
+                                        <th>리포트</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="font-medium">미래에셋증권</td>
+                                        <td><span class="badge badge-buy">매수</span></td>
+                                        <td>96,000원</td>
+                                        <td class="text-green-600">+12.9%</td>
+                                        <td>2025-06-10</td>
+                                        <td>
+                                            <div class="flex">
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                            </div>
+                                        </td>
+                                        <td><button class="text-blue-600 text-xs">보기</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-medium">NH투자증권</td>
+                                        <td><span class="badge badge-buy">매수</span></td>
+                                        <td>95,000원</td>
+                                        <td class="text-green-600">+11.8%</td>
+                                        <td>2025-06-08</td>
+                                        <td>
+                                            <div class="flex">
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star-half-alt text-yellow-400"></i>
+                                            </div>
+                                        </td>
+                                        <td><button class="text-blue-600 text-xs">보기</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-medium">키움증권</td>
+                                        <td><span class="badge badge-hold">보유</span></td>
+                                        <td>88,000원</td>
+                                        <td class="text-green-600">+3.5%</td>
+                                        <td>2025-06-05</td>
+                                        <td>
+                                            <div class="flex">
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="far fa-star text-yellow-400"></i>
+                                            </div>
+                                        </td>
+                                        <td><button class="text-blue-600 text-xs">보기</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- 리포트 요약 및 감성 분석 -->
+                    <div class="grid grid-cols-2 gap-4 mt-4 relative">
+                        <div class="stat-card">
+                            <h3 class="text-sm font-medium text-gray-700 mb-3">
+                                <i class="fas fa-file-alt mr-1 text-blue-600"></i>
+                                최신 리포트 요약 및 투자 근거
+                            </h3>
+                            <div class="report-card">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium text-sm">미래에셋증권</span>
+                                    <span class="text-xs text-gray-500">2025-06-10</span>
+                                </div>
+                                <p class="text-xs text-gray-700 mb-2">메모리 가격의 상승세가 지속되고 있으며, AI 수요 증가로 반도체 업황이 계속해서 개선될 전망. 3분기부터 본격적인 실적 개선이 이루어질 것으로 전망합니다.</p>
+                                <div class="flex text-xs">
+                                    <span class="sentiment-pill sentiment-positive"><i class="fas fa-plus-circle mr-1"></i> 메모리 가격 상승</span>
+                                    <span class="sentiment-pill sentiment-positive"><i class="fas fa-plus-circle mr-1"></i> AI 수요 증가</span>
+                                </div>
+                            </div>
+                            <div class="report-card">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium text-sm">NH투자증권</span>
+                                    <span class="text-xs text-gray-500">2025-06-08</span>
+                                </div>
+                                <p class="text-xs text-gray-700 mb-2">갤럭시 신제품 판매 호조와 HBM 공급 확대로 실적 개선 지속. 다만, 경쟁사의 공격적인 생산량 증가로 인한 가격 경쟁 발생 가능성은 리스크로 존재.</p>
+                                <div class="flex text-xs flex-wrap">
+                                    <span class="sentiment-pill sentiment-positive"><i class="fas fa-plus-circle mr-1"></i> 스마트폰 판매 증가</span>
+                                    <span class="sentiment-pill sentiment-positive"><i class="fas fa-plus-circle mr-1"></i> HBM 공급 확대</span>
+                                    <span class="sentiment-pill sentiment-negative"><i class="fas fa-minus-circle mr-1"></i> 가격 경쟁 리스크</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <h3 class="text-sm font-medium text-gray-700 mb-3">
+                                <i class="fas fa-comment-dots mr-1 text-blue-600"></i>
+                                감성 분석 및 핵심 키워드
+                            </h3>
+                            <div class="chart-container mb-4">
+                                <canvas id="sentimentChart"></canvas>
+                            </div>
+                            <div class="text-sm text-gray-700">
+                                <p class="font-medium mb-2">주요 투자 포인트:</p>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <div class="bg-green-50 p-2 rounded-md">
+                                        <p class="text-xs font-medium text-green-800 mb-1">긍정 요소</p>
+                                        <ul class="text-xs text-gray-700 pl-4 list-disc">
+                                            <li>메모리 가격 상승세 지속</li>
+                                            <li>AI 데이터센터 수요 증가</li>
+                                            <li>HBM 고부가 제품 비중 확대</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-red-50 p-2 rounded-md">
+                                        <p class="text-xs font-medium text-red-800 mb-1">리스크 요소</p>
+                                        <ul class="text-xs text-gray-700 pl-4 list-disc">
+                                            <li>경쟁사 공급 증가</li>
+                                            <li>글로벌 경기 둔화 가능성</li>
+                                            <li>환율 변동성</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 하이라이트 설명 -->
+                        <div class="feature-highlight" style="bottom: 20px; right: 40px;">
+                            <div class="font-bold mb-1">AI 감성 분석</div>
+                            <div class="text-xs">증권사 리포트의 감성 분석 결과와 투자 포인트 자동 추출</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 주가 및 목표가 추이 차트
+        const priceCtx = document.getElementById('priceChart').getContext('2d');
+        const priceChart = new Chart(priceCtx, {
+            type: 'line',
+            data: {
+                labels: ['1월', '2월', '3월', '4월', '5월', '6월'],
+                datasets: [
+                    {
+                        label: '주가',
+                        data: [72000, 74500, 78000, 82500, 80000, 85000],
+                        backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                        borderColor: 'rgba(37, 99, 235, 1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.3
+                    },
+                    {
+                        label: '평균 목표가',
+                        data: [78000, 82000, 85000, 88000, 90000, 92500],
+                        borderColor: 'rgba(5, 150, 105, 1)',
+                        borderWidth: 2,
+                        borderDash: [5, 5],
+                        fill: false,
+                        tension: 0.3
+                    }
+                ]
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        grid: {
+                            display: true,
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            boxWidth: 12,
+                            font: {
+                                size: 11
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        
+        // 증권사별 목표가 분포 차트
+        const targetPriceDistCtx = document.getElementById('targetPriceDistChart').getContext('2d');
+        const targetPriceDistChart = new Chart(targetPriceDistCtx, {
+            type: 'horizontalBar',
+            data: {
+                labels: ['미래에셋증권', 'NH투자증권', '삼성증권', '키움증권', '한국투자증권', '신한금융투자', 'KB증권', '메리츠증권'],
+                datasets: [{
+                    label: '목표가 (원)',
+                    data: [96000, 95000, 94000, 88000, 93000, 92000, 91000, 90000],
+                    backgroundColor: [
+                        'rgba(5, 150, 105, 0.8)',
+                        'rgba(5, 150, 105, 0.8)',
+                        'rgba(5, 150, 105, 0.8)',
+                        'rgba(59, 130, 246, 0.8)',
+                        'rgba(5, 150, 105, 0.8)',
+                        'rgba(5, 150, 105, 0.8)',
+                        'rgba(5, 150, 105, 0.8)',
+                        'rgba(5, 150, 105, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgba(5, 150, 105, 1)',
+                        'rgba(5, 150, 105, 1)',
+                        'rgba(5, 150, 105, 1)',
+                        'rgba(59, 130, 246, 1)',
+                        'rgba(5, 150, 105, 1)',
+                        'rgba(5, 150, 105, 1)',
+                        'rgba(5, 150, 105, 1)',
+                        'rgba(5, 150, 105, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: false,
+                        min: 80000,
+                        grid: {
+                            display: true,
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    },
+                    y: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+        
+        // 감성 분석 차트
+        const sentimentCtx = document.getElementById('sentimentChart').getContext('2d');
+        const sentimentChart = new Chart(sentimentCtx, {
+            type: 'radar',
+            data: {
+                labels: ['성장성', '수익성', '안정성', '배당', '모멘텀', '밸류에이션'],
+                datasets: [{
+                    label: '긍정도',
+                    data: [85, 80, 75, 50, 90, 65],
+                    backgroundColor: 'rgba(37, 99, 235, 0.2)',
+                    borderColor: 'rgba(37, 99, 235, 1)',
+                    pointBackgroundColor: 'rgba(37, 99, 235, 1)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgba(37, 99, 235, 1)'
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: {
+                            display: true,
+                            color: 'rgba(0, 0, 0, 0.1)'
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 100,
+                        ticks: {
+                            stepSize: 20,
+                            backdropColor: 'transparent'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            boxWidth: 12,
+                            font: {
+                                size: 11
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개발 일정, 기대효과 및 향후 발전방향</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a2a6c, #2a4085, #26619c);
+            color: white;
+            position: relative;
+        }
+        .title {
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.3;
+        }
+        .icon-grid {
+            position: absolute;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.07;
+            pointer-events: none;
+        }
+        .icon-grid::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://i.imgur.com/y2ghjHK.png');
+            background-size: 80px 80px;
+            opacity: 0.5;
+        }
+        .content-layer {
+            position: relative;
+            z-index: 1;
+        }
+        .timeline {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 10px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            height: calc(100% - 30px);
+            width: 3px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 45px;
+            margin-bottom: 12px;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 9px;
+            top: 8px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 3px solid #3b82f6;
+            z-index: 1;
+        }
+        .benefit-item {
+            position: relative;
+            margin-bottom: 15px;
+            padding-left: 30px;
+        }
+        .benefit-icon {
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 20px;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .future-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .future-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        .future-icon {
+            font-size: 28px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide flex">
+        <div class="icon-grid"></div>
+        
+        <div class="content-layer flex w-full p-12">
+            <div class="w-full">
+                <!-- 제목 -->
+                <div class="mb-6">
+                    <h1 class="title text-3xl">개발 일정, 기대효과 및 향후 발전방향</h1>
+                    <div class="w-16 h-1 bg-white opacity-70 mt-3"></div>
+                </div>
+                
+                <!-- 콘텐츠 그리드 -->
+                <div class="grid grid-cols-2 gap-8">
+                    <!-- 좌측: 개발 일정 및 기대효과 -->
+                    <div>
+                        <!-- 개발 일정 -->
+                        <h2 class="text-xl font-bold mb-4 flex items-center">
+                            <i class="fas fa-calendar-alt mr-3 text-blue-300"></i>
+                            8개월 단계별 개발 로드맵
+                        </h2>
+                        
+                        <div class="timeline mb-6">
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div>
+                                    <h3 class="text-base font-bold">1-2개월차: 기획 및 데이터 수집 시스템</h3>
+                                    <p class="text-sm text-gray-200 mt-1">요구사항 분석, 크롤링 시스템 개발, DB 구축</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div>
+                                    <h3 class="text-base font-bold">3-4개월차: 데이터 분석 모델 개발</h3>
+                                    <p class="text-sm text-gray-200 mt-1">컨센서스 분석 알고리즘, 신뢰도 평가 모델 구현</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div>
+                                    <h3 class="text-base font-bold">5-6개월차: AI 투자 의견 생성 시스템</h3>
+                                    <p class="text-sm text-gray-200 mt-1">로컬 LLM API 연동, 투자 의견 프롬프트 개발</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div>
+                                    <h3 class="text-base font-bold">7-8개월차: 서비스 통합 및 배포</h3>
+                                    <p class="text-sm text-gray-200 mt-1">알림 서비스 개발, 시스템 통합, 베타 테스트</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 기대효과 -->
+                        <h2 class="text-xl font-bold mb-4 flex items-center">
+                            <i class="fas fa-lightbulb mr-3 text-yellow-300"></i>
+                            기대효과
+                        </h2>
+                        
+                        <div class="mb-6">
+                            <div class="benefit-item">
+                                <div class="benefit-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h3 class="text-base font-bold">개인 투자자 정보 접근성 향상</h3>
+                                <p class="text-sm text-gray-200 mt-1">전문 증권사 수준의 통합 분석 정보 제공으로 정보 격차 해소</p>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h3 class="text-base font-bold">새로운 투자 인사이트 도출</h3>
+                                <p class="text-sm text-gray-200 mt-1">통합 분석을 통한 종목별 투자 기회 발견 및 위험 요소 조기 감지</p>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <h3 class="text-base font-bold">실무 경험 및 포트폴리오 구축</h3>
+                                <p class="text-sm text-gray-200 mt-1">개발 참여자들의 빅데이터 분석 및 AI 서비스 개발 경험 축적</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 우측: 향후 발전방향 -->
+                    <div>
+                        <h2 class="text-xl font-bold mb-4 flex items-center">
+                            <i class="fas fa-road mr-3 text-green-300"></i>
+                            향후 발전방향
+                        </h2>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="future-item">
+                                <div class="future-icon">
+                                    <i class="fas fa-exchange-alt"></i>
+                                </div>
+                                <h3 class="text-lg font-bold">실제 투자 성과 연계</h3>
+                                <p class="text-sm text-gray-200 mt-2">투자 결과와 예측의 정확성을 분석하여 AI 모델 지속적 개선</p>
+                            </div>
+                            
+                            <div class="future-item">
+                                <div class="future-icon">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                                <h3 class="text-lg font-bold">데이터 소스 확장</h3>
+                                <p class="text-sm text-gray-200 mt-2">해외 증권사, 경제지표, SNS 감성 데이터까지 통합 분석 범위 확대</p>
+                            </div>
+                            
+                            <div class="future-item">
+                                <div class="future-icon">
+                                    <i class="fas fa-user-cog"></i>
+                                </div>
+                                <h3 class="text-lg font-bold">개인화 추천 시스템</h3>
+                                <p class="text-sm text-gray-200 mt-2">사용자별 투자 성향과 목표에 맞춘 맞춤형 종목 추천 기능 개발</p>
+                            </div>
+                            
+                            <div class="future-item">
+                                <div class="future-icon">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <h3 class="text-lg font-bold">모바일 앱 서비스</h3>
+                                <p class="text-sm text-gray-200 mt-2">언제 어디서나 실시간 투자 정보를 확인할 수 있는 모바일 앱 개발</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 발전 방향 추가 이미지/그래픽 -->
+                        <div class="mt-6 p-5 rounded-lg bg-white bg-opacity-10 flex items-center justify-between">
+                            <div class="text-center">
+                                <div class="text-3xl font-bold">현재</div>
+                                <i class="fas fa-file-alt text-3xl my-3 text-blue-300"></i>
+                                <div class="text-sm opacity-80">단순 정보 제공</div>
+                            </div>
+                            
+                            <div class="flex items-center justify-center flex-1">
+                                <div class="h-1 w-full bg-white opacity-30 flex items-center justify-center relative">
+                                    <i class="fas fa-chevron-right text-white absolute"></i>
+                                    <i class="fas fa-chevron-right text-white absolute ml-4"></i>
+                                    <i class="fas fa-chevron-right text-white absolute ml-8"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center">
+                                <div class="text-3xl font-bold">미래</div>
+                                <i class="fas fa-brain text-3xl my-3 text-green-300"></i>
+                                <div class="text-sm opacity-80">AI 기반 투자 플랫폼</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

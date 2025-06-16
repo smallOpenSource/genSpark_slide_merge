@@ -1,0 +1,1143 @@
+<html lang="ko"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자산관리 Agent 서비스 진입 시나리오 스토리보드</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 0;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            background-color: white;
+            overflow: hidden;
+            position: relative;
+        }
+        .slide-header {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 20px 40px;
+        }
+        .mobile-mockup {
+            border-radius: 36px;
+            overflow: hidden;
+            background-color: white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .status-bar {
+            height: 44px;
+            background-color: #f5f5f7;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 15px;
+            align-items: center;
+            font-size: 14px;
+        }
+        .phone-header {
+            width: 120px;
+            height: 30px;
+            background-color: #1e3a8a;
+            border-radius: 0 0 15px 15px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .screen-content {
+            padding: 20px;
+        }
+        .form-field {
+            margin-bottom: 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 12px;
+        }
+        .check-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .button {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+        .button-primary {
+            background-color: #1e3a8a;
+            color: white;
+        }
+        .button-secondary {
+            background-color: #f3f4f6;
+            color: #4b5563;
+        }
+        .flow-arrow {
+            position: absolute;
+            font-size: 24px;
+            color: #1e3a8a;
+        }
+        .badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        .badge-red {
+            background-color: #fee2e2;
+            color: #dc2626;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="slide-header flex justify-between items-center">
+            <h1 class="text-3xl font-bold">자산관리 Agent 서비스 진입 시나리오</h1>
+            <div class="text-xl">Case 1</div>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-8 p-10">
+            <!-- 왼쪽 설명 부분 -->
+            <div class="flex flex-col justify-center">
+                <h2 class="text-2xl font-bold mb-6 text-blue-900">Case 1: 투자성향분석 미완료 &amp; 마케팅/AI 제공 동의 미완료 &amp; 마이데이터 미가입</h2>
+                
+                <div class="bg-gray-50 p-6 rounded-lg mb-8">
+                    <h3 class="text-lg font-bold mb-4">고객 상태</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-2">✗</span>
+                            <span>1개월 내 투자성향 분석 안함</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-2">✗</span>
+                            <span>개인정보 마케팅 활용 동의 및 AI활용 동의 안함</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-2">✗</span>
+                            <span>마이데이터 서비스 가입 안함</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-blue-50 p-6 rounded-lg">
+                    <h3 class="text-lg font-bold mb-4">제공 서비스 내용</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <span class="text-blue-600 mr-2"><i class="fas fa-check-circle"></i></span>
+                            <span>투자성향분석 및 마케팅/AI활용 동의서 서비스 진입시 징구</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-600 mr-2"><i class="fas fa-check-circle"></i></span>
+                            <span>최초 진입시 신한은행 보유 고객 정보(DW)를 대상으로 한 정보 컨텐츠만 제공</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-600 mr-2"><i class="fas fa-check-circle"></i></span>
+                            <span>최초 진입시 AI Studio 활용한 맞춤 시나리오 기능 제공 안함</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-600 mr-2"><i class="fas fa-check-circle"></i></span>
+                            <span>상호작용 중 마이데이터 서비스 가입 유도 가능</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 오른쪽 모바일 목업 부분 -->
+            <div class="flex items-center justify-center relative">
+                <!-- 첫 번째 화면: 투자성향분석 요청 -->
+                <div class="mobile-mockup" style="width: 280px; height: 560px;">
+                    <div class="phone-header"></div>
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <div>
+                            <i class="fas fa-wifi"></i>
+                            <i class="fas fa-signal ml-2"></i>
+                            <i class="fas fa-battery-full ml-2"></i>
+                        </div>
+                    </div>
+                    <div class="screen-content">
+                        <div class="mb-6 flex justify-center">
+                            
+                        </div>
+                        
+                        <div class="badge badge-red">필수 진행</div>
+                        <h3 class="text-xl font-bold mb-4">투자성향분석 진행 필요</h3>
+                        <p class="text-gray-600 text-sm mb-6">자산관리 Agent 서비스 이용을 위해 투자성향분석이 필요합니다.</p>
+                        
+                        <div class="form-field">
+                            <h4 class="font-medium mb-2">1. 투자 경험</h4>
+                            <div class="check-item">
+                                <input type="radio" id="exp1" name="experience" class="mr-2">
+                                <label for="exp1" class="text-sm">없음</label>
+                            </div>
+                            <div class="check-item">
+                                <input type="radio" id="exp2" name="experience" class="mr-2">
+                                <label for="exp2" class="text-sm">1년 미만</label>
+                            </div>
+                            <div class="check-item">
+                                <input type="radio" id="exp3" name="experience" class="mr-2">
+                                <label for="exp3" class="text-sm">3년 미만</label>
+                            </div>
+                            <div class="check-item">
+                                <input type="radio" id="exp4" name="experience" class="mr-2">
+                                <label for="exp4" class="text-sm">3년 이상</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-field mb-6">
+                            <h4 class="font-medium mb-2">2. 투자 목적</h4>
+                            <div class="check-item">
+                                <input type="radio" id="goal1" name="goal" class="mr-2">
+                                <label for="goal1" class="text-sm">안정성 추구</label>
+                            </div>
+                            <div class="check-item">
+                                <input type="radio" id="goal2" name="goal" class="mr-2">
+                                <label for="goal2" class="text-sm">수익성 추구</label>
+                            </div>
+                        </div>
+                        
+                        <button class="button button-primary">다음 (1/4)</button>
+                    </div>
+                </div>
+                
+                <!-- 화살표 -->
+                <div class="flow-arrow" style="right: 150px; top: 300px;">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                
+                <!-- 두 번째 화면: 동의서 -->
+                <div class="mobile-mockup ml-12" style="width: 280px; height: 560px;">
+                    <div class="phone-header"></div>
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <div>
+                            <i class="fas fa-wifi"></i>
+                            <i class="fas fa-signal ml-2"></i>
+                            <i class="fas fa-battery-full ml-2"></i>
+                        </div>
+                    </div>
+                    <div class="screen-content">
+                        <div class="mb-6 flex justify-center">
+                            
+                        </div>
+                        
+                        <div class="badge badge-red">필수 동의</div>
+                        <h3 class="text-xl font-bold mb-4">서비스 이용 동의</h3>
+                        <p class="text-gray-600 text-sm mb-6">자산관리 Agent 서비스 이용을 위해 아래 사항에 동의해주세요.</p>
+                        
+                        <div class="form-field mb-4">
+                            <div class="check-item">
+                                <input type="checkbox" id="all" class="mr-2">
+                                <label for="all" class="font-medium">전체 동의</label>
+                            </div>
+                            <div class="border-t border-gray-200 my-2"></div>
+                            <div class="check-item">
+                                <input type="checkbox" id="terms1" class="mr-2">
+                                <label for="terms1" class="text-sm">개인정보 수집 및 이용 동의 (필수)</label>
+                            </div>
+                            <div class="check-item">
+                                <input type="checkbox" id="terms2" class="mr-2">
+                                <label for="terms2" class="text-sm">마케팅 활용 동의 (필수)</label>
+                            </div>
+                            <div class="check-item">
+                                <input type="checkbox" id="terms3" class="mr-2">
+                                <label for="terms3" class="text-sm">AI 활용 동의 (필수)</label>
+                            </div>
+                        </div>
+                        
+                        <div class="text-xs text-gray-500 mb-6">
+                            * 필수 항목에 동의하지 않을 경우 서비스 이용이 제한됩니다.
+                        </div>
+                        
+                        <button class="button button-primary mb-3">동의하고 시작하기</button>
+                        <button class="button button-secondary">다음에 하기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+    </body></html>
+    <!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>자산관리 Agent 서비스 진입 시나리오 스토리보드</title>
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+        <style>
+            body {
+                font-family: 'Noto Sans KR', sans-serif;
+                background-color: #f7f9fc;
+                margin: 0;
+                padding: 0;
+            }
+            .slide {
+                width: 1280px;
+                min-height: 720px;
+                background-color: white;
+                overflow: hidden;
+                position: relative;
+            }
+            .slide-header {
+                background-color: #1e3a8a;
+                color: white;
+                padding: 20px 40px;
+            }
+            .mobile-mockup {
+                border-radius: 36px;
+                overflow: hidden;
+                background-color: white;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+                position: relative;
+            }
+            .status-bar {
+                height: 44px;
+                background-color: #f5f5f7;
+                display: flex;
+                justify-content: space-between;
+                padding: 0 15px;
+                align-items: center;
+                font-size: 14px;
+            }
+            .phone-header {
+                width: 120px;
+                height: 30px;
+                background-color: #1e3a8a;
+                border-radius: 0 0 15px 15px;
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .screen-content {
+                padding: 20px;
+            }
+            .form-field {
+                margin-bottom: 16px;
+                border: 1px solid #e5e7eb;
+                border-radius: 8px;
+                padding: 12px;
+            }
+            .check-item {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+            .button {
+                display: block;
+                width: 100%;
+                padding: 14px;
+                text-align: center;
+                border-radius: 8px;
+                font-weight: 500;
+            }
+            .button-primary {
+                background-color: #1e3a8a;
+                color: white;
+            }
+            .button-secondary {
+                background-color: #f3f4f6;
+                color: #4b5563;
+            }
+            .flow-arrow {
+                position: absolute;
+                font-size: 24px;
+                color: #1e3a8a;
+            }
+            .badge {
+                padding: 6px 12px;
+                border-radius: 20px;
+                display: inline-block;
+                font-size: 14px;
+                font-weight: 500;
+                margin-bottom: 10px;
+            }
+            .badge-yellow {
+                background-color: #fef3c7;
+                color: #d97706;
+            }
+            .badge-red {
+                background-color: #fee2e2;
+                color: #dc2626;
+            }
+            .badge-green {
+                background-color: #d1fae5;
+                color: #059669;
+            }
+            .chat-bubble {
+                border-radius: 16px;
+                padding: 12px 16px;
+                margin-bottom: 12px;
+                max-width: 80%;
+            }
+            .chat-bubble-agent {
+                background-color: #f3f4f6;
+                align-self: flex-start;
+                border-top-left-radius: 4px;
+            }
+            .chat-bubble-user {
+                background-color: #1e3a8a;
+                color: white;
+                align-self: flex-end;
+                border-bottom-right-radius: 4px;
+            }
+        </style>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script><script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script><script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script><script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script><script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script><script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script><script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script><script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script><script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script><script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script><script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script></head>
+    <body>
+        <div class="slide">
+            <div class="slide-header flex justify-between items-center">
+                <h1 class="text-3xl font-bold">자산관리 Agent 서비스 진입 시나리오</h1>
+                <div class="text-xl">Case 2</div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-8 p-10">
+                <!-- 왼쪽 설명 부분 -->
+                <div class="flex flex-col justify-center">
+                    <h2 class="text-2xl font-bold mb-6 text-blue-900">Case 2: 투자성향분석 완료 &amp; 마케팅/AI 동의 미완료 &amp; 마이데이터 미가입</h2>
+                    
+                    <div class="bg-gray-50 p-6 rounded-lg mb-8">
+                        <h3 class="text-lg font-bold mb-4">고객 상태</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>1개월 내 투자성향 분석 진행함</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-red-500 mr-2">✗</span>
+                                <span>개인정보 마케팅 활용 동의 및 AI활용 동의 안함</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-red-500 mr-2">✗</span>
+                                <span>마이데이터 서비스 가입 안함</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-6 rounded-lg">
+                        <h3 class="text-lg font-bold mb-4">제공 서비스 내용</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <span class="text-blue-600 mr-2"><i class="fas fa-check-circle"></i></span>
+                                <span>마케팅 및 AI활용 동의서만 징구</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-600 mr-2"><i class="fas fa-check-circle"></i></span>
+                                <span>최초 진입시 신한은행 보유 고객 정보(DW)를 대상으로 한 정보 컨텐츠만 제공</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-600 mr-2"><i class="fas fa-check-circle"></i></span>
+                                <span>최초 진입시 AI Studio를 활용한 App Push, 맞춤 시나리오 기능 제공 안함</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-600 mr-2"><i class="fas fa-check-circle"></i></span>
+                                <span>상호작용 중 마이데이터 서비스 가입 유도 가능</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 오른쪽 모바일 목업 부분 -->
+                <div class="flex items-center justify-center relative">
+                    <!-- 첫 번째 화면: 동의서 -->
+                    <div class="mobile-mockup" style="width: 280px; height: 560px;">
+                        <div class="phone-header"></div>
+                        <div class="status-bar">
+                            <span>9:41</span>
+                            <div>
+                                <i class="fas fa-wifi"></i>
+                                <i class="fas fa-signal ml-2"></i>
+                                <i class="fas fa-battery-full ml-2"></i>
+                            </div>
+                        </div>
+                        <div class="screen-content">
+                            <div class="mb-6 flex justify-center">
+                                
+                            </div>
+                            
+                            <div class="badge badge-red">필수 동의</div>
+                            <h3 class="text-xl font-bold mb-4">서비스 이용 동의</h3>
+                            <p class="text-gray-600 text-sm mb-6">투자성향분석이 완료되었습니다. 추가 서비스 이용을 위해 아래 사항에 동의해주세요.</p>
+                            
+                            <div class="form-field mb-4">
+                                <div class="check-item">
+                                    <input type="checkbox" id="all" class="mr-2">
+                                    <label for="all" class="font-medium">전체 동의</label>
+                                </div>
+                                <div class="border-t border-gray-200 my-2"></div>
+                                <div class="check-item">
+                                    <input type="checkbox" id="terms0" class="mr-2">
+                                    <label for="terms0" class="text-sm">개인정보 수집 및 이용 동의 (필수)</label>
+                                </div>
+                                <div class="check-item">
+                                    <input type="checkbox" id="terms1" class="mr-2">
+                                    <label for="terms1" class="text-sm">마케팅 활용 동의 (필수)</label>
+                                </div>
+                                <div class="check-item">
+                                    <input type="checkbox" id="terms2" class="mr-2">
+                                    <label for="terms2" class="text-sm">AI 활용 동의 (필수)</label>
+                                </div>
+                            </div>
+                            
+                            <div class="text-xs text-gray-500 mb-6">
+                                * 마케팅 동의 시 맞춤형 금융상품 추천 및 혜택 안내를 받으실 수 있습니다.<br>
+                                * AI 활용 동의는 서비스 이용을 위해 필수입니다.
+                            </div>
+                            
+                            <button class="button button-primary mb-3">동의하고 계속하기</button>
+                            <button class="button button-secondary">다음에 하기</button>
+                        </div>
+                    </div>
+                    
+                    <!-- 화살표 -->
+                    <div class="flow-arrow" style="right: 150px; top: 300px;">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    
+                    <!-- 두 번째 화면: 기본 자산관리 Agent 화면 -->
+                    <div class="mobile-mockup ml-12" style="width: 280px; height: 560px;">
+                        <div class="phone-header"></div>
+                        <div class="status-bar">
+                            <span>9:41</span>
+                            <div>
+                                <i class="fas fa-wifi"></i>
+                                <i class="fas fa-signal ml-2"></i>
+                                <i class="fas fa-battery-full ml-2"></i>
+                            </div>
+                        </div>
+                        <div class="screen-content">
+                            <div class="mb-6 flex justify-between items-center">
+                                
+                                <div class="text-blue-900"><i class="fas fa-user-circle text-2xl"></i></div>
+                            </div>
+                            
+                            <div class="badge badge-green">기본 서비스</div>
+                            <h3 class="text-xl font-bold mb-4">자산관리 Agent</h3>
+                            
+                            <div class="flex flex-col mb-4" style="height: 320px; overflow-y: auto;">
+                                <div class="chat-bubble chat-bubble-agent">
+                                    안녕하세요, 김신한님. 자산관리 Agent입니다. 어떤 도움이 필요하신가요?
+                                </div>
+                                
+                                <div class="chat-bubble chat-bubble-user">
+                                    내 자산 상황을 알려줘
+                                </div>
+                                
+                                <div class="chat-bubble chat-bubble-agent">
+                                    현재 신한은행 계좌 기준으로 예금 잔액은 5,210,000원, 적금 잔액은 12,500,000원입니다.<br><br>
+                                    더 정확한 자산현황을 위해 <span class="text-blue-600 font-medium">마이데이터 서비스</span>를 이용해보시겠어요?
+                                </div>
+                            </div>
+                            
+                            <div class="border-t border-gray-200 pt-4">
+                                <div class="flex space-x-2 mb-3">
+                                    <button class="px-3 py-2 bg-gray-100 rounded-lg text-sm flex-grow text-center">마이데이터 가입</button>
+                                    <button class="px-3 py-2 bg-gray-100 rounded-lg text-sm flex-grow text-center">투자 상품 추천</button>
+                                </div>
+                                <div class="flex">
+                                    <input type="text" placeholder="메시지를 입력하세요" class="flex-grow border border-gray-300 rounded-l-lg px-3 py-2 text-sm">
+                                    <button class="bg-blue-900 text-white px-4 rounded-r-lg"><i class="fas fa-paper-plane"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>
+    <!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>자산관리 Agent 서비스 진입 시나리오 스토리보드</title>
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+        <style>
+            body {
+                font-family: 'Noto Sans KR', sans-serif;
+                background-color: #f7f9fc;
+                margin: 0;
+                padding: 0;
+            }
+            .slide {
+                width: 1280px;
+                min-height: 720px;
+                background-color: white;
+                overflow: hidden;
+                position: relative;
+            }
+            .slide-header {
+                background-color: #1e3a8a;
+                color: white;
+                padding: 20px 40px;
+            }
+            .mobile-mockup {
+                border-radius: 36px;
+                overflow: hidden;
+                background-color: white;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+                position: relative;
+            }
+            .status-bar {
+                height: 44px;
+                background-color: #f5f5f7;
+                display: flex;
+                justify-content: space-between;
+                padding: 0 15px;
+                align-items: center;
+                font-size: 14px;
+            }
+            .phone-header {
+                width: 120px;
+                height: 30px;
+                background-color: #1e3a8a;
+                border-radius: 0 0 15px 15px;
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .screen-content {
+                padding: 20px;
+            }
+            .form-field {
+                margin-bottom: 16px;
+                border: 1px solid #e5e7eb;
+                border-radius: 8px;
+                padding: 12px;
+            }
+            .check-item {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+            .button {
+                display: block;
+                width: 100%;
+                padding: 14px;
+                text-align: center;
+                border-radius: 8px;
+                font-weight: 500;
+            }
+            .button-primary {
+                background-color: #1e3a8a;
+                color: white;
+            }
+            .button-secondary {
+                background-color: #f3f4f6;
+                color: #4b5563;
+            }
+            .button-tertiary {
+                background-color: #e0f2fe;
+                color: #0369a1;
+            }
+            .flow-arrow {
+                position: absolute;
+                font-size: 24px;
+                color: #1e3a8a;
+            }
+            .badge {
+                padding: 6px 12px;
+                border-radius: 20px;
+                display: inline-block;
+                font-size: 14px;
+                font-weight: 500;
+                margin-bottom: 10px;
+            }
+            .badge-blue {
+                background-color: #dbeafe;
+                color: #2563eb;
+            }
+            .badge-green {
+                background-color: #d1fae5;
+                color: #059669;
+            }
+            .chat-bubble {
+                border-radius: 16px;
+                padding: 12px 16px;
+                margin-bottom: 12px;
+                max-width: 80%;
+            }
+            .chat-bubble-agent {
+                background-color: #f3f4f6;
+                align-self: flex-start;
+                border-top-left-radius: 4px;
+            }
+            .chat-bubble-user {
+                background-color: #1e3a8a;
+                color: white;
+                align-self: flex-end;
+                border-bottom-right-radius: 4px;
+            }
+            .asset-card {
+                background-color: #f9fafb;
+                border-radius: 12px;
+                padding: 12px;
+                margin-bottom: 10px;
+                border-left: 4px solid;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="slide">
+            <div class="slide-header flex justify-between items-center">
+                <h1 class="text-3xl font-bold">자산관리 Agent 서비스 진입 시나리오</h1>
+                <div class="text-xl">Case 3</div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-8 p-10">
+                <!-- 왼쪽 설명 부분 -->
+                <div class="flex flex-col justify-center">
+                    <h2 class="text-2xl font-bold mb-6 text-blue-900">Case 3: 투자성향분석 완료 &amp; 마케팅/AI 동의 완료 &amp; 마이데이터 미가입</h2>
+                    
+                    <div class="bg-gray-50 p-6 rounded-lg mb-8">
+                        <h3 class="text-lg font-bold mb-4">고객 상태</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>1개월 내 투자성향 분석 진행함</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>개인정보 마케팅 활용 동의 및 AI활용 동의함</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-red-500 mr-2">✗</span>
+                                <span>마이데이터 서비스 가입 안함</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-6 rounded-lg">
+                        <h3 class="text-lg font-bold mb-4">제공 서비스 내용</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <span class="text-blue-600 mr-2"><i class="fas fa-check-circle"></i></span>
+                                <span>서비스 시작시 AI Studio 활용한 맞춤 타겟 시나리오 제공</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-600 mr-2"><i class="fas fa-check-circle"></i></span>
+                                <span>App Push 동의시, 맞춤 타겟 Push 알림 제공</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-600 mr-2"><i class="fas fa-check-circle"></i></span>
+                                <span>신한은행 보유 고객 정보(DW)를 대상으로 한 정보 컨텐츠만 제공</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-600 mr-2"><i class="fas fa-check-circle"></i></span>
+                                <span>상호작용 중 마이데이터 서비스 가입 유도 가능</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 오른쪽 모바일 목업 부분 -->
+                <div class="flex items-center justify-center relative">
+                    <!-- 첫 번째 화면: AI 맞춤 시나리오 화면 -->
+                    <div class="mobile-mockup" style="width: 280px; height: 560px;">
+                        <div class="phone-header"></div>
+                        <div class="status-bar">
+                            <span>9:41</span>
+                            <div>
+                                <i class="fas fa-wifi"></i>
+                                <i class="fas fa-signal ml-2"></i>
+                                <i class="fas fa-battery-full ml-2"></i>
+                            </div>
+                        </div>
+                        <div class="screen-content">
+                            <div class="mb-6 flex justify-between items-center">
+                                <div class="text-blue-900"></div>
+                            </div>
+                            
+                            <div class="badge badge-blue">신한 맞춤 서비스</div>
+                            <h3 class="text-xl font-bold mb-4">자산관리 Agent</h3>
+                            
+                            <div class="flex flex-col mb-4" style="height: 330px; overflow-y: auto;">
+                                <div class="chat-bubble chat-bubble-agent">안녕하세요, 김신한님! 최근 절세형 상품에 관심이 많아지셨네요. 연말정산 최적화를 위한 ISA상품 가입을 추천해 드립니다. 세금 관리 방안에 대해 알아보시겠어요?</div>
+                                
+                                <div class="chat-bubble chat-bubble-user">
+                                    어떤 상품이 좋을까요?
+                                </div>
+                                
+                                <div class="chat-bubble chat-bubble-agent">
+                                    신한 ISA 계좌와 연금저축펀드가 세금 절감에 효과적입니다. 더 정확한 분석을 위해 <span style="color: #2563eb;">마이데이터 서비스</span>에 가입하시면 다른 금융기관 정보까지 통합하여 최적화된 세금 관리 방안을 제안해 드릴 수 있습니다.
+                                </div>
+                            </div>
+                            
+                            <div class="border-t border-gray-200 pt-4">
+                                <div class="flex space-x-2 mb-3">
+                                    <button class="px-3 py-2 bg-blue-100 text-blue-800 rounded-lg text-sm flex-grow text-center font-medium">마이데이터 가입</button>
+                                    <button class="px-3 py-2 bg-blue-100 text-blue-800 rounded-lg text-sm flex-grow text-center font-medium">절세 상품 추천</button>
+                                </div>
+                                <div class="flex">
+                                    <input type="text" placeholder="메시지를 입력하세요" class="flex-grow border border-gray-300 rounded-l-lg px-3 py-2 text-sm">
+                                    <button class="bg-blue-900 text-white px-4 rounded-r-lg"><i class="fas fa-paper-plane"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 화살표 -->
+                    <div class="flow-arrow" style="right: 150px; top: 300px;">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    
+                    <!-- 두 번째 화면: 마이데이터 가입 완료 후 통합 자산관리 화면 -->
+                    <div class="mobile-mockup ml-12" style="width: 280px; height: 560px;">
+                        <div class="phone-header"></div>
+                        <div class="status-bar">
+                            <span>9:41</span>
+                            <div>
+                                <i class="fas fa-wifi"></i>
+                                <i class="fas fa-signal ml-2"></i>
+                                <i class="fas fa-battery-full ml-2"></i>
+                            </div>
+                        </div>
+                        <div class="screen-content">
+                            <div class="mb-6 flex justify-center">
+                                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check-circle text-green-500 text-3xl"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="badge badge-green">마이데이터 통합</div>
+                            <h3 class="text-xl font-bold mb-3 text-center">마이데이터 연결 완료</h3>
+                            
+                            <div class="flex flex-wrap gap-2 justify-center mb-4">
+                                <div class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center text-xs shadow-sm">KB</div>
+                                <div class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center text-xs shadow-sm">우리</div>
+                                <div class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center text-xs shadow-sm">하나</div>
+                                <div class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center text-xs shadow-sm">NH</div>
+                                <div class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center text-xs shadow-sm">카뱅</div>
+                            </div>
+                            
+                            <p class="text-center text-sm mb-4">이제 통합 자산관리 서비스를 이용할 수 있습니다.</p>
+                            
+                            <div class="mb-3">
+                                <h4 class="text-sm font-medium mb-2">통합 자산 현황</h4>
+                                <div class="asset-card" style="border-left-color: #3b82f6;">
+                                    <div class="flex justify-between">
+                                        <div class="font-medium">예금/적금</div>
+                                        <div>32,500,000원</div>
+                                    </div>
+                                    <div class="text-xs text-gray-500">신한, 우리, 카카오뱅크</div>
+                                </div>
+                                <div class="asset-card" style="border-left-color: #10b981;">
+                                    <div class="flex justify-between">
+                                        <div class="font-medium">주식/펀드</div>
+                                        <div>18,750,000원</div>
+                                    </div>
+                                    <div class="text-xs text-gray-500">미래에셋, 신한금투</div>
+                                </div>
+                                <div class="asset-card" style="border-left-color: #6366f1;">
+                                    <div class="flex justify-between">
+                                        <div class="font-medium">연금/보험</div>
+                                        <div>12,800,000원</div>
+                                    </div>
+                                    <div class="text-xs text-gray-500">신한생명, 삼성생명</div>
+                                </div>
+                            </div>
+                            
+                            <button class="button button-primary">맞춤형 자산관리 시작하기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>
+    <!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>자산관리 Agent 서비스 진입 시나리오 스토리보드</title>
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+        <style>
+            body {
+                font-family: 'Noto Sans KR', sans-serif;
+                background-color: #f7f9fc;
+                margin: 0;
+                padding: 0;
+            }
+            .slide {
+                width: 1280px;
+                min-height: 720px;
+                background-color: white;
+                overflow: hidden;
+                position: relative;
+            }
+            .slide-header {
+                background-color: #1e3a8a;
+                color: white;
+                padding: 20px 40px;
+            }
+            .mobile-mockup {
+                border-radius: 36px;
+                overflow: hidden;
+                background-color: white;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+                position: relative;
+            }
+            .status-bar {
+                height: 44px;
+                background-color: #f5f5f7;
+                display: flex;
+                justify-content: space-between;
+                padding: 0 15px;
+                align-items: center;
+                font-size: 14px;
+            }
+            .phone-header {
+                width: 120px;
+                height: 30px;
+                background-color: #1e3a8a;
+                border-radius: 0 0 15px 15px;
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .screen-content {
+                padding: 20px;
+            }
+            .form-field {
+                margin-bottom: 16px;
+                border: 1px solid #e5e7eb;
+                border-radius: 8px;
+                padding: 12px;
+            }
+            .button {
+                display: block;
+                width: 100%;
+                padding: 14px;
+                text-align: center;
+                border-radius: 8px;
+                font-weight: 500;
+            }
+            .button-primary {
+                background-color: #1e3a8a;
+                color: white;
+            }
+            .button-secondary {
+                background-color: #f3f4f6;
+                color: #4b5563;
+            }
+            .flow-arrow {
+                position: absolute;
+                font-size: 24px;
+                color: #1e3a8a;
+            }
+            .badge {
+                padding: 6px 12px;
+                border-radius: 20px;
+                display: inline-block;
+                font-size: 14px;
+                font-weight: 500;
+                margin-bottom: 10px;
+            }
+            .badge-purple {
+                background-color: #ede9fe;
+                color: #7c3aed;
+            }
+            .chat-bubble {
+                border-radius: 16px;
+                padding: 12px 16px;
+                margin-bottom: 12px;
+                max-width: 80%;
+            }
+            .chat-bubble-agent {
+                background-color: #f3f4f6;
+                align-self: flex-start;
+                border-top-left-radius: 4px;
+            }
+            .chat-bubble-user {
+                background-color: #1e3a8a;
+                color: white;
+                align-self: flex-end;
+                border-bottom-right-radius: 4px;
+            }
+            .notification {
+                background-color: white;
+                border-radius: 12px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+                padding: 16px;
+                margin-bottom: 16px;
+            }
+            .chart-placeholder {
+                background-color: #f3f4f6;
+                border-radius: 12px;
+                height: 120px;
+                position: relative;
+                overflow: hidden;
+            }
+            .chart-bar {
+                position: absolute;
+                bottom: 0;
+                width: 12%;
+                background-color: #3b82f6;
+                border-top-left-radius: 4px;
+                border-top-right-radius: 4px;
+            }
+            .asset-card {
+                background-color: #f9fafb;
+                border-radius: 12px;
+                padding: 12px;
+                margin-bottom: 10px;
+                border-left: 4px solid;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="slide">
+            <div class="slide-header flex justify-between items-center">
+                <h1 class="text-3xl font-bold">자산관리 Agent 서비스 진입 시나리오</h1>
+                <div class="text-xl">Case 4</div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-8 p-10">
+                <!-- 왼쪽 설명 부분 -->
+                <div class="flex flex-col justify-center">
+                    <h2 class="text-2xl font-bold mb-6 text-blue-900">Case 4: 투자성향분석 완료 &amp; 마케팅/AI 동의 완료 &amp; 마이데이터 가입 완료</h2>
+                    
+                    <div class="bg-gray-50 p-6 rounded-lg mb-8">
+                        <h3 class="text-lg font-bold mb-4">고객 상태</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>1개월 내 투자성향 분석 진행함</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>개인정보 마케팅 활용 동의 및 AI활용 동의함</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>마이데이터 서비스 가입함</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-6 rounded-lg">
+                        <h3 class="text-lg font-bold mb-4">제공 서비스 내용</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <span class="text-blue-600 mr-2"><i class="fas fa-check-circle"></i></span>
+                                <span>AI Studio 활용한 맞춤 타겟 시나리오 제공</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-600 mr-2"><i class="fas fa-check-circle"></i></span>
+                                <span>App Push 동의 시 맞춤 타겟 시나리오 반영 Push 알림</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-600 mr-2"><i class="fas fa-check-circle"></i></span>
+                                <span>마이데이터를 활용한 고도화된 맞춤 컨텐츠 제공</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-600 mr-2"><i class="fas fa-check-circle"></i></span>
+                                <span>상담 시나리오에서 마이데이터 서비스 가입화면 유도 안함</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 오른쪽 모바일 목업 부분 -->
+                <div class="flex items-center justify-center relative">
+                    <!-- 첫 번째 화면: App Push 알림 -->
+                    
+                    
+                    <!-- 두 번째 화면: 완전 맞춤형 Agent 화면 -->
+                    <div class="mobile-mockup" style="width: 280px; height: 560px;">
+                        <div class="phone-header"></div>
+                        <div class="status-bar">
+                            <span>9:41</span>
+                            <div>
+                                <i class="fas fa-wifi"></i>
+                                <i class="fas fa-signal ml-2"></i>
+                                <i class="fas fa-battery-full ml-2"></i>
+                            </div>
+                        </div>
+                        <div class="screen-content">
+                            <div class="mb-6 flex justify-between items-center">
+                                
+                                <div class="text-blue-900"></div>
+                            </div>
+                            
+                            <div class="badge badge-purple">마이데이터 맞춤 서비스</div>
+                            <h3 class="text-xl font-bold mb-4">김신한님의 종합 자산관리</h3>
+                            
+                            <div class="flex flex-col mb-4" style="height: 340px; overflow-y: auto;">
+                                <div class="chat-bubble chat-bubble-agent">
+                                    안녕하세요, 김신한님! 마이데이터 분석 결과, 6월 예금 만기가 3일 남았습니다. 현재 금리 상황에 맞는 예금 상품과 투자 포트폴리오 제안을 준비했습니다.
+                                </div>
+                                
+                                <div class="chat-bubble chat-bubble-user">
+                                    내 전체 자산 현황을 알려줘
+                                </div>
+                                
+                                <div class="chat-bubble chat-bubble-agent">
+                                    현재 종합 자산 현황입니다 (마이데이터 기준):
+                                    
+                                    <div class="mt-2">
+                                        <div class="asset-card" style="border-left-color: #3b82f6;">
+                                            <div class="flex justify-between">
+                                                <div class="font-medium">예금/적금</div>
+                                                <div>32,500,000원</div>
+                                            </div>
+                                            <div class="text-xs text-gray-500">신한은행, 우리은행, 카카오뱅크</div>
+                                        </div>
+                                        <div class="asset-card" style="border-left-color: #10b981;">
+                                            <div class="flex justify-between">
+                                                <div class="font-medium">주식/펀드</div>
+                                                <div>18,750,000원</div>
+                                            </div>
+                                            <div class="text-xs text-gray-500">미래에셋증권, 신한금투, NH투자</div>
+                                        </div>
+                                        <div class="asset-card" style="border-left-color: #6366f1;">
+                                            <div class="flex justify-between">
+                                                <div class="font-medium">연금/보험</div>
+                                                <div>12,800,000원</div>
+                                            </div>
+                                            <div class="text-xs text-gray-500">신한생명, 삼성생명</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="border-t border-gray-200 pt-4">
+                                <div class="flex space-x-2 mb-3">
+                                    <button class="px-3 py-2 bg-purple-100 text-purple-800 rounded-lg text-sm flex-grow text-center font-medium">자산 포트폴리오</button>
+                                    <button class="px-3 py-2 bg-purple-100 text-purple-800 rounded-lg text-sm flex-grow text-center font-medium">투자 추천</button>
+                                </div>
+                                <div class="flex">
+                                    <input type="text" placeholder="메시지를 입력하세요" class="flex-grow border border-gray-300 rounded-l-lg px-3 py-2 text-sm">
+                                    <button class="bg-blue-900 text-white px-4 rounded-r-lg"><i class="fas fa-paper-plane"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>
+            

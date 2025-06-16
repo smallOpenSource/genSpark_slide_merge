@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{SLIDE_TITLE}}</title>
+    
+    <!-- 젠스파크 슬라이드 기본 스타일 -->
+    <link rel="stylesheet" href="../assets/default_theme.css">
+    
+    <style>
+        /* 슬라이드별 커스텀 스타일 */
+        .slide-container {
+            width: 100vw;
+            height: 100vh;
+            padding: 2rem;
+            box-sizing: border-box;
+            overflow-y: auto;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .slide-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .slide-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .slide-footer {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+            color: #718096;
+            font-size: 0.875rem;
+        }
+        
+        /* 코드 블록 템플릿 */
+        .code-example {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+        
+        .code-example::before {
+            content: attr(data-language);
+            position: absolute;
+            top: 0.5rem;
+            right: 1rem;
+            background: #667eea;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+        
+        /* 차트 컨테이너 템플릿 */
+        .chart-wrapper {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+        }
+        
+        .chart-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        /* 테이블 템플릿 */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .data-table th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .data-table tr:hover {
+            background: rgba(102, 126, 234, 0.05);
+        }
+        
+        /* 인포 박스 템플릿 */
+        .info-box {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border-left: 4px solid #667eea;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .info-box-title {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* 이미지 갤러리 템플릿 */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .image-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+        }
+        
+        .image-item:hover {
+            transform: scale(1.02);
+        }
+        
+        .image-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .image-caption {
+            padding: 1rem;
+            background: white;
+            font-size: 0.875rem;
+            color: #4a5568;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <!-- 슬라이드 헤더 -->
+        <header class="slide-header">
+            <h1>{{SLIDE_TITLE}}</h1>
+            <p class="slide-subtitle">{{SLIDE_SUBTITLE}}</p>
+        </header>
+        
+        <!-- 슬라이드 메인 콘텐츠 -->
+        <main class="slide-content">
+            {{SLIDE_CONTENT}}
+            
+            <!-- 코드 예시 템플릿 -->
+            <!--
+            <div class="code-example" data-language="python">
+                <pre><code class="language-python">
+def hello_world():
+    print("Hello, GenSpark!")
+    return "Success"
+
+result = hello_world()
+                </code></pre>
+            </div>
+            -->
+            
+            <!-- 차트 예시 템플릿 -->
+            <!--
+            <div class="chart-wrapper">
+                <div class="chart-title">데이터 시각화 예시</div>
+                <canvas id="chart-{{SLIDE_ID}}" width="400" height="200"></canvas>
+            </div>
+            -->
+            
+            <!-- 테이블 예시 템플릿 -->
+            <!--
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>항목</th>
+                        <th>값</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>예시 1</td>
+                        <td>100</td>
+                        <td>설명 내용</td>
+                    </tr>
+                </tbody>
+            </table>
+            -->
+            
+            <!-- 인포 박스 예시 템플릿 -->
+            <!--
+            <div class="info-box">
+                <div class="info-box-title">💡 중요 정보</div>
+                <p>이 섹션에는 중요한 정보나 팁을 작성합니다.</p>
+            </div>
+            -->
+            
+            <!-- 이미지 갤러리 예시 템플릿 -->
+            <!--
+            <div class="image-gallery">
+                <div class="image-item">
+                    <img src="image1.jpg" alt="이미지 1">
+                    <div class="image-caption">이미지 1 설명</div>
+                </div>
+                <div class="image-item">
+                    <img src="image2.jpg" alt="이미지 2">
+                    <div class="image-caption">이미지 2 설명</div>
+                </div>
+            </div>
+            -->
+        </main>
+        
+        <!-- 슬라이드 푸터 -->
+        <footer class="slide-footer">
+            <p>{{SLIDE_FOOTER}} | 젠스파크 AI 슬라이드</p>
+        </footer>
+    </div>
+    
+    <!-- 슬라이드별 스크립트 -->
+    <script>
+        // 슬라이드 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('슬라이드 {{SLIDE_ID}} 로드됨');
+            
+            // 코드 하이라이팅 (Highlight.js 사용시)
+            if (typeof hljs !== 'undefined') {
+                hljs.highlightAll();
+            }
+            
+            // 차트 초기화 (Chart.js 사용시)
+            // initChart{{SLIDE_ID}}();
+            
+            // 이미지 레이지 로딩
+            const images = document.querySelectorAll('img[data-src]');
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+            
+            images.forEach(img => imageObserver.observe(img));
+        });
+        
+        // 차트 초기화 함수 예시
+        /*
+        function initChart{{SLIDE_ID}}() {
+            const ctx = document.getElementById('chart-{{SLIDE_ID}}');
+            if (ctx && typeof Chart !== 'undefined') {
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['A', 'B', 'C', 'D'],
+                        datasets: [{
+                            label: '데이터셋 1',
+                            data: [12, 19, 3, 5],
+                            backgroundColor: 'rgba(102, 126, 234, 0.2)',
+                            borderColor: 'rgba(102, 126, 234, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
+        }
+        */
+    </script>
+</body>
+</html>

@@ -1,0 +1,2006 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask 웹서비스 Best Practice</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #0d1117;
+            color: #f0f6fc;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        }
+        .code-accent {
+            color: #58a6ff;
+        }
+        .tech-icon {
+            border: 2px solid rgba(88, 166, 255, 0.3);
+            border-radius: 12px;
+            padding: 12px;
+            background-color: rgba(88, 166, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container flex flex-col items-center justify-center p-16">
+        <!-- 상단 아이콘 -->
+        <div class="mb-8 flex items-center">
+            <i class="fab fa-python text-7xl code-accent"></i>
+            <i class="fas fa-plus mx-6 text-3xl text-gray-400"></i>
+            <i class="fas fa-flask text-7xl code-accent"></i>
+        </div>
+        
+        <!-- 타이틀 -->
+        <h1 class="text-6xl font-bold mb-6 text-center">Flask 웹서비스 <span class="code-accent">Best Practice</span></h1>
+        
+        <!-- 구분선 -->
+        <div class="w-32 h-1 bg-gray-500 mb-10"></div>
+        
+        <!-- 부제목 -->
+        <p class="text-xl text-center max-w-4xl leading-relaxed mb-12 text-gray-300">
+            Python Flask로 프론트엔드와 백엔드가 분리된 구조에서 JWT, Redis, SQL Prepared Statement, 외부 API 연동까지 커버하는 실전 가이드
+        </p>
+        
+        <!-- 기술 아이콘 -->
+        <div class="flex space-x-10 mt-6">
+            <div class="text-center tech-icon">
+                <i class="fas fa-server text-3xl mb-3 code-accent"></i>
+                <p class="text-sm">Frontend/Backend</p>
+            </div>
+            <div class="text-center tech-icon">
+                <i class="fas fa-key text-3xl mb-3 code-accent"></i>
+                <p class="text-sm">Redis JWT</p>
+            </div>
+            <div class="text-center tech-icon">
+                <i class="fas fa-database text-3xl mb-3 code-accent"></i>
+                <p class="text-sm">SQL Prepared</p>
+            </div>
+            <div class="text-center tech-icon">
+                <i class="fas fa-robot text-3xl mb-3 code-accent"></i>
+                <p class="text-sm">OpenAI API</p>
+            </div>
+            <div class="text-center tech-icon">
+                <i class="fas fa-chart-line text-3xl mb-3 code-accent"></i>
+                <p class="text-sm">외부 API 연동</p>
+            </div>
+        </div>
+        
+        <!-- 하단 정보 -->
+        <div class="absolute bottom-8 right-10 text-sm text-gray-400">
+            <p>2025-06-14</p>
+        </div>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask 웹서비스 Best Practice - 목차</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #0d1117;
+            color: #f0f6fc;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        }
+        .code-accent {
+            color: #58a6ff;
+        }
+        .toc-item {
+            padding: 8px 0;
+        }
+        .number-box {
+            background-color: rgba(88, 166, 255, 0.2);
+            border: 1px solid rgba(88, 166, 255, 0.5);
+            border-radius: 6px;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container flex flex-col p-16">
+        <!-- 헤더 영역 -->
+        <div class="flex items-center mb-12">
+            <i class="fas fa-list-ol text-4xl code-accent mr-4"></i>
+            <h1 class="text-4xl font-bold">목차</h1>
+        </div>
+        
+        <!-- 구분선 -->
+        <div class="w-full h-0.5 bg-gray-700 mb-8"></div>
+        
+        <!-- 목차 내용 -->
+        <div class="flex">
+            <!-- 왼쪽 장식 영역 -->
+            <div class="w-1/6 pr-4">
+                <div class="h-full border-r-2 border-gray-700 flex flex-col justify-center">
+                    <div class="py-2">
+                        <i class="fas fa-book text-4xl code-accent"></i>
+                    </div>
+                    <div class="py-2">
+                        <i class="fas fa-server text-4xl code-accent"></i>
+                    </div>
+                    <div class="py-2">
+                        <i class="fas fa-database text-4xl code-accent"></i>
+                    </div>
+                    <div class="py-2">
+                        <i class="fas fa-shield-alt text-4xl code-accent"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 오른쪽 목차 영역 -->
+            <div class="w-5/6 pl-8 grid grid-cols-2 gap-x-6">
+                <!-- 왼쪽 열 -->
+                <div>
+                    <div class="toc-item flex items-center">
+                        <div class="number-box mr-4 code-accent font-bold">1</div>
+                        <span class="text-xl">프로젝트 개요</span>
+                    </div>
+                    
+                    <div class="toc-item flex items-center">
+                        <div class="number-box mr-4 code-accent font-bold">2</div>
+                        <span class="text-xl">아키텍처 설명</span>
+                    </div>
+                    
+                    <div class="toc-item flex items-center">
+                        <div class="number-box mr-4 code-accent font-bold">3</div>
+                        <span class="text-xl">프론트엔드/백엔드 분리</span>
+                    </div>
+                    
+                    <div class="toc-item flex items-center">
+                        <div class="number-box mr-4 code-accent font-bold">4</div>
+                        <span class="text-xl">백엔드 프로젝트 구조</span>
+                    </div>
+                    
+                    <div class="toc-item flex items-center">
+                        <div class="number-box mr-4 code-accent font-bold">5</div>
+                        <span class="text-xl">Redis & JWT 토큰 관리</span>
+                    </div>
+                    
+                    <div class="toc-item flex items-center">
+                        <div class="number-box mr-4 code-accent font-bold">6</div>
+                        <span class="text-xl">SQL Prepared Statement 구현</span>
+                    </div>
+                </div>
+                
+                <!-- 오른쪽 열 -->
+                <div>
+                    <div class="toc-item flex items-center">
+                        <div class="number-box mr-4 code-accent font-bold">7</div>
+                        <span class="text-xl">외부 API(OpenAI) 연동</span>
+                    </div>
+                    
+                    <div class="toc-item flex items-center">
+                        <div class="number-box mr-4 code-accent font-bold">8</div>
+                        <span class="text-xl">외부 정보(날씨, 주가) 연동</span>
+                    </div>
+                    
+                    <div class="toc-item flex items-center">
+                        <div class="number-box mr-4 code-accent font-bold">9</div>
+                        <span class="text-xl">보안 Best Practice</span>
+                    </div>
+                    
+                    <div class="toc-item flex items-center">
+                        <div class="number-box mr-4 code-accent font-bold">10</div>
+                        <span class="text-xl">성능 최적화</span>
+                    </div>
+                    
+                    <div class="toc-item flex items-center">
+                        <div class="number-box mr-4 code-accent font-bold">11</div>
+                        <span class="text-xl">배포 및 운영</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 하단 코드 아이콘 -->
+        <div class="absolute bottom-10 right-16 text-gray-600">
+            <i class="fas fa-code text-5xl"></i>
+        </div>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로젝트 아키텍처 개요</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #0d1117;
+            color: #f0f6fc;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        }
+        .code-accent {
+            color: #58a6ff;
+        }
+        .content-box {
+            background-color: rgba(88, 166, 255, 0.05);
+            border-left: 3px solid #58a6ff;
+            border-radius: 6px;
+            padding: 1rem;
+        }
+        .bullet-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.25rem;
+        }
+        .bullet-icon {
+            color: #58a6ff;
+            margin-right: 1rem;
+            margin-top: 0.25rem;
+        }
+        .diagram-box {
+            border: 1px solid rgba(88, 166, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container flex p-16">
+        <!-- 왼쪽 사이드바 (제목 섹션) -->
+        <div class="w-1/3 pr-8">
+            <div class="flex items-center mb-6">
+                <i class="fas fa-project-diagram text-5xl code-accent mr-4"></i>
+                <h1 class="text-4xl font-bold">프로젝트 아키텍처 개요</h1>
+            </div>
+            
+            <div class="h-0.5 bg-gray-700 mb-6"></div>
+            
+            <div class="content-box mb-6">
+                <p class="text-lg leading-relaxed">
+                    Flask 기반 분리 아키텍처로 확장성과 유지보수성을 높인 웹서비스 구조
+                </p>
+            </div>
+            
+            <div class="diagram-box p-4 rounded-lg mt-8">
+                <div class="text-center mb-4">
+                    <i class="fas fa-sitemap text-5xl code-accent"></i>
+                </div>
+                <div class="flex justify-center items-center">
+                    <div class="text-center px-3 py-2 border border-gray-700 rounded mx-2">
+                        <i class="fas fa-desktop text-2xl code-accent mb-2"></i>
+                        <p class="text-sm">프론트엔드</p>
+                    </div>
+                    <i class="fas fa-arrows-alt-h text-gray-500 mx-2"></i>
+                    <div class="text-center px-3 py-2 border border-gray-700 rounded mx-2">
+                        <i class="fas fa-server text-2xl code-accent mb-2"></i>
+                        <p class="text-sm">백엔드 API</p>
+                    </div>
+                    <i class="fas fa-arrows-alt-h text-gray-500 mx-2"></i>
+                    <div class="text-center px-3 py-2 border border-gray-700 rounded mx-2">
+                        <i class="fas fa-database text-2xl code-accent mb-2"></i>
+                        <p class="text-sm">데이터베이스</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 오른쪽 내용 섹션 -->
+        <div class="w-2/3 pl-8">
+            <div class="content-box mb-8">
+                <h2 class="text-2xl font-semibold mb-4 code-accent">주요 아키텍처 특징</h2>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">프론트엔드–백엔드 명확 분리</p>
+                        <p class="text-gray-400">독립적인 개발 및 배포가 가능한 2-티어 구조</p>
+                    </div>
+                </div>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">백엔드는 Flask REST API로</p>
+                        <p class="text-gray-400">경량의 확장 가능한 API 서비스 제공</p>
+                    </div>
+                </div>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">데이터는 직접 SQL Prepared Statement로 처리</p>
+                        <p class="text-gray-400">ORM 없이 최적화된 쿼리와 보안성 강화</p>
+                    </div>
+                </div>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">인증은 JWT, 토큰 저장은 Redis</p>
+                        <p class="text-gray-400">확장 가능한 인증 시스템과 세션 관리</p>
+                    </div>
+                </div>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">확장: AI(OpenAI), 날씨/주가 등 외부 API</p>
+                        <p class="text-gray-400">모듈화된 외부 서비스 연동 아키텍처</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex justify-end mt-6">
+                <div class="text-right">
+                    <p class="text-sm text-gray-400">
+                        <i class="fas fa-lightbulb code-accent mr-2"></i>
+                        구성 요소 간 느슨한 결합으로 확장성과 유지보수성 확보
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 하단 코드 아이콘 -->
+        <div class="absolute bottom-10 right-16 text-gray-600">
+            <i class="fas fa-code text-4xl"></i>
+        </div>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>백엔드 프로젝트 구조</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #0d1117;
+            color: #f0f6fc;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        }
+        .code-accent {
+            color: #58a6ff;
+        }
+        .content-box {
+            background-color: rgba(88, 166, 255, 0.05);
+            border-left: 3px solid #58a6ff;
+            border-radius: 6px;
+            padding: 1rem;
+        }
+        .bullet-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        .bullet-icon {
+            color: #58a6ff;
+            margin-right: 1rem;
+            margin-top: 0.25rem;
+        }
+        .folder-structure {
+            font-family: 'Courier New', monospace;
+            background-color: rgba(255, 255, 255, 0.03);
+            border-radius: 6px;
+            padding: 1rem;
+            border: 1px solid rgba(88, 166, 255, 0.3);
+        }
+        .folder {
+            color: #58a6ff;
+        }
+        .file {
+            color: #f0f6fc;
+        }
+        .comment {
+            color: #8b949e;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container flex p-16">
+        <!-- 왼쪽 사이드바 (제목 섹션) -->
+        <div class="w-1/3 pr-8">
+            <div class="flex items-center mb-6">
+                <i class="fas fa-folder-open text-5xl code-accent mr-4"></i>
+                <h1 class="text-4xl font-bold">백엔드 프로젝트 구조</h1>
+            </div>
+            
+            <div class="h-0.5 bg-gray-700 mb-6"></div>
+            
+            <div class="content-box mb-6">
+                <p class="text-lg leading-relaxed">
+                    모듈화된 Flask 백엔드 구조로 확장성, 유지보수성 및 코드 재사용성 극대화
+                </p>
+            </div>
+            
+            <div class="folder-structure mt-8 text-sm">
+                <div><span class="folder">📂 backend_api/</span></div>
+                <div class="ml-4"><span class="folder">📂 app/</span></div>
+                <div class="ml-8"><span class="file">📄 __init__.py</span> <span class="comment">// 앱 초기화</span></div>
+                <div class="ml-8"><span class="file">📄 routes.py</span> <span class="comment">// 라우트 등록</span></div>
+                <div class="ml-4"><span class="folder">📂 routes/</span> <span class="comment">// API 엔드포인트</span></div>
+                <div class="ml-8"><span class="file">📄 auth.py</span></div>
+                <div class="ml-8"><span class="file">📄 data.py</span></div>
+                <div class="ml-4"><span class="folder">📂 sql/</span> <span class="comment">// SQL 파일 저장소</span></div>
+                <div class="ml-4"><span class="folder">📂 auth/</span> <span class="comment">// JWT & Redis</span></div>
+                <div class="ml-4"><span class="folder">📂 external/</span> <span class="comment">// 외부 API</span></div>
+                <div class="ml-4"><span class="folder">📂 utils/</span> <span class="comment">// 헬퍼 함수</span></div>
+                <div class="ml-4"><span class="file">📄 app.py</span> <span class="comment">// 진입점</span></div>
+                <div class="ml-4"><span class="file">📄 config.py</span> <span class="comment">// 설정</span></div>
+                <div class="ml-4"><span class="file">📄 requirements.txt</span></div>
+            </div>
+        </div>
+        
+        <!-- 오른쪽 내용 섹션 -->
+        <div class="w-2/3 pl-8">
+            <div class="content-box mb-6">
+                <h2 class="text-2xl font-semibold mb-4 code-accent">모듈별 역할</h2>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-file-code"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">app.py: 진입점</p>
+                        <p class="text-gray-400">Flask 애플리케이션 초기화, 설정 로드, 블루프린트 등록</p>
+                    </div>
+                </div>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">routes/: API 및 서비스 기능 라우터</p>
+                        <p class="text-gray-400">기능별 블루프린트로 엔드포인트 분리 관리</p>
+                    </div>
+                </div>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">sql/: Prepared Statement SQL 모음</p>
+                        <p class="text-gray-400">각 쿼리를 별도 파일로 관리 (select_user.sql, insert_log.sql 등)</p>
+                    </div>
+                </div>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">auth/: JWT 로직</p>
+                        <p class="text-gray-400">토큰 생성, 검증, Redis 연동 관리</p>
+                    </div>
+                </div>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">external/: 외부 API 연동</p>
+                        <p class="text-gray-400">OpenAI, 날씨, 주가 API 래퍼 및 캐싱 로직</p>
+                    </div>
+                </div>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">utils/: 공용 모듈</p>
+                        <p class="text-gray-400">로깅, 오류 처리, 헬퍼 함수들</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-box mt-6">
+                <h2 class="text-2xl font-semibold mb-4 code-accent">설계 원칙</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-opacity-20 bg-gray-700 p-3 rounded">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-puzzle-piece text-xl code-accent mr-2"></i>
+                            <p class="font-semibold">모듈화</p>
+                        </div>
+                        <p class="text-sm text-gray-300">기능별 분리로 독립적 개발 가능</p>
+                    </div>
+                    
+                    <div class="bg-opacity-20 bg-gray-700 p-3 rounded">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-shield-alt text-xl code-accent mr-2"></i>
+                            <p class="font-semibold">보안 설계</p>
+                        </div>
+                        <p class="text-sm text-gray-300">SQL 인젝션 방지, 민감 정보 격리</p>
+                    </div>
+                    
+                    <div class="bg-opacity-20 bg-gray-700 p-3 rounded">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-cogs text-xl code-accent mr-2"></i>
+                            <p class="font-semibold">설정 분리</p>
+                        </div>
+                        <p class="text-sm text-gray-300">개발/운영 환경 설정 config.py 관리</p>
+                    </div>
+                    
+                    <div class="bg-opacity-20 bg-gray-700 p-3 rounded">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-vial text-xl code-accent mr-2"></i>
+                            <p class="font-semibold">테스트 용이성</p>
+                        </div>
+                        <p class="text-sm text-gray-300">모듈별 단위 테스트 지원 구조</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex justify-end mt-6">
+                <div class="text-right">
+                    <p class="text-sm text-gray-400">
+                        <i class="fas fa-lightbulb code-accent mr-2"></i>
+                        Blueprints로 기능별 API 그룹화로 확장성 확보
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 하단 코드 아이콘 -->
+        <div class="absolute bottom-10 right-16 text-gray-600">
+            <i class="fas fa-code text-4xl"></i>
+        </div>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redis를 통한 JWT 토큰 관리</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #0d1117;
+            color: #f0f6fc;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        }
+        .code-accent {
+            color: #58a6ff;
+        }
+        .content-box {
+            background-color: rgba(88, 166, 255, 0.05);
+            border-left: 3px solid #58a6ff;
+            border-radius: 6px;
+            padding: 1rem;
+        }
+        .bullet-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.25rem;
+        }
+        .bullet-icon {
+            color: #58a6ff;
+            margin-right: 1rem;
+            margin-top: 0.25rem;
+        }
+        .diagram-box {
+            border: 1px solid rgba(88, 166, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+        .flow-arrow {
+            color: #58a6ff;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+        }
+        .code-block {
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+            padding: 0.5rem;
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: #e6edf3;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container flex p-16">
+        <!-- 왼쪽 사이드바 (제목 섹션) -->
+        <div class="w-1/3 pr-8">
+            <div class="flex items-center mb-6">
+                <i class="fas fa-key text-5xl code-accent mr-4"></i>
+                <h1 class="text-4xl font-bold">Redis를 통한 JWT 토큰 관리</h1>
+            </div>
+            
+            <div class="h-0.5 bg-gray-700 mb-6"></div>
+            
+            <div class="content-box mb-6">
+                <p class="text-lg leading-relaxed">
+                    안전하고 확장 가능한 인증 시스템 구현을 위한 Redis 기반 JWT 토큰 관리 방법
+                </p>
+            </div>
+            
+            <div class="diagram-box p-4 rounded-lg mt-8">
+                <div class="text-center mb-4">
+                    <i class="fas fa-exchange-alt text-4xl code-accent"></i>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="text-center px-3 py-2 border border-gray-700 rounded mb-3">
+                        <i class="fas fa-user text-xl code-accent mb-1"></i>
+                        <p class="text-sm">클라이언트</p>
+                    </div>
+                    <i class="fas fa-arrow-down text-gray-500 my-2"></i>
+                    <div class="text-center px-3 py-2 border border-gray-700 rounded mb-3 w-full">
+                        <i class="fas fa-flask text-xl code-accent mb-1"></i>
+                        <p class="text-sm">Flask API</p>
+                    </div>
+                    <div class="flex justify-center w-full">
+                        <i class="fas fa-arrow-right text-gray-500 mr-2 self-center"></i>
+                        <div class="text-center px-3 py-2 border border-gray-700 rounded w-1/2">
+                            <i class="fas fa-database text-xl code-accent mb-1"></i>
+                            <p class="text-sm">Redis</p>
+                            <p class="text-xs text-gray-400">(토큰 저장소)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-6 text-sm">
+                <p class="code-accent"><i class="fas fa-info-circle mr-2"></i>활용 사례:</p>
+                <ul class="list-disc pl-6 text-gray-400 mt-2">
+                    <li>로그인/로그아웃 세션 관리</li>
+                    <li>토큰 무효화(블랙리스트)</li>
+                    <li>분산 시스템 인증</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- 오른쪽 내용 섹션 -->
+        <div class="w-2/3 pl-8">
+            <div class="content-box mb-8">
+                <h2 class="text-2xl font-semibold mb-4 code-accent">JWT & Redis 토큰 관리 프로세스</h2>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-sign-in-alt"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">JWT 토큰 생성 및 발급</p>
+                        <p class="text-gray-400">사용자 로그인 시 인증 정보 확인 후 토큰 생성</p>
+                        <div class="code-block mt-2">
+                            <code>token = jwt.encode(payload, JWT_SECRET, algorithm='HS256')</code>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">Redis에 토큰 저장 및 관리</p>
+                        <p class="text-gray-400">토큰 ID를 키로, 유효성 정보를 값으로 저장, TTL 설정</p>
+                        <div class="code-block mt-2">
+                            <code>r.setex(f"token:{jti}", token_ttl, "valid")</code>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">토큰 검증 프로세스</p>
+                        <p class="text-gray-400">요청 헤더에서 토큰 추출, 서명 검증, Redis 확인</p>
+                        <div class="code-block mt-2">
+                            <code>is_valid = r.get(f"token:{decoded_token['jti']}") == "valid"</code>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-ban"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">토큰 무효화 (로그아웃/블랙리스트)</p>
+                        <p class="text-gray-400">로그아웃 요청 시 토큰 상태를 "invalid"로 변경</p>
+                        <div class="code-block mt-2">
+                            <code>r.setex(f"token:{jti}", remaining_ttl, "invalid")</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex justify-between mt-4">
+                <div class="w-1/2 pr-2">
+                    <div class="content-box">
+                        <h3 class="text-xl font-semibold mb-2 code-accent">장점</h3>
+                        <ul class="list-disc pl-6 text-gray-200 text-sm">
+                            <li class="mb-1">토큰 즉시 무효화(로그아웃) 가능</li>
+                            <li class="mb-1">강제 세션 종료 기능 구현</li>
+                            <li class="mb-1">분산 시스템에서 일관된 관리</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="w-1/2 pl-2">
+                    <div class="content-box">
+                        <h3 class="text-xl font-semibold mb-2 code-accent">구현 팁</h3>
+                        <ul class="list-disc pl-6 text-gray-200 text-sm">
+                            <li class="mb-1">Redis 연결 풀링 사용</li>
+                            <li class="mb-1">JTI(JWT ID) 필드로 고유 식별</li>
+                            <li class="mb-1">Redis의 TTL 기능 활용</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 하단 코드 아이콘 -->
+        <div class="absolute bottom-10 right-16 text-gray-600">
+            <i class="fas fa-code text-4xl"></i>
+        </div>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Prepared Statement 구현</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #0d1117;
+            color: #f0f6fc;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        }
+        .code-accent {
+            color: #58a6ff;
+        }
+        .content-box {
+            background-color: rgba(88, 166, 255, 0.05);
+            border-left: 3px solid #58a6ff;
+            border-radius: 6px;
+            padding: 1rem;
+        }
+        .bullet-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.25rem;
+        }
+        .bullet-icon {
+            color: #58a6ff;
+            margin-right: 1rem;
+            margin-top: 0.25rem;
+        }
+        .code-block {
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 1rem;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            white-space: pre;
+            line-height: 1.5;
+        }
+        .sql-keyword {
+            color: #ff7b72;
+        }
+        .py-keyword {
+            color: #ff7b72;
+        }
+        .py-string {
+            color: #a5d6ff;
+        }
+        .py-comment {
+            color: #8b949e;
+        }
+        .file-tree {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 1rem;
+        }
+        .file-tree-item {
+            padding: 0.25rem 0;
+        }
+        .folder {
+            color: #e3b341;
+        }
+        .file {
+            color: #a5d6ff;
+        }
+        .sql-file {
+            color: #7ee787;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container flex p-16">
+        <!-- 왼쪽 사이드바 (제목 섹션) -->
+        <div class="w-2/5 pr-8">
+            <div class="flex items-center mb-6">
+                <i class="fas fa-database text-5xl code-accent mr-4"></i>
+                <h1 class="text-4xl font-bold">SQL Prepared Statement 구현</h1>
+            </div>
+            
+            <div class="h-0.5 bg-gray-700 mb-6"></div>
+            
+            <div class="content-box mb-6">
+                <p class="text-lg leading-relaxed">
+                    ORM 미사용 환경에서 SQL 인젝션 방지와 성능 향상을 위한 Prepared Statement 구현 방식
+                </p>
+            </div>
+            
+            <div class="file-tree mt-8 mb-6">
+                <h3 class="text-xl font-semibold mb-3 code-accent">프로젝트 SQL 구조</h3>
+                <div class="file-tree-item">
+                    <i class="fas fa-folder folder mr-2"></i>project_root/
+                </div>
+                <div class="file-tree-item pl-5">
+                    <i class="fas fa-folder folder mr-2"></i>app/
+                </div>
+                <div class="file-tree-item pl-10">
+                    <i class="fas fa-file-code file mr-2"></i>app.py
+                </div>
+                <div class="file-tree-item pl-10">
+                    <i class="fas fa-folder folder mr-2"></i>routes/
+                </div>
+                <div class="file-tree-item pl-10">
+                    <i class="fas fa-folder folder mr-2"></i>db/
+                </div>
+                <div class="file-tree-item pl-14">
+                    <i class="fas fa-file-code file mr-2"></i>db_connection.py
+                </div>
+                <div class="file-tree-item pl-10">
+                    <i class="fas fa-folder-open folder mr-2"></i>sql/
+                </div>
+                <div class="file-tree-item pl-14">
+                    <i class="fas fa-file-code sql-file mr-2"></i>user_queries.sql
+                </div>
+                <div class="file-tree-item pl-14">
+                    <i class="fas fa-file-code sql-file mr-2"></i>auth_queries.sql
+                </div>
+                <div class="file-tree-item pl-14">
+                    <i class="fas fa-file-code sql-file mr-2"></i>data_queries.sql
+                </div>
+            </div>
+            
+            <div class="mt-6">
+                <div class="flex items-center">
+                    <i class="fas fa-shield-alt text-2xl code-accent mr-3"></i>
+                    <p class="text-lg"><span class="font-bold">보안 이점:</span> SQL 인젝션 공격 방지</p>
+                </div>
+                <div class="flex items-center mt-3">
+                    <i class="fas fa-tachometer-alt text-2xl code-accent mr-3"></i>
+                    <p class="text-lg"><span class="font-bold">성능 이점:</span> 쿼리 파싱 및 최적화</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 오른쪽 내용 섹션 -->
+        <div class="w-3/5 pl-8">
+            <div class="content-box mb-6">
+                <h2 class="text-2xl font-semibold mb-4 code-accent">SQL 파일 분리 방식</h2>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">SQL을 별도 파일로 관리</p>
+                        <p class="text-gray-400">쿼리 변경 시 코드 수정 없이 SQL 파일만 업데이트 가능</p>
+                    </div>
+                </div>
+                
+                <div class="code-block mb-4">
+                    <span class="py-comment"># sql/user_queries.sql 파일 내용</span>
+                    <br>
+                    <span class="sql-keyword">-- get_user_by_id</span>
+                    <br>
+                    <span class="sql-keyword">SELECT</span> id, username, email, created_at
+                    <br>
+                    <span class="sql-keyword">FROM</span> users
+                    <br>
+                    <span class="sql-keyword">WHERE</span> id = %s
+                    <br><br>
+                    <span class="sql-keyword">-- update_user_profile</span>
+                    <br>
+                    <span class="sql-keyword">UPDATE</span> users
+                    <br>
+                    <span class="sql-keyword">SET</span> profile = %s, updated_at = %s
+                    <br>
+                    <span class="sql-keyword">WHERE</span> id = %s
+                </div>
+            </div>
+            
+            <div class="content-box mb-6">
+                <h2 class="text-2xl font-semibold mb-3 code-accent">Prepared Statement 구현 예제</h2>
+                
+                <div class="code-block">
+                    <span class="py-keyword">def</span> <span class="code-accent">execute_query</span>(query_name, params=None):
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="py-comment"># SQL 파일 읽기</span>
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;sql_file = <span class="py-string">f"app/sql/{query_name.split('.')[0]}_queries.sql"</span>
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;query = <span class="py-string">""</span>
+                    <br>
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="py-keyword">with</span> <span class="py-keyword">open</span>(sql_file, <span class="py-string">'r'</span>) <span class="py-keyword">as</span> f:
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content = f.read()
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;queries = content.split(<span class="py-string">'-- '</span>)
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="py-keyword">for</span> q <span class="py-keyword">in</span> queries:
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="py-keyword">if</span> q.strip().startswith(query_name.split(<span class="py-string">'.'</span>)[1]):
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;query = q.replace(query_name.split(<span class="py-string">'.'</span>)[1], <span class="py-string">""</span>).strip()
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="py-keyword">break</span>
+                    <br>
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="py-comment"># DB 연결 및 쿼리 실행</span>
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;conn = get_db_connection()
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="py-keyword">try</span>:
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cursor = conn.cursor()
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cursor.execute(query, params)  <span class="py-comment"># Prepared Statement 실행</span>
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = cursor.fetchall()
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;conn.commit()
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="py-keyword">return</span> result
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="py-keyword">finally</span>:
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;conn.close()
+                </div>
+            </div>
+            
+            <div class="content-box">
+                <h3 class="text-xl font-semibold mb-2 code-accent">사용 예시</h3>
+                <div class="code-block">
+                    <span class="py-comment"># 사용자 정보 조회</span>
+                    <br>user_id = 123
+                    <br>user_data = execute_query(<span class="py-string">"user_queries.get_user_by_id"</span>, (user_id,))
+                    <br>
+                    <br><span class="py-comment"># 프로필 업데이트</span>
+                    <br>profile_data = <span class="py-string">"{\"bio\": \"Full-stack developer\"}"</span>
+                    <br>current_time = datetime.now()
+                    <br>execute_query(<span class="py-string">"user_queries.update_user_profile"</span>, 
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(profile_data, current_time, user_id))
+                </div>
+            </div>
+        </div>
+        
+        <!-- 하단 팁 메시지 -->
+        <div class="absolute bottom-6 right-16 text-gray-400 text-sm">
+            <p><i class="fas fa-exclamation-triangle code-accent mr-2"></i>SQL 인젝션 시도: <span class="line-through">"123 OR 1=1"</span> ➡️ 파라미터화로 무효화</p>
+        </div>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>외부 API 연동: OpenAI</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #0d1117;
+            color: #f0f6fc;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        }
+        .code-accent {
+            color: #58a6ff;
+        }
+        .content-box {
+            background-color: rgba(88, 166, 255, 0.05);
+            border-left: 3px solid #58a6ff;
+            border-radius: 6px;
+            padding: 1rem;
+        }
+        .bullet-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.25rem;
+        }
+        .bullet-icon {
+            color: #58a6ff;
+            margin-right: 1rem;
+            margin-top: 0.25rem;
+        }
+        .code-block {
+            background-color: rgba(27, 31, 35, 0.8);
+            border-radius: 6px;
+            padding: 1rem;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 0.9rem;
+            color: #e6edf3;
+            overflow-x: auto;
+            border: 1px solid #30363d;
+        }
+        .tag {
+            display: inline-block;
+            background-color: rgba(88, 166, 255, 0.1);
+            color: #58a6ff;
+            border-radius: 999px;
+            padding: 0.2rem 0.8rem;
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid rgba(88, 166, 255, 0.3);
+        }
+        .note-box {
+            background-color: rgba(248, 81, 73, 0.1);
+            border-left: 3px solid #f85149;
+            border-radius: 6px;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container flex p-16">
+        <!-- 왼쪽 사이드바 (제목 섹션) -->
+        <div class="w-1/3 pr-8">
+            <div class="flex items-center mb-6">
+                <i class="fas fa-robot text-5xl code-accent mr-4"></i>
+                <h1 class="text-4xl font-bold">외부 API 연동: OpenAI</h1>
+            </div>
+            
+            <div class="h-0.5 bg-gray-700 mb-6"></div>
+            
+            <div class="content-box mb-6">
+                <p class="text-lg leading-relaxed">
+                    Flask 백엔드에서 OpenAI의 GPT 모델을 연동하여 AI 기능 구현
+                </p>
+            </div>
+            
+            <div class="my-8">
+                <div class="flex flex-wrap">
+                    <span class="tag">GPT-4</span>
+                    <span class="tag">Completion API</span>
+                    <span class="tag">Embeddings</span>
+                    <span class="tag">API Key</span>
+                    <span class="tag">Rate Limit</span>
+                    <span class="tag">Token</span>
+                </div>
+            </div>
+            
+            <div class="code-block mt-6 text-sm">
+                <span class="text-green-400"># external/openai_service.py</span><br>
+                <span class="text-blue-400">import</span> openai<br>
+                <span class="text-blue-400">from</span> flask <span class="text-blue-400">import</span> current_app<br><br>
+                
+                <span class="text-blue-400">class</span> <span class="text-yellow-300">OpenAIService</span>:<br>
+                &nbsp;&nbsp;<span class="text-blue-400">def</span> <span class="text-green-300">__init__</span>(self):<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;openai.api_key = current_app.config['OPENAI_API_KEY']<br><br>
+                
+                &nbsp;&nbsp;<span class="text-blue-400">def</span> <span class="text-green-300">generate_response</span>(self, prompt, max_tokens=150):<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-400">try</span>:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response = openai.Completion.create(<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;model=<span class="text-yellow-300">"gpt-4"</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prompt=prompt,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max_tokens=max_tokens<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-400">return</span> response.choices[0].text<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-400">except</span> <span class="text-red-400">Exception</span> <span class="text-blue-400">as</span> e:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;current_app.logger.error(f<span class="text-yellow-300">"OpenAI API 오류: {str(e)}"</span>)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-400">return</span> <span class="text-yellow-300">None</span><br>
+            </div>
+        </div>
+        
+        <!-- 오른쪽 내용 섹션 -->
+        <div class="w-2/3 pl-8">
+            <div class="content-box mb-8">
+                <h2 class="text-2xl font-semibold mb-4 code-accent">OpenAI API 연동 전략</h2>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-wrench"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">기본 설정 및 구조</p>
+                        <p class="text-gray-400">external/openai.py에 래퍼 클래스 구현, 로직과 API 분리</p>
+                        <p class="text-gray-400">환경변수로부터 API 키 로드, 직접 코드에 포함 금지</p>
+                    </div>
+                </div>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">보안 고려사항</p>
+                        <p class="text-gray-400">API 키를 .env 파일이나 환경변수로 관리</p>
+                        <p class="text-gray-400">중요: 클라이언트에 직접 API 호출 위임하지 않기</p>
+                        <p class="text-gray-400">사용자 입력 필터링 및 검증 (프롬프트 인젝션 방지)</p>
+                    </div>
+                </div>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">예외 처리</p>
+                        <p class="text-gray-400">API 호출 시 항상 try-except로 감싸기</p>
+                        <p class="text-gray-400">Rate limit, 타임아웃, 서버 에러 등 세분화된 처리</p>
+                        <p class="text-gray-400">로그 기록 철저히 (디버깅 및 모니터링 용이)</p>
+                    </div>
+                </div>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">최적화 전략</p>
+                        <p class="text-gray-400">Redis를 활용한 API 응답 캐싱 (비용 절감)</p>
+                        <p class="text-gray-400">비동기 처리로 사용자 대기 시간 최소화</p>
+                        <p class="text-gray-400">모델 파라미터 최적화 (토큰 수 제한 등)</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="note-box mt-6">
+                <h3 class="text-xl font-semibold mb-2"><i class="fas fa-lightbulb mr-2"></i>중요 팁</h3>
+                <ul class="list-disc pl-6">
+                    <li class="mb-2">API 키 사용량 및 비용 모니터링 구축</li>
+                    <li class="mb-2">사용자 입력에 개인정보 포함 시 익명화 처리</li>
+                    <li class="mb-2">응답 필터링 시스템으로 부적절한 콘텐츠 차단</li>
+                    <li>장애 발생 시 폴백(fallback) 메커니즘 구현</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- 하단 코드 아이콘 -->
+        <div class="absolute bottom-10 right-16 text-gray-600">
+            <i class="fas fa-code text-4xl"></i>
+        </div>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>외부 정보 연동: 날씨/주가</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #0d1117;
+            color: #f0f6fc;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        }
+        .code-accent {
+            color: #58a6ff;
+        }
+        .content-box {
+            background-color: rgba(88, 166, 255, 0.05);
+            border-left: 3px solid #58a6ff;
+            border-radius: 6px;
+            padding: 1rem;
+        }
+        .bullet-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.25rem;
+        }
+        .bullet-icon {
+            color: #58a6ff;
+            margin-right: 1rem;
+            margin-top: 0.25rem;
+        }
+        .api-card {
+            border: 1px solid rgba(88, 166, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 16px;
+        }
+        .code-snippet {
+            background-color: #161b22;
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            color: #e6edf3;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container flex p-16">
+        <!-- 왼쪽 사이드바 (제목 섹션) -->
+        <div class="w-1/3 pr-8">
+            <div class="flex items-center mb-6">
+                <i class="fas fa-cloud-sun-rain text-5xl code-accent mr-4"></i>
+                <h1 class="text-4xl font-bold">외부 정보 연동<br><span class="text-3xl">날씨 / 주가</span></h1>
+            </div>
+            
+            <div class="h-0.5 bg-gray-700 mb-6"></div>
+            
+            <div class="content-box mb-6">
+                <p class="text-lg leading-relaxed">
+                    효율적인 외부 API 연동을 통한 실시간 날씨 및 금융 정보 제공 방법
+                </p>
+            </div>
+            
+            <!-- API 연동 구조 다이어그램 -->
+            <div class="mt-8 p-4 border border-gray-700 rounded-lg">
+                <h3 class="text-xl font-semibold mb-3 code-accent text-center">API 연동 아키텍처</h3>
+                <div class="flex flex-col items-center mb-4">
+                    <div class="py-2 px-4 border border-gray-600 rounded-lg mb-3 text-center w-48">
+                        <p class="text-sm mb-1">Flask Backend</p>
+                        <p class="text-xs text-gray-400">API Gateway</p>
+                    </div>
+                    <i class="fas fa-arrow-down text-gray-400 my-1"></i>
+                    <div class="flex justify-around w-full">
+                        <div class="py-2 px-3 border border-gray-600 rounded-lg text-center">
+                            <i class="fas fa-cloud code-accent mb-1"></i>
+                            <p class="text-xs">Weather API</p>
+                        </div>
+                        <div class="py-2 px-3 border border-gray-600 rounded-lg text-center">
+                            <i class="fas fa-chart-line code-accent mb-1"></i>
+                            <p class="text-xs">Stock API</p>
+                        </div>
+                    </div>
+                    <i class="fas fa-arrow-down text-gray-400 my-1"></i>
+                    <div class="py-2 px-4 border border-gray-600 rounded-lg text-center w-48">
+                        <i class="fas fa-database text-sm code-accent mr-1"></i>
+                        <p class="text-xs">Redis Cache</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 오른쪽 내용 섹션 -->
+        <div class="w-2/3 pl-8">
+            <div class="content-box mb-6">
+                <h2 class="text-2xl font-semibold mb-4 code-accent">날씨 API 연동</h2>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">OpenWeatherMap, Weather API 등 인기 API 활용</p>
+                        <p class="text-gray-400">위치 기반 날씨 정보, 예보, 기상 경보 등 제공</p>
+                    </div>
+                </div>
+                
+                <div class="api-card">
+                    <p class="text-sm mb-2 code-accent">날씨 API 연동 예시 코드</p>
+                    <div class="code-snippet text-sm">
+                        <pre>@app.route('/api/weather', methods=['GET'])
+def get_weather():
+    lat = request.args.get('lat')
+    lon = request.args.get('lon')
+    
+    # Redis 캐시 확인
+    cache_key = f"weather:{lat}:{lon}"
+    cached = redis.get(cache_key)
+    
+    if cached:
+        return json.loads(cached)
+        
+    # API 호출 및 캐싱
+    result = call_weather_api(lat, lon)
+    redis.setex(cache_key, 3600, json.dumps(result))
+    return result</pre>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-box mb-6">
+                <h2 class="text-2xl font-semibold mb-4 code-accent">주가 정보 API 연동</h2>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">Alpha Vantage, Yahoo Finance 등 활용</p>
+                        <p class="text-gray-400">실시간 주가, 기업 정보, 히스토리컬 데이터 조회</p>
+                    </div>
+                </div>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">Rate Limit 대응 전략</p>
+                        <p class="text-gray-400">API 호출 제한에 대비한 요청 관리와 지연 처리</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-box">
+                <h2 class="text-2xl font-semibold mb-4 code-accent">캐싱 및 최적화 전략</h2>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">Redis를 활용한 TTL 기반 캐싱</p>
+                        <p class="text-gray-400">날씨 데이터(1시간), 주가 데이터(분 단위) 차등 적용</p>
+                    </div>
+                </div>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">주기적 백그라운드 갱신</p>
+                        <p class="text-gray-400">Celery 활용 정기 업데이트로 API 부하 분산</p>
+                    </div>
+                </div>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">장애 대응 및 Fallback 구현</p>
+                        <p class="text-gray-400">API 서비스 중단 시 최근 캐시된 데이터 활용 전략</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex justify-end mt-4">
+                <div class="text-right">
+                    <p class="text-sm text-gray-400">
+                        <i class="fas fa-lightbulb code-accent mr-2"></i>
+                        외부 API 키와 시크릿은 환경 변수로 안전하게 관리
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 하단 코드 아이콘 -->
+        <div class="absolute bottom-10 right-16 text-gray-600">
+            <i class="fas fa-code text-4xl"></i>
+        </div>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>보안 Best Practice</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #0d1117;
+            color: #f0f6fc;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        }
+        .code-accent {
+            color: #58a6ff;
+        }
+        .content-box {
+            background-color: rgba(88, 166, 255, 0.05);
+            border-left: 3px solid #58a6ff;
+            border-radius: 6px;
+            padding: 1rem;
+        }
+        .bullet-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.25rem;
+        }
+        .bullet-icon {
+            color: #58a6ff;
+            margin-right: 1rem;
+            margin-top: 0.25rem;
+        }
+        .security-box {
+            border: 1px solid rgba(88, 166, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+        }
+        .security-layer {
+            border: 1px dashed rgba(88, 166, 255, 0.5);
+            margin: 10px;
+            padding: 8px;
+            border-radius: 6px;
+            text-align: center;
+        }
+        .warning-text {
+            color: #f85149;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container flex p-16">
+        <!-- 왼쪽 사이드바 (제목 섹션) -->
+        <div class="w-1/3 pr-8">
+            <div class="flex items-center mb-6">
+                <i class="fas fa-shield-alt text-5xl code-accent mr-4"></i>
+                <h1 class="text-4xl font-bold">보안 Best Practice</h1>
+            </div>
+            
+            <div class="h-0.5 bg-gray-700 mb-6"></div>
+            
+            <div class="content-box mb-6">
+                <p class="text-lg leading-relaxed">
+                    Flask 웹서비스의 보안 요소와 최적의 구현 방법
+                </p>
+            </div>
+            
+            <div class="security-box p-5 rounded-lg mt-8">
+                <h3 class="text-center text-xl font-semibold mb-4 code-accent">보안 레이어 구조</h3>
+                <div class="security-layer bg-opacity-30 bg-blue-900">
+                    <i class="fas fa-globe text-2xl code-accent mb-2"></i>
+                    <p class="font-medium">HTTPS (전송 계층)</p>
+                </div>
+                <i class="fas fa-arrow-down text-gray-500 mx-auto block my-2"></i>
+                <div class="security-layer bg-opacity-30 bg-blue-900">
+                    <i class="fas fa-random text-2xl code-accent mb-2"></i>
+                    <p class="font-medium">CORS (접근 제어)</p>
+                </div>
+                <i class="fas fa-arrow-down text-gray-500 mx-auto block my-2"></i>
+                <div class="security-layer bg-opacity-30 bg-blue-900">
+                    <i class="fas fa-key text-2xl code-accent mb-2"></i>
+                    <p class="font-medium">JWT (인증/인가)</p>
+                </div>
+                <i class="fas fa-arrow-down text-gray-500 mx-auto block my-2"></i>
+                <div class="security-layer bg-opacity-30 bg-blue-900">
+                    <i class="fas fa-lock text-2xl code-accent mb-2"></i>
+                    <p class="font-medium">API Key (자원 접근)</p>
+                </div>
+            </div>
+            
+            <div class="mt-6 text-center">
+                <p class="text-sm text-gray-400 italic">
+                    <i class="fas fa-exclamation-triangle warning-text mr-2"></i>
+                    한 계층의 보안이 뚫리더라도 다중 방어선으로 보호
+                </p>
+            </div>
+        </div>
+        
+        <!-- 오른쪽 내용 섹션 -->
+        <div class="w-2/3 pl-8">
+            <div class="content-box mb-8">
+                <h2 class="text-2xl font-semibold mb-4 code-accent">핵심 보안 요소</h2>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">HTTPS 적용 <span class="warning-text font-bold text-sm">필수</span></p>
+                        <p class="text-gray-400">모든 트래픽은 SSL/TLS로 암호화. Flask에서 context 설정:</p>
+                        <pre class="bg-gray-900 text-gray-300 p-2 rounded mt-1 text-sm">app.run(ssl_context=('cert.pem', 'key.pem'))</pre>
+                        <p class="text-gray-400 mt-1">프로덕션에서는 Nginx/Let's Encrypt 조합 권장</p>
+                    </div>
+                </div>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">JWT 토큰 보안</p>
+                        <p class="text-gray-400">짧은 만료 시간, 리프레시 토큰 사용, 강력한 시크릿 키</p>
+                        <pre class="bg-gray-900 text-gray-300 p-2 rounded mt-1 text-sm">ACCESS_TOKEN_EXPIRE = 15  # 15분</pre>
+                        <p class="text-gray-400 mt-1">Redis 블랙리스트로 토큰 무효화 즉시 적용</p>
+                    </div>
+                </div>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">API 키 및 비밀 관리</p>
+                        <p class="text-gray-400">환경변수 또는 안전한 파일(.env)에서 로드, 절대 깃에 커밋하지 않음</p>
+                        <pre class="bg-gray-900 text-gray-300 p-2 rounded mt-1 text-sm">from dotenv import load_dotenv
+load_dotenv()  # .env 파일에서 환경변수 로드</pre>
+                        <p class="text-gray-400 mt-1">OpenAI 키 등 외부 API 키는 서버 내부에만 보관</p>
+                    </div>
+                </div>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-random"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">CORS 설정 제한</p>
+                        <p class="text-gray-400">허용된 출처만 명시적으로 지정, 와일드카드(*) 사용 자제</p>
+                        <pre class="bg-gray-900 text-gray-300 p-2 rounded mt-1 text-sm">CORS(app, resources={r"/api/*": {"origins": "https://frontend-domain.com"}})</pre>
+                        <p class="text-gray-400 mt-1">개발 환경과 운영 환경의 CORS 설정 분리</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex justify-end mt-4">
+                <div class="text-right">
+                    <p class="text-sm text-gray-400">
+                        <i class="fas fa-info-circle code-accent mr-2"></i>
+                        모든 외부 입력은 유효성 검사 후 처리 (SQL injection, XSS 방지)
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 하단 코드 아이콘 -->
+        <div class="absolute bottom-10 right-16 text-gray-600">
+            <i class="fas fa-code text-4xl"></i>
+        </div>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>성능 최적화</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #0d1117;
+            color: #f0f6fc;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        }
+        .code-accent {
+            color: #58a6ff;
+        }
+        .content-box {
+            background-color: rgba(88, 166, 255, 0.05);
+            border-left: 3px solid #58a6ff;
+            border-radius: 6px;
+            padding: 1rem;
+        }
+        .bullet-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.25rem;
+        }
+        .bullet-icon {
+            color: #58a6ff;
+            margin-right: 1rem;
+            margin-top: 0.25rem;
+        }
+        .code-block {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+            padding: 0.75rem;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+        .performance-metric {
+            border: 1px solid rgba(88, 166, 255, 0.3);
+            background-color: rgba(88, 166, 255, 0.05);
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container flex p-16">
+        <!-- 왼쪽 사이드바 (제목 섹션) -->
+        <div class="w-1/3 pr-8">
+            <div class="flex items-center mb-6">
+                <i class="fas fa-rocket text-5xl code-accent mr-4"></i>
+                <h1 class="text-4xl font-bold">성능 최적화</h1>
+            </div>
+            
+            <div class="h-0.5 bg-gray-700 mb-6"></div>
+            
+            <div class="content-box mb-6">
+                <p class="text-lg leading-relaxed">
+                    대용량 트래픽과 빠른 응답시간을 위한 Flask 웹서비스 최적화 기법
+                </p>
+            </div>
+            
+            <div class="mt-8">
+                <div class="performance-metric">
+                    <i class="fas fa-tachometer-alt text-2xl code-accent mr-3"></i>
+                    <span>응답시간 최소화</span>
+                </div>
+                <div class="performance-metric">
+                    <i class="fas fa-server text-2xl code-accent mr-3"></i>
+                    <span>서버 자원 효율화</span>
+                </div>
+                <div class="performance-metric">
+                    <i class="fas fa-users text-2xl code-accent mr-3"></i>
+                    <span>동시 사용자 처리</span>
+                </div>
+                <div class="performance-metric">
+                    <i class="fas fa-database text-2xl code-accent mr-3"></i>
+                    <span>데이터베이스 최적화</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 오른쪽 내용 섹션 -->
+        <div class="w-2/3 pl-8">
+            <div class="content-box mb-6">
+                <h2 class="text-2xl font-semibold mb-4 code-accent">Redis를 통한 세션/캐싱</h2>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-memory"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">자주 접근하는 데이터 인메모리 캐싱</p>
+                        <p class="text-gray-400">API 응답, 외부 요청 결과, 데이터 조회 결과 캐싱</p>
+                    </div>
+                </div>
+                
+                <div class="code-block mb-3">
+                    <pre class="text-gray-300"><span class="text-green-400"># Redis 캐싱 예시</span>
+<span class="code-accent">def</span> <span class="text-yellow-400">get_weather_data</span>(city):
+    <span class="text-green-400"># 캐시 확인</span>
+    cache_key = f<span class="text-yellow-200">"weather:{city}"</span>
+    cached_data = redis_client.get(cache_key)
+    
+    <span class="code-accent">if</span> cached_data:
+        <span class="code-accent">return</span> json.loads(cached_data)
+        
+    <span class="text-green-400"># 외부 API 호출 후 캐싱</span>
+    data = weather_api.get_data(city)
+    redis_client.setex(cache_key, 3600, json.dumps(data))
+    <span class="code-accent">return</span> data</pre>
+                </div>
+            </div>
+            
+            <div class="content-box mb-6">
+                <h2 class="text-2xl font-semibold mb-4 code-accent">Prepared Statement로 SQL 처리 최적화</h2>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">SQL 실행 계획 캐싱으로 성능 향상</p>
+                        <p class="text-gray-400">쿼리 파싱/컴파일 비용 감소, 인덱스 효율적 활용</p>
+                    </div>
+                </div>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">복잡한 쿼리 최적화, 인덱스 설계</p>
+                        <p class="text-gray-400">JOIN 최소화, 인덱스 적절 활용, 대용량 데이터 처리</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-box">
+                <h2 class="text-2xl font-semibold mb-4 code-accent">비동기 요청 및 Threading 활용</h2>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">Flask + Gunicorn workers 최적화</p>
+                        <p class="text-gray-400">워커 수 최적화, async/await와 비동기 Flask(Quart)</p>
+                    </div>
+                </div>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">시간 소요 작업 백그라운드 처리</p>
+                        <p class="text-gray-400">Celery, Redis Queue(RQ)로 비동기 작업 분리</p>
+                        <pre class="code-block text-sm mt-2 text-gray-300"><span class="code-accent">from</span> flask <span class="code-accent">import</span> Flask
+<span class="code-accent">import</span> threading
+app = Flask(__name__)
+
+<span class="text-green-400"># 외부 API 호출을 비동기로 처리</span>
+<span class="code-accent">def</span> <span class="text-yellow-400">process_in_background</span>(data):
+    <span class="text-green-400"># 오래 걸리는 작업 처리...</span>
+    results = openai_client.generate(data)
+    store_results(results)
+
+<span class="code-accent">@app.route</span>(<span class="text-yellow-200">'/analyze'</span>, methods=[<span class="text-yellow-200">'POST'</span>])
+<span class="code-accent">def</span> <span class="text-yellow-400">analyze</span>():
+    thread = threading.Thread(
+        target=process_in_background, 
+        args=(request.json,)
+    )
+    thread.start()
+    <span class="code-accent">return</span> jsonify({<span class="text-yellow-200">"status"</span>: <span class="text-yellow-200">"processing"</span>})</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 하단 코드 아이콘 -->
+        <div class="absolute bottom-10 right-16 text-gray-600">
+            <i class="fas fa-code text-4xl"></i>
+        </div>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배포 및 운영</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #0d1117;
+            color: #f0f6fc;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        }
+        .code-accent {
+            color: #58a6ff;
+        }
+        .content-box {
+            background-color: rgba(88, 166, 255, 0.05);
+            border-left: 3px solid #58a6ff;
+            border-radius: 6px;
+            padding: 1rem;
+        }
+        .bullet-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.25rem;
+        }
+        .bullet-icon {
+            color: #58a6ff;
+            margin-right: 1rem;
+            margin-top: 0.25rem;
+        }
+        .diagram-box {
+            border: 1px solid rgba(88, 166, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container flex p-16">
+        <!-- 왼쪽 사이드바 (제목 섹션) -->
+        <div class="w-1/3 pr-8">
+            <div class="flex items-center mb-6">
+                <i class="fas fa-rocket text-5xl code-accent mr-4"></i>
+                <h1 class="text-4xl font-bold">배포 및 운영</h1>
+            </div>
+            
+            <div class="h-0.5 bg-gray-700 mb-6"></div>
+            
+            <div class="content-box mb-6">
+                <p class="text-lg leading-relaxed">
+                    안정적이고 확장 가능한 Flask 웹서비스 배포 및 운영 전략
+                </p>
+            </div>
+            
+            <div class="diagram-box p-4 rounded-lg mt-8">
+                <div class="text-center mb-4">
+                    <i class="fas fa-cogs text-5xl code-accent"></i>
+                </div>
+                <div class="flex flex-col">
+                    <div class="py-2 px-4 border border-gray-700 rounded mb-3 flex items-center">
+                        <i class="fab fa-docker text-2xl code-accent mr-3"></i>
+                        <span>Docker 컨테이너</span>
+                    </div>
+                    <div class="flex justify-center items-center">
+                        <i class="fas fa-arrow-down text-gray-500"></i>
+                    </div>
+                    <div class="py-2 px-4 border border-gray-700 rounded mb-3 mt-2 flex items-center">
+                        <i class="fas fa-server text-2xl code-accent mr-3"></i>
+                        <span>Gunicorn WSGI</span>
+                    </div>
+                    <div class="flex justify-center items-center">
+                        <i class="fas fa-arrow-down text-gray-500"></i>
+                    </div>
+                    <div class="py-2 px-4 border border-gray-700 rounded mt-2 flex items-center">
+                        <i class="fab fa-nginx text-2xl code-accent mr-3"></i>
+                        <span>nginx</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 오른쪽 내용 섹션 -->
+        <div class="w-2/3 pl-8">
+            <div class="content-box mb-8">
+                <h2 class="text-2xl font-semibold mb-4 code-accent">배포 및 운영 전략</h2>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fab fa-docker"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">Gunicorn + nginx, Docker 기반 배포</p>
+                        <p class="text-gray-400">컨테이너화된 환경으로 배포 일관성 확보, Docker Compose로 서비스 오케스트레이션</p>
+                    </div>
+                </div>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">환경별 설정 분리</p>
+                        <p class="text-gray-400">개발/테스트/운영 환경을 위한 config.py 분리, 환경변수 활용한 설정 관리</p>
+                    </div>
+                </div>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">로그/모니터링 도구</p>
+                        <p class="text-gray-400">Grafana, Prometheus로 메트릭 수집 및 시각화, ELK 스택으로 로그 통합 관리</p>
+                    </div>
+                </div>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">운영 중 수정 및 롤백 전략</p>
+                        <p class="text-gray-400">Blue-Green 배포, Canary 릴리스, 롤백을 위한 버전 관리 및 백업 전략</p>
+                    </div>
+                </div>
+                
+                <div class="bullet-item">
+                    <div class="bullet-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl mb-1">보안 및 백업 정책</p>
+                        <p class="text-gray-400">정기적 보안 검사, 취약점 스캐닝, 데이터 백업 및 복구 전략 구현</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-gray-800 rounded-md p-4 mt-4">
+                <p class="text-sm text-gray-300 mb-2"><i class="fas fa-terminal code-accent mr-2"></i>docker-compose.yml 예제:</p>
+                <pre class="text-xs text-gray-300 overflow-x-auto">
+services:
+  flask-backend:
+    build: ./backend
+    environment:
+      - FLASK_ENV=production
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - redis
+      - db
+  
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - flask-backend</pre>
+            </div>
+            
+            <div class="flex justify-end mt-6">
+                <div class="text-right">
+                    <p class="text-sm text-gray-400">
+                        <i class="fas fa-lightbulb code-accent mr-2"></i>
+                        자동화된 CI/CD 파이프라인으로 지속적 통합 및 배포 구현
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 하단 코드 아이콘 -->
+        <div class="absolute bottom-10 right-16 text-gray-600">
+            <i class="fas fa-code text-4xl"></i>
+        </div>
+    </div>
+</body>
+</html>

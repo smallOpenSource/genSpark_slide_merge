@@ -1,0 +1,2798 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <title>2026년 출생아 30년 육아 계획 가이드</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .slide-container {
+      width: 1280px;
+      min-height: 720px;
+      background: linear-gradient(to bottom right, #ffffff, #f5f7fa);
+      position: relative;
+      overflow: hidden;
+    }
+    .title {
+      color: #1a5586;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.3;
+    }
+    .subtitle {
+      color: #555;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.6;
+    }
+    .graphic-element {
+      position: absolute;
+      z-index: 1;
+    }
+    .content {
+      position: relative;
+      z-index: 10;
+    }
+    .accent-line {
+      width: 100px;
+      height: 5px;
+      background-color: #1a5586;
+      margin: 24px auto;
+    }
+    .footer {
+      position: absolute;
+      bottom: 40px;
+      width: 100%;
+      text-align: center;
+      color: #666;
+    }
+    .bg-pattern {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(26,85,134,0.03) 0%, rgba(26,85,134,0.01) 70%, rgba(255,255,255,0) 100%);
+      border-radius: 50% 0 0 0;
+      z-index: 1;
+    }
+    .icon-family {
+      color: #1a5586;
+      opacity: 0.15;
+      position: absolute;
+      bottom: 120px;
+      right: 120px;
+      transform: rotate(10deg);
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-container flex flex-col items-center justify-center px-24 py-16">
+    <!-- 배경 요소 -->
+    <div class="bg-pattern"></div>
+    <i class="fas fa-users-family icon-family text-9xl"></i>
+    
+    <!-- 메인 콘텐츠 -->
+    <div class="content flex flex-col items-center justify-center mt-16 text-center">
+      <h1 class="title text-5xl mb-6">2026년 출생아 30년 육아 계획 가이드</h1>
+      
+      <div class="accent-line"></div>
+      
+      <p class="subtitle text-xl max-w-3xl mx-auto mb-8">
+        2026년 6월 출생 아이를 위한 30년간의 단계별, 현실적 육아·교육·재정 계획서
+      </p>
+      
+      <p class="subtitle text-lg max-w-2xl mx-auto">
+        최신 육아정책과 데이터 기반으로 체계적으로 준비하세요
+      </p>
+    </div>
+    
+    <!-- 하단 푸터 -->
+    <div class="footer">
+      <p class="text-sm">2025년 6월</p>
+    </div>
+  </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <title>목차 - 2026년 출생아 30년 육아 계획 가이드</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .slide-container {
+      width: 1280px;
+      min-height: 720px;
+      background: linear-gradient(to bottom right, #ffffff, #f5f7fa);
+      position: relative;
+      overflow: hidden;
+    }
+    .title {
+      color: #1a5586;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.3;
+    }
+    .toc-item {
+      transition: all 0.2s ease;
+      position: relative;
+      padding-left: 40px;
+    }
+    .toc-item:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 24px;
+      height: 24px;
+      background-color: #1a5586;
+      border-radius: 50%;
+      opacity: 0.2;
+    }
+    .toc-item .number {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 24px;
+      height: 24px;
+      text-align: center;
+      line-height: 24px;
+      color: #1a5586;
+      font-weight: 700;
+    }
+    .toc-item:hover {
+      transform: translateX(5px);
+      color: #1a5586;
+    }
+    .bg-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(26,85,134,0.03) 0%, rgba(26,85,134,0.01) 70%, rgba(255,255,255,0) 100%);
+      border-radius: 0 0 50% 0;
+      z-index: 1;
+    }
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      color: #666;
+    }
+    .page-number {
+      font-size: 14px;
+      color: #888;
+    }
+    .decoration-icon {
+      position: absolute;
+      color: #1a5586;
+      opacity: 0.1;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-container flex flex-col px-24 py-16">
+    <!-- 배경 요소 -->
+    <div class="bg-pattern"></div>
+    <i class="fas fa-book-open decoration-icon text-8xl" style="top: 60px; right: 80px;"></i>
+    <i class="fas fa-graduation-cap decoration-icon text-7xl" style="bottom: 100px; right: 140px;"></i>
+    
+    <!-- 메인 콘텐츠 -->
+    <div class="content relative z-10 flex flex-col">
+      <h1 class="title text-4xl mb-8">목차</h1>
+      
+      <div class="w-16 h-1 bg-blue-800 mb-10"></div>
+      
+      <div class="toc-container grid grid-cols-2 gap-x-16 gap-y-4">
+        <div class="toc-item text-lg font-medium">
+          <span class="number">1</span>
+          개요 및 전제
+        </div>
+        <div class="toc-item text-lg font-medium">
+          <span class="number">7</span>
+          16-18세 고등학교
+        </div>
+        <div class="toc-item text-lg font-medium">
+          <span class="number">2</span>
+          정부 지원 정책 활용
+        </div>
+        <div class="toc-item text-lg font-medium">
+          <span class="number">8</span>
+          19-22세 대학교
+        </div>
+        <div class="toc-item text-lg font-medium">
+          <span class="number">3</span>
+          0-2세 영유아기
+        </div>
+        <div class="toc-item text-lg font-medium">
+          <span class="number">9</span>
+          23-30세 성인기
+        </div>
+        <div class="toc-item text-lg font-medium">
+          <span class="number">4</span>
+          3-5세 유아기
+        </div>
+        <div class="toc-item text-lg font-medium">
+          <span class="number">10</span>
+          예상 비용 분석
+        </div>
+        <div class="toc-item text-lg font-medium">
+          <span class="number">5</span>
+          6-12세 초등학교
+        </div>
+        <div class="toc-item text-lg font-medium">
+          <span class="number">11</span>
+          재정 계획
+        </div>
+        <div class="toc-item text-lg font-medium">
+          <span class="number">6</span>
+          13-15세 중학교
+        </div>
+        <div class="toc-item text-lg font-medium">
+          <span class="number">12</span>
+          실행 체크리스트 및 마무리
+        </div>
+      </div>
+    </div>
+    
+    <!-- 하단 푸터 -->
+    <div class="footer">
+      <span class="page-number">2 / 14</span>
+    </div>
+  </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <title>육아 계획 개요 및 목표</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .slide-container {
+      width: 1280px;
+      min-height: 720px;
+      background: linear-gradient(to bottom right, #ffffff, #f5f7fa);
+      position: relative;
+      overflow: hidden;
+    }
+    .title {
+      color: #1a5586;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.3;
+    }
+    .content-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .bullet {
+      color: #1a5586;
+      font-weight: bold;
+      margin-right: 12px;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+    .item-text {
+      color: #333;
+      line-height: 1.6;
+    }
+    .bg-pattern {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(26,85,134,0.03) 0%, rgba(26,85,134,0.01) 70%, rgba(255,255,255,0) 100%);
+      border-radius: 0 0 0 50%;
+      z-index: 1;
+    }
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      color: #666;
+    }
+    .page-number {
+      font-size: 14px;
+      color: #888;
+    }
+    .decoration-icon {
+      position: absolute;
+      color: #1a5586;
+      opacity: 0.1;
+      z-index: 1;
+    }
+    .highlight {
+      color: #1a5586;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-container flex flex-col px-24 py-16">
+    <!-- 배경 요소 -->
+    <div class="bg-pattern"></div>
+    <i class="fas fa-road decoration-icon text-8xl" style="top: 100px; right: 100px;"></i>
+    <i class="fas fa-baby decoration-icon text-7xl" style="bottom: 120px; right: 180px;"></i>
+    
+    <!-- 메인 콘텐츠 -->
+    <div class="content relative z-10 flex flex-col">
+      <h1 class="title text-4xl mb-8">육아 계획 개요 및 목표</h1>
+      
+      <div class="w-16 h-1 bg-blue-800 mb-12"></div>
+      
+      <div class="content-container max-w-4xl">
+        <div class="content-item">
+          <div class="bullet">●</div>
+          <div class="item-text text-lg">
+            <span class="highlight">2026년 6월 출생</span>을 기준으로 생애단계별 장기 플랜 수립
+          </div>
+        </div>
+        
+        <div class="content-item">
+          <div class="bullet">●</div>
+          <div class="item-text text-lg">
+            <span class="highlight">전제</span>: 양육 주체(부/모), 맞벌이/외벌이, 거주 환경(수도권/지방), 주요 목표(건강·교육·자립역량), 현실적·실행가능성 중시
+          </div>
+        </div>
+        
+        <div class="content-item">
+          <div class="bullet">●</div>
+          <div class="item-text text-lg">
+            <span class="highlight">목표</span>: 안정적 성장, 균형 잡힌 교육, 미래대비 재정계획
+          </div>
+        </div>
+        
+        <div class="content-item mt-8">
+          <div class="bullet">●</div>
+          <div class="item-text text-lg">
+            본 계획은 <span class="highlight">한국의 현실적인 육아 환경</span>과 <span class="highlight">최신 정부 지원 정책</span>을 반영하여 수립되었습니다
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 하단 푸터 -->
+    <div class="footer">
+      <span class="page-number">3 / 14</span>
+    </div>
+  </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <title>정부 지원 정책 활용 가이드 (2026년 기준)</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .slide-container {
+      width: 1280px;
+      min-height: 720px;
+      background: linear-gradient(to bottom right, #ffffff, #f5f7fa);
+      position: relative;
+      overflow: hidden;
+    }
+    .title {
+      color: #1a5586;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.3;
+    }
+    .content-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 18px;
+      position: relative;
+    }
+    .bullet {
+      color: #1a5586;
+      font-weight: bold;
+      margin-right: 12px;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+    .item-text {
+      color: #333;
+      line-height: 1.6;
+    }
+    .bg-pattern {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(26,85,134,0.03) 0%, rgba(26,85,134,0.01) 70%, rgba(255,255,255,0) 100%);
+      border-radius: 0 0 0 50%;
+      z-index: 1;
+    }
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      color: #666;
+    }
+    .page-number {
+      font-size: 14px;
+      color: #888;
+    }
+    .decoration-icon {
+      position: absolute;
+      color: #1a5586;
+      opacity: 0.1;
+      z-index: 1;
+    }
+    .highlight {
+      color: #1a5586;
+      font-weight: 500;
+    }
+    .policy-card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 16px;
+      margin-bottom: 16px;
+      border-left: 4px solid #1a5586;
+      transition: all 0.2s ease-in-out;
+    }
+    .policy-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .policy-title {
+      font-weight: 600;
+      color: #1a5586;
+      font-size: 17px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .policy-title i {
+      margin-right: 8px;
+    }
+    .policy-desc {
+      font-size: 15px;
+      color: #444;
+    }
+    .policy-tip {
+      font-size: 14px;
+      color: #666;
+      margin-top: 6px;
+      padding-top: 6px;
+      border-top: 1px dashed #eee;
+    }
+    .tip-highlight {
+      color: #e67e22;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-container flex flex-col px-24 py-16">
+    <!-- 배경 요소 -->
+    <div class="bg-pattern"></div>
+    <i class="fas fa-hands-helping decoration-icon text-8xl" style="top: 100px; right: 100px;"></i>
+    <i class="fas fa-file-invoice-dollar decoration-icon text-7xl" style="bottom: 120px; right: 180px;"></i>
+    
+    <!-- 메인 콘텐츠 -->
+    <div class="content relative z-10 flex flex-col">
+      <h1 class="title text-4xl mb-8">정부 지원 정책 활용 가이드 (2026년 기준)</h1>
+      
+      <div class="w-16 h-1 bg-blue-800 mb-10"></div>
+      
+      <div class="grid grid-cols-2 gap-x-8">
+        <div>
+          <div class="policy-card">
+            <div class="policy-title">
+              <i class="fas fa-gift"></i> 첫만남이용권
+            </div>
+            <div class="policy-desc">
+              출생 시 <span class="highlight">200만원</span> 국민행복카드로 일시금 지급
+            </div>
+            <div class="policy-tip">
+              <span class="tip-highlight">TIP</span> 출생신고 후 복지로 사이트에서 즉시 신청, 의료비/육아용품 구매에 활용
+            </div>
+          </div>
+          
+          <div class="policy-card">
+            <div class="policy-title">
+              <i class="fas fa-baby"></i> 부모급여
+            </div>
+            <div class="policy-desc">
+              <span class="highlight">0~1세 월 100만원</span>, <span class="highlight">2세 월 50만원</span> 현금성 지원
+            </div>
+            <div class="policy-tip">
+              <span class="tip-highlight">TIP</span> 자동 신청 시스템 활용, 매월 25일 지급, 전용 적금상품과 연계 가능
+            </div>
+          </div>
+          
+          <div class="policy-card">
+            <div class="policy-title">
+              <i class="fas fa-map-marked-alt"></i> 지역별 출산장려금
+            </div>
+            <div class="policy-desc">
+              지자체별 차등 지급, <span class="highlight">최대 1,000만원</span> (지역별 상이)
+            </div>
+            <div class="policy-tip">
+              <span class="tip-highlight">TIP</span> 이사 계획 시 고려요소, 거주기간 조건 확인 필수, 분할지급 일정 메모
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <div class="policy-card">
+            <div class="policy-title">
+              <i class="fas fa-home"></i> 육아휴직 제도
+            </div>
+            <div class="policy-desc">
+              <span class="highlight">최대 3년</span>, 부모 동시/교대 사용 가능, 첫 6개월 <span class="highlight">통상임금 100%</span>
+            </div>
+            <div class="policy-tip">
+              <span class="tip-highlight">TIP</span> 복직 보장 제도 활용, 분할 사용 전략, 아빠 의무 휴직 3개월 적극 활용
+            </div>
+          </div>
+          
+          <div class="policy-card">
+            <div class="policy-title">
+              <i class="fas fa-school"></i> 영유아 보육/교육 지원
+            </div>
+            <div class="policy-desc">
+              <span class="highlight">전 계층 무상보육</span>, 연장보육료 추가 지원, 아이돌봄서비스 연계
+            </div>
+            <div class="policy-tip">
+              <span class="tip-highlight">TIP</span> 어린이집 입소대기 신청 출산 전 가능, 시간제보육 서비스와 병행 활용
+            </div>
+          </div>
+          
+          <div class="content-item mt-6">
+            <div class="bullet">●</div>
+            <div class="item-text">
+              <span class="highlight">통합지원플랫폼</span> (정부24-양육지원) 활용 시 <span class="highlight">원스톱 신청</span> 가능
+            </div>
+          </div>
+          
+          <div class="content-item">
+            <div class="bullet">●</div>
+            <div class="item-text">
+              모든 지원금은 <span class="highlight">소득공제 대상</span>으로 세금 계획 시 고려 필요
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 하단 푸터 -->
+    <div class="footer">
+      <span class="page-number">4 / 14</span>
+    </div>
+  </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <title>0-2세 영유아기 계획 (2026~2028년)</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .slide-container {
+      width: 1280px;
+      min-height: 720px;
+      background: linear-gradient(to bottom right, #ffffff, #f5f7fa);
+      position: relative;
+      overflow: hidden;
+    }
+    .title {
+      color: #1a5586;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.3;
+    }
+    .content-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .bullet {
+      color: #1a5586;
+      font-weight: bold;
+      margin-right: 12px;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+    .item-text {
+      color: #333;
+      line-height: 1.6;
+    }
+    .bg-pattern {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(26,85,134,0.03) 0%, rgba(26,85,134,0.01) 70%, rgba(255,255,255,0) 100%);
+      border-radius: 0 0 0 50%;
+      z-index: 1;
+    }
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      color: #666;
+    }
+    .page-number {
+      font-size: 14px;
+      color: #888;
+    }
+    .decoration-icon {
+      position: absolute;
+      color: #1a5586;
+      opacity: 0.1;
+      z-index: 1;
+    }
+    .highlight {
+      color: #1a5586;
+      font-weight: 500;
+    }
+    .info-box {
+      background-color: rgba(26,85,134,0.05);
+      border-left: 4px solid #1a5586;
+      padding: 14px;
+      border-radius: 0 8px 8px 0;
+      margin-top: 14px;
+      margin-bottom: 14px;
+    }
+    .phase-title {
+      font-weight: 600;
+      font-size: 16px;
+      color: #1a5586;
+      margin-bottom: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-container flex flex-col px-24 py-16">
+    <!-- 배경 요소 -->
+    <div class="bg-pattern"></div>
+    <i class="fas fa-baby decoration-icon text-8xl" style="top: 100px; right: 100px;"></i>
+    <i class="fas fa-baby-carriage decoration-icon text-7xl" style="bottom: 120px; right: 180px;"></i>
+    
+    <!-- 메인 콘텐츠 -->
+    <div class="content relative z-10 flex flex-col">
+      <h1 class="title text-4xl mb-8">0-2세 영유아기 계획 (2026~2028년)</h1>
+      
+      <div class="w-16 h-1 bg-blue-800 mb-10"></div>
+      
+      <div class="content-container grid grid-cols-2 gap-x-8">
+        <div class="left-col">
+          <div class="content-item">
+            <div class="bullet">●</div>
+            <div class="item-text text-lg">
+              <span class="highlight">주요 과업</span>: 신체 발달 지원, 기본 생활습관 형성, 애착 관계 형성
+            </div>
+          </div>
+          
+          <div class="content-item">
+            <div class="bullet">●</div>
+            <div class="item-text text-lg">
+              <span class="highlight">월 예상 비용</span>: 60~80만원 선
+              <div class="text-sm text-gray-600 ml-2">- 정부 지원금 활용 시 실질 부담 30~40만원대 경감</div>
+            </div>
+          </div>
+          
+          <div class="content-item">
+            <div class="bullet">●</div>
+            <div class="item-text text-lg">
+              <span class="highlight">부모의 실무</span>: 예방접종 일정 관리, 건강검진, 수면교육, 육아휴직 활용
+            </div>
+          </div>
+          
+          <div class="info-box mt-4">
+            <div class="phase-title">핵심 발달 지표 체크</div>
+            <p class="text-sm">
+              - 4개월: 고개 가누기, 사물 주시<br>
+              - 6~8개월: 뒤집기, 앉기 시작<br>
+              - 12개월: 첫 걸음마, 첫 단어<br>
+              - 24개월: 두 단어 문장, 계단 오르기
+            </p>
+          </div>
+        </div>
+        
+        <div class="right-col">
+          <div class="content-item">
+            <div class="bullet">●</div>
+            <div class="item-text text-lg">
+              <span class="highlight">활용 가능 정책 (2026년 기준)</span>
+              <div class="text-sm text-gray-600 ml-2 mt-1">
+                - 첫만남이용권 200만원 (출생 시 일시금)<br>
+                - 부모급여 0~1세 월 100만원<br>
+                - 2세 월 50만원 지급<br>
+                - 산모·신생아 건강관리 서비스<br>
+                - 아동수당 월 10만원 (0~7세)
+              </div>
+            </div>
+          </div>
+          
+          <div class="info-box mt-4">
+            <div class="phase-title">양육 우선순위</div>
+            <p class="text-sm">
+              - 아이의 건강과 안전 최우선<br>
+              - 안정적 애착 형성을 위한 스킨십<br>
+              - 다양한 감각 자극과 놀이 경험<br>
+              - 충분한 수면과 규칙적 생활 패턴
+            </p>
+          </div>
+          
+          <div class="content-item mt-4">
+            <div class="bullet">●</div>
+            <div class="item-text text-lg">
+              <span class="highlight">준비물/환경</span>: 안전한 주거환경, 발달 장난감, 육아용품 합리적 구매
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="info-box mt-6 max-w-3xl mx-auto">
+        <div class="text-center text-base font-medium text-blue-700 mb-2">TIP</div>
+        <p class="text-base text-center">
+          신생아 시기부터 <span class="highlight">아기 금융통장</span>을 개설하여 장기 자산형성을 시작하세요.<br>
+          적은 금액이라도 매월 정기적으로 적립하면 18세 이후 교육자금으로 활용할 수 있습니다.
+        </p>
+      </div>
+    </div>
+    
+    <!-- 하단 푸터 -->
+    <div class="footer">
+      <span class="page-number">5 / 14</span>
+    </div>
+  </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <title>3-5세 유아기 계획 (2029-2031년)</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .slide-container {
+      width: 1280px;
+      min-height: 720px;
+      background: linear-gradient(to bottom right, #ffffff, #f5f7fa);
+      position: relative;
+      overflow: hidden;
+    }
+    .title {
+      color: #1a5586;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.3;
+    }
+    .content-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .bullet {
+      color: #1a5586;
+      font-weight: bold;
+      margin-right: 12px;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+    .item-text {
+      color: #333;
+      line-height: 1.6;
+    }
+    .bg-pattern {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(26,85,134,0.03) 0%, rgba(26,85,134,0.01) 70%, rgba(255,255,255,0) 100%);
+      border-radius: 0 0 0 50%;
+      z-index: 1;
+    }
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      color: #666;
+    }
+    .page-number {
+      font-size: 14px;
+      color: #888;
+    }
+    .decoration-icon {
+      position: absolute;
+      color: #1a5586;
+      opacity: 0.1;
+      z-index: 1;
+    }
+    .highlight {
+      color: #1a5586;
+      font-weight: 500;
+    }
+    .timeline {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      padding: 16px;
+      margin-top: 20px;
+      border-left: 4px solid #1a5586;
+    }
+    .timeline-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .timeline-year {
+      font-weight: 600;
+      color: #1a5586;
+      width: 80px;
+      flex-shrink: 0;
+    }
+    .timeline-content {
+      flex-grow: 1;
+    }
+    .cost-tag {
+      display: inline-block;
+      background-color: rgba(26,85,134,0.1);
+      color: #1a5586;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-container flex flex-col px-24 py-16">
+    <!-- 배경 요소 -->
+    <div class="bg-pattern"></div>
+    <i class="fas fa-shapes decoration-icon text-8xl" style="top: 100px; right: 100px;"></i>
+    <i class="fas fa-puzzle-piece decoration-icon text-7xl" style="bottom: 120px; right: 180px;"></i>
+    
+    <!-- 메인 콘텐츠 -->
+    <div class="content relative z-10 flex flex-col">
+      <h1 class="title text-4xl mb-8">3-5세 유아기 계획 (2029-2031년)</h1>
+      
+      <div class="w-16 h-1 bg-blue-800 mb-8"></div>
+      
+      <div class="grid grid-cols-12 gap-6">
+        <!-- 왼쪽: 주요 내용 -->
+        <div class="col-span-7">
+          <div class="content-item">
+            <div class="bullet">●</div>
+            <div class="item-text text-lg">
+              <span class="highlight">주요 과업</span>: 사회성 발달, 어린이집·유치원 선택 및 적응, 기초 학습 습관 형성
+            </div>
+          </div>
+          
+          <div class="content-item">
+            <div class="bullet">●</div>
+            <div class="item-text text-lg">
+              <span class="highlight">월 예상 비용</span>: 70~100만원 (사교육 포함될 경우 상향)
+              <div class="flex flex-wrap gap-2 mt-2">
+                <span class="cost-tag text-sm">보육료/유아학비 지원: 월 33만원</span>
+                <span class="cost-tag text-sm">사교육비: 월 10~30만원</span>
+                <span class="cost-tag text-sm">양육비: 월 30~40만원</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="content-item">
+            <div class="bullet">●</div>
+            <div class="item-text text-lg">
+              <span class="highlight">체크포인트</span>: 국가・지자체 교육 지원금, 방과후 프로그램 적극 활용
+            </div>
+          </div>
+          
+          <div class="content-item mt-4">
+            <div class="bullet">●</div>
+            <div class="item-text text-lg">
+              <span class="highlight">주요 발달 지원 활동</span>
+              <ul class="list-disc ml-6 mt-1">
+                <li>언어/인지능력: 책 읽기, 대화를 통한 어휘력 증진</li>
+                <li>신체활동: 대근육/소근육 발달 위한 놀이 활동</li>
+                <li>사회성: 또래 친구와의 상호작용 경험 확대</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 오른쪽: 타임라인 및 조언 -->
+        <div class="col-span-5">
+          <div class="timeline">
+            <h3 class="font-semibold text-lg mb-3 text-gray-800">연령별 체크리스트</h3>
+            
+            <div class="timeline-item">
+              <div class="timeline-year">3세</div>
+              <div class="timeline-content">
+                <div>어린이집/유치원 적응 및 기본생활습관 형성</div>
+              </div>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-year">4세</div>
+              <div class="timeline-content">
+                <div>언어/사회성 발달, 놀이 중심 학습 경험</div>
+              </div>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-year">5세</div>
+              <div class="timeline-content">
+                <div>학습준비도 향상, 초등학교 입학 사전 준비</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-blue-50 p-4 rounded-lg mt-4 border-l-4 border-blue-500">
+            <h3 class="font-semibold text-gray-800 mb-2">
+              <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>유아기 교육 조언
+            </h3>
+            <p class="text-sm text-gray-700">
+              이 시기에는 놀이 중심의 교육이 가장 효과적입니다. 과도한 학습보다 충분한 놀이와 경험을 통해 아이의 호기심과 창의력을 키워주세요.
+            </p>
+            <p class="text-sm text-gray-700 mt-2">
+              국가에서 제공하는 누리과정 혜택을 최대한 활용하고, 아이의 적성과 흥미를 발견하는 데 집중하는 것이 좋습니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 하단 푸터 -->
+    <div class="footer">
+      <span class="page-number">6 / 14</span>
+    </div>
+  </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <title>6-12세 초등학교 계획 (2032-2038년)</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .slide-container {
+      width: 1280px;
+      min-height: 720px;
+      background: linear-gradient(to bottom right, #ffffff, #f5f7fa);
+      position: relative;
+      overflow: hidden;
+    }
+    .title {
+      color: #1a5586;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.3;
+    }
+    .content-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .bullet {
+      color: #1a5586;
+      font-weight: bold;
+      margin-right: 12px;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+    .item-text {
+      color: #333;
+      line-height: 1.6;
+    }
+    .sub-item {
+      margin-left: 20px;
+      margin-top: 8px;
+      position: relative;
+      padding-left: 20px;
+    }
+    .sub-item:before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #5599cc;
+    }
+    .bg-pattern {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(26,85,134,0.03) 0%, rgba(26,85,134,0.01) 70%, rgba(255,255,255,0) 100%);
+      border-radius: 0 0 0 50%;
+      z-index: 1;
+    }
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      color: #666;
+    }
+    .page-number {
+      font-size: 14px;
+      color: #888;
+    }
+    .decoration-icon {
+      position: absolute;
+      color: #1a5586;
+      opacity: 0.1;
+      z-index: 1;
+    }
+    .highlight {
+      color: #1a5586;
+      font-weight: 500;
+    }
+    .info-box {
+      background-color: rgba(26, 85, 134, 0.05);
+      border-left: 4px solid #1a5586;
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      margin-top: 16px;
+    }
+    .icon-wrapper {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 32px;
+      height: 32px;
+      background-color: rgba(26, 85, 134, 0.1);
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    .icon-wrapper i {
+      color: #1a5586;
+    }
+    .timeline {
+      display: flex;
+      margin-top: 24px;
+      margin-bottom: 16px;
+    }
+    .timeline-item {
+      flex: 1;
+      text-align: center;
+      position: relative;
+    }
+    .timeline-item:after {
+      content: "";
+      position: absolute;
+      top: 16px;
+      left: 50%;
+      width: 100%;
+      height: 2px;
+      background-color: #ccd7e1;
+    }
+    .timeline-item:last-child:after {
+      width: 0;
+    }
+    .timeline-marker {
+      width: 32px;
+      height: 32px;
+      background-color: #1a5586;
+      color: white;
+      border-radius: 50%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      position: relative;
+      z-index: 2;
+    }
+    .timeline-text {
+      font-size: 14px;
+      margin-top: 8px;
+      color: #1a5586;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-container flex flex-col px-24 py-16">
+    <!-- 배경 요소 -->
+    <div class="bg-pattern"></div>
+    <i class="fas fa-school decoration-icon text-8xl" style="top: 100px; right: 100px;"></i>
+    <i class="fas fa-book-reader decoration-icon text-7xl" style="bottom: 120px; right: 180px;"></i>
+    
+    <!-- 메인 콘텐츠 -->
+    <div class="content relative z-10 flex flex-col">
+      <h1 class="title text-4xl mb-8">6-12세 초등학교 계획 (2032-2038년)</h1>
+      
+      <div class="w-16 h-1 bg-blue-800 mb-10"></div>
+      
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-marker">1</div>
+          <div class="timeline-text">저학년(1-2학년)</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker">2</div>
+          <div class="timeline-text">중학년(3-4학년)</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker">3</div>
+          <div class="timeline-text">고학년(5-6학년)</div>
+        </div>
+      </div>
+      
+      <div class="content-container max-w-4xl">
+        <div class="content-item">
+          <div class="bullet">●</div>
+          <div class="item-text text-lg">
+            <span class="highlight">기본 과업</span>: 학력 기초 다지기, 방과후・사교육 계획, 친구관계 지원
+            <div class="sub-item">기초학력(읽기, 쓰기, 수학) 집중 관리 및 학습 습관 형성</div>
+            <div class="sub-item">창의적 사고력과 문제해결 능력 개발을 위한 활동 참여</div>
+          </div>
+        </div>
+        
+        <div class="content-item">
+          <div class="bullet">●</div>
+          <div class="item-text text-lg">
+            <span class="highlight">월 예상 비용</span>: 80~120만원
+            <div class="sub-item">방과후 학교: 월 5~10만원</div>
+            <div class="sub-item">특기적성・학원: 월 30~50만원</div>
+            <div class="sub-item">교재・도서・문화생활: 월 15~25만원</div>
+            <div class="sub-item">기타 생활비(의류, 건강관리 등): 월 30~35만원</div>
+          </div>
+        </div>
+        
+        <div class="content-item">
+          <div class="bullet">●</div>
+          <div class="item-text text-lg">
+            <span class="highlight">준비사항</span>: 돌봄교실, 방과후클럽, 사교육 조절, 저축 시작
+            <div class="sub-item">초등돌봄교실 및 지역아동센터 활용 방법 숙지</div>
+            <div class="sub-item">학교 방과후 프로그램 우선 활용으로 비용 절감</div>
+          </div>
+        </div>
+        
+        <div class="info-box mt-5">
+          <div class="flex items-center mb-2">
+            <div class="icon-wrapper">
+              <i class="fas fa-lightbulb"></i>
+            </div>
+            <span class="font-medium text-lg text-blue-800">Tips</span>
+          </div>
+          <p class="text-base pl-10">
+            초등학교 시기는 자기주도적 학습 습관 형성의 핵심 시기입니다. 학원에 의존하기보다 <span class="highlight">스스로 공부하는 습관</span>을 길러주는 것이 중요합니다. 또한 대학 학자금을 위한 <span class="highlight">장기 저축을 시작</span>하는 시기로 활용하세요.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 하단 푸터 -->
+    <div class="footer">
+      <span class="page-number">7 / 14</span>
+    </div>
+  </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <title>13-15세 중학교 계획 (2039-2041년)</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .slide-container {
+      width: 1280px;
+      min-height: 720px;
+      background: linear-gradient(to bottom right, #ffffff, #f5f7fa);
+      position: relative;
+      overflow: hidden;
+    }
+    .title {
+      color: #1a5586;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.3;
+    }
+    .content-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .bullet {
+      color: #1a5586;
+      font-weight: bold;
+      margin-right: 12px;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+    .item-text {
+      color: #333;
+      line-height: 1.6;
+    }
+    .bg-pattern {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(26,85,134,0.03) 0%, rgba(26,85,134,0.01) 70%, rgba(255,255,255,0) 100%);
+      border-radius: 0 0 0 50%;
+      z-index: 1;
+    }
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      color: #666;
+    }
+    .page-number {
+      font-size: 14px;
+      color: #888;
+    }
+    .decoration-icon {
+      position: absolute;
+      color: #1a5586;
+      opacity: 0.1;
+      z-index: 1;
+    }
+    .highlight {
+      color: #1a5586;
+      font-weight: 500;
+    }
+    .info-box {
+      background-color: rgba(26,85,134,0.05);
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 20px;
+      border-left: 4px solid #1a5586;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-container flex flex-col px-24 py-16">
+    <!-- 배경 요소 -->
+    <div class="bg-pattern"></div>
+    <i class="fas fa-school decoration-icon text-8xl" style="top: 100px; right: 100px;"></i>
+    <i class="fas fa-book-reader decoration-icon text-7xl" style="bottom: 120px; right: 180px;"></i>
+    
+    <!-- 메인 콘텐츠 -->
+    <div class="content relative z-10 flex flex-col">
+      <h1 class="title text-4xl mb-8">13-15세 중학교 계획 (2039-2041년)</h1>
+      
+      <div class="w-16 h-1 bg-blue-800 mb-12"></div>
+      
+      <div class="content-container max-w-4xl">
+        <div class="content-item">
+          <div class="bullet">●</div>
+          <div class="item-text text-lg">
+            <span class="highlight">학업과 적성 탐색</span>: 개인별 학습 스타일 파악, 관심 분야 발견, 진로 가능성 모색
+          </div>
+        </div>
+        
+        <div class="content-item">
+          <div class="bullet">●</div>
+          <div class="item-text text-lg">
+            <span class="highlight">자아 정체성 지원</span>: 청소년기 변화 인지, 또래관계 형성, 자존감 향상 프로그램 참여
+          </div>
+        </div>
+        
+        <div class="content-item">
+          <div class="bullet">●</div>
+          <div class="item-text text-lg">
+            <span class="highlight">스마트폰과 미디어 관리</span>: 디지털 리터러시 교육, 건강한 미디어 사용 습관 형성
+          </div>
+        </div>
+        
+        <div class="content-item">
+          <div class="bullet">●</div>
+          <div class="item-text text-lg">
+            <span class="highlight">월 예상 비용</span>: 100~150만원 (교재비, 사교육비, 학원비, 교복비, 체험활동비 등)
+          </div>
+        </div>
+        
+        <div class="info-box mt-8">
+          <p class="text-lg mb-3"><span class="highlight">중학교 시기 조언</span></p>
+          <ul class="list-disc pl-5 space-y-2">
+            <li>직업체험, 진로박람회 등 <span class="highlight">현장 체험 활동</span>에 적극 참여하도록 지원</li>
+            <li>정서적 변화에 민감하게 대응하며 <span class="highlight">전문 상담</span>을 정기적으로 활용</li>
+            <li>학업 스트레스와 성취 욕구 사이의 <span class="highlight">균형</span>을 찾도록 도움</li>
+            <li>부모와 자녀의 <span class="highlight">소통 채널을 다양화</span>하고 일관된 관심 유지</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 하단 푸터 -->
+    <div class="footer">
+      <span class="page-number">8 / 14</span>
+    </div>
+  </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <title>16-18세 고등학교 계획 (2042-2044년)</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .slide-container {
+      width: 1280px;
+      min-height: 720px;
+      background: linear-gradient(to bottom right, #ffffff, #f5f7fa);
+      position: relative;
+      overflow: hidden;
+    }
+    .title {
+      color: #1a5586;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.3;
+    }
+    .content-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .bullet {
+      color: #1a5586;
+      font-weight: bold;
+      margin-right: 12px;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+    .item-text {
+      color: #333;
+      line-height: 1.6;
+    }
+    .bg-pattern {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(26,85,134,0.03) 0%, rgba(26,85,134,0.01) 70%, rgba(255,255,255,0) 100%);
+      border-radius: 0 0 0 50%;
+      z-index: 1;
+    }
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      color: #666;
+    }
+    .page-number {
+      font-size: 14px;
+      color: #888;
+    }
+    .decoration-icon {
+      position: absolute;
+      color: #1a5586;
+      opacity: 0.1;
+      z-index: 1;
+    }
+    .highlight {
+      color: #1a5586;
+      font-weight: 500;
+    }
+    .info-box {
+      background-color: rgba(26, 85, 134, 0.05);
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 20px;
+      border-left: 4px solid #1a5586;
+    }
+    .cost-detail {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      padding: 8px 12px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .cost-label {
+      min-width: 120px;
+      font-weight: 500;
+      color: #555;
+    }
+    .cost-value {
+      font-weight: 600;
+      color: #1a5586;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-container flex flex-col px-24 py-16">
+    <!-- 배경 요소 -->
+    <div class="bg-pattern"></div>
+    <i class="fas fa-graduation-cap decoration-icon text-8xl" style="top: 100px; right: 100px;"></i>
+    <i class="fas fa-school decoration-icon text-7xl" style="bottom: 120px; right: 180px;"></i>
+    
+    <!-- 메인 콘텐츠 -->
+    <div class="content relative z-10 flex flex-col">
+      <h1 class="title text-4xl mb-8">16-18세 고등학교 계획 (2042-2044년)</h1>
+      
+      <div class="w-16 h-1 bg-blue-800 mb-12"></div>
+      
+      <div class="grid grid-cols-2 gap-x-8">
+        <!-- 왼쪽 영역: 주요 활동 -->
+        <div>
+          <div class="content-item">
+            <div class="bullet">●</div>
+            <div class="item-text text-lg">
+              <span class="highlight">대학·진로 결정</span>에 집중하는 시기 - 학과와 직업탐색 지원
+            </div>
+          </div>
+          
+          <div class="content-item">
+            <div class="bullet">●</div>
+            <div class="item-text text-lg">
+              학업 관리 및 <span class="highlight">입시 관련 컨설팅</span> - 맞춤형 진학상담
+            </div>
+          </div>
+          
+          <div class="content-item">
+            <div class="bullet">●</div>
+            <div class="item-text text-lg">
+              스트레스 관리, 건강 관리 등 <span class="highlight">생활관리 강화</span>
+            </div>
+          </div>
+          
+          <div class="content-item">
+            <div class="bullet">●</div>
+            <div class="item-text text-lg">
+              <span class="highlight">디지털 리터러시</span> 및 미디어 능력 계발 지원
+            </div>
+          </div>
+          
+          <div class="info-box mt-6">
+            <p class="font-medium text-base mb-2">고교학점제 활용 전략 (2042년 기준)</p>
+            <p class="text-sm">진로와 연계된 과목 선택으로 효율적인 대입 준비</p>
+            <p class="text-sm">AI 진로상담 및 맞춤형 진학 설계 서비스 활용</p>
+          </div>
+        </div>
+        
+        <!-- 오른쪽 영역: 비용 및 준비사항 -->
+        <div>
+          <div class="content-item">
+            <div class="bullet">●</div>
+            <div class="item-text text-lg">
+              <span class="highlight">월 예상 비용: 120~200만원</span> (입시·사교육비 급증)
+            </div>
+          </div>
+          
+          <div class="mt-4 mb-6">
+            <div class="cost-detail">
+              <div class="cost-label">학원/과외비</div>
+              <div class="cost-value">60~100만원/월</div>
+            </div>
+            <div class="cost-detail">
+              <div class="cost-label">입시 컨설팅</div>
+              <div class="cost-value">20~30만원/월</div>
+            </div>
+            <div class="cost-detail">
+              <div class="cost-label">학습교재/재료</div>
+              <div class="cost-value">15~25만원/월</div>
+            </div>
+            <div class="cost-detail">
+              <div class="cost-label">교통/생활비</div>
+              <div class="cost-value">25~45만원/월</div>
+            </div>
+          </div>
+          
+          <div class="content-item mt-2">
+            <div class="bullet">●</div>
+            <div class="item-text text-lg">
+              <span class="highlight">중요 준비사항</span>
+            </div>
+          </div>
+          
+          <ul class="list-disc pl-12 text-base space-y-2">
+            <li>자기주도학습 습관 강화 및 시간관리 전략</li>
+            <li>대입 전형 대비 포트폴리오 관리</li>
+            <li>대학 등록금/주거비용 대비 재정계획 점검</li>
+            <li>진로적성검사 및 멘토링 프로그램 참여</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 하단 푸터 -->
+    <div class="footer">
+      <span class="page-number">9 / 14</span>
+    </div>
+  </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <title>19-22세 대학교 계획 (2045-2048년)</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .slide-container {
+      width: 1280px;
+      min-height: 720px;
+      background: linear-gradient(to bottom right, #ffffff, #f5f7fa);
+      position: relative;
+      overflow: hidden;
+    }
+    .title {
+      color: #1a5586;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.3;
+    }
+    .content-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .bullet {
+      color: #1a5586;
+      font-weight: bold;
+      margin-right: 12px;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+    .item-text {
+      color: #333;
+      line-height: 1.6;
+    }
+    .bg-pattern {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(26,85,134,0.03) 0%, rgba(26,85,134,0.01) 70%, rgba(255,255,255,0) 100%);
+      border-radius: 0 0 0 50%;
+      z-index: 1;
+    }
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      color: #666;
+    }
+    .page-number {
+      font-size: 14px;
+      color: #888;
+    }
+    .decoration-icon {
+      position: absolute;
+      color: #1a5586;
+      opacity: 0.1;
+      z-index: 1;
+    }
+    .highlight {
+      color: #1a5586;
+      font-weight: 500;
+    }
+    .info-card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 16px;
+      margin-bottom: 16px;
+      border-left: 4px solid #1a5586;
+    }
+    .info-title {
+      font-weight: 600;
+      color: #1a5586;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    .info-content {
+      font-size: 15px;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-container flex flex-col px-24 py-16">
+    <!-- 배경 요소 -->
+    <div class="bg-pattern"></div>
+    <i class="fas fa-graduation-cap decoration-icon text-8xl" style="top: 100px; right: 100px;"></i>
+    <i class="fas fa-university decoration-icon text-7xl" style="bottom: 120px; right: 180px;"></i>
+    
+    <!-- 메인 콘텐츠 -->
+    <div class="content relative z-10 flex flex-col">
+      <h1 class="title text-4xl mb-8">19-22세 대학교 계획 (2045-2048년)</h1>
+      
+      <div class="w-16 h-1 bg-blue-800 mb-10"></div>
+      
+      <div class="grid grid-cols-2 gap-x-10">
+        <!-- 왼쪽 섹션: 주요 계획 -->
+        <div>
+          <div class="content-item">
+            <div class="bullet">●</div>
+            <div class="item-text text-lg">
+              <span class="highlight">대학 등록금/생활비 지원</span>, 진로 설계와 자립 준비 지원
+            </div>
+          </div>
+          
+          <div class="info-card mt-4">
+            <div class="info-title">연간 예상 비용</div>
+            <div class="info-content">
+              <p><span class="highlight">▸ 등록금:</span> 600만원 ~ 900만원/년 (전공에 따라 차이)</p>
+              <p><span class="highlight">▸ 생활비:</span> 200만원 ~ 400만원/년 (거주형태에 따라 상이)</p>
+              <p><span class="highlight">▸ 기타비용:</span> 학습 자료, 교재, 어학/자격증 비용 등</p>
+            </div>
+          </div>
+          
+          <div class="content-item mt-5">
+            <div class="bullet">●</div>
+            <div class="item-text text-lg">
+              <span class="highlight">학자금 대출/장학금 활용법</span>
+            </div>
+          </div>
+          
+          <div class="content-item ml-8 mt-2">
+            <div class="bullet">-</div>
+            <div class="item-text">국가장학금 Ⅰ·Ⅱ유형 신청 (매 학기 신청)</div>
+          </div>
+          
+          <div class="content-item ml-8">
+            <div class="bullet">-</div>
+            <div class="item-text">학자금 대출 조건 비교 및 상환계획 수립</div>
+          </div>
+          
+          <div class="content-item ml-8">
+            <div class="bullet">-</div>
+            <div class="item-text">교내·외 장학금 신청 적극 지원</div>
+          </div>
+        </div>
+        
+        <!-- 오른쪽 섹션: 지원 방법 -->
+        <div>
+          <div class="content-item">
+            <div class="bullet">●</div>
+            <div class="item-text text-lg">
+              <span class="highlight">진로 설계 및 취업 준비 조기 착수</span>
+            </div>
+          </div>
+          
+          <div class="content-item ml-8 mt-2">
+            <div class="bullet">-</div>
+            <div class="item-text">1~2학년: 다양한 교내 활동, 동아리 경험</div>
+          </div>
+          
+          <div class="content-item ml-8">
+            <div class="bullet">-</div>
+            <div class="item-text">3학년: 인턴십, 공모전 참여 지원</div>
+          </div>
+          
+          <div class="content-item ml-8">
+            <div class="bullet">-</div>
+            <div class="item-text">4학년: 취업 준비 집중 지원 (자격증, 포트폴리오)</div>
+          </div>
+          
+          <div class="info-card mt-4">
+            <div class="info-title">자립 준비 지원 계획</div>
+            <div class="info-content">
+              <p><span class="highlight">▸ 경제 교육:</span> 신용관리, 재테크 기초 교육</p>
+              <p><span class="highlight">▸ 주거 독립:</span> 대학 기숙사 → 셰어하우스 → 자립</p>
+              <p><span class="highlight">▸ 진로 지원:</span> 전문 상담 및 멘토링 연결</p>
+            </div>
+          </div>
+          
+          <div class="content-item mt-4">
+            <div class="bullet">●</div>
+            <div class="item-text">
+              이 시기에는 <span class="highlight">점진적 독립</span>과 <span class="highlight">자기주도성</span>을 키우는 것이 핵심입니다
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 하단 푸터 -->
+    <div class="footer">
+      <span class="page-number">10 / 14</span>
+    </div>
+  </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <title>23-30세 성인 초기 지원계획</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .slide-container {
+      width: 1280px;
+      min-height: 720px;
+      background: linear-gradient(to bottom right, #ffffff, #f5f7fa);
+      position: relative;
+      overflow: hidden;
+    }
+    .title {
+      color: #1a5586;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.3;
+    }
+    .content-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .bullet {
+      color: #1a5586;
+      font-weight: bold;
+      margin-right: 12px;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+    .item-text {
+      color: #333;
+      line-height: 1.6;
+    }
+    .bg-pattern {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(26,85,134,0.03) 0%, rgba(26,85,134,0.01) 70%, rgba(255,255,255,0) 100%);
+      border-radius: 0 0 0 50%;
+      z-index: 1;
+    }
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      color: #666;
+    }
+    .page-number {
+      font-size: 14px;
+      color: #888;
+    }
+    .decoration-icon {
+      position: absolute;
+      color: #1a5586;
+      opacity: 0.1;
+      z-index: 1;
+    }
+    .highlight {
+      color: #1a5586;
+      font-weight: 500;
+    }
+    .info-card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 15px;
+      margin-top: 20px;
+      border-left: 4px solid #1a5586;
+    }
+    .support-phases {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    .phase-item {
+      background-color: rgba(26, 85, 134, 0.05);
+      border-radius: 8px;
+      padding: 12px;
+      width: 30%;
+      position: relative;
+    }
+    .phase-number {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      width: 30px;
+      height: 30px;
+      background-color: #1a5586;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    .phase-title {
+      color: #1a5586;
+      font-weight: 600;
+      margin-bottom: 8px;
+      padding-left: 15px;
+    }
+    .phase-desc {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-container flex flex-col px-24 py-16">
+    <!-- 배경 요소 -->
+    <div class="bg-pattern"></div>
+    <i class="fas fa-briefcase decoration-icon text-8xl" style="top: 100px; right: 100px;"></i>
+    <i class="fas fa-chart-line decoration-icon text-7xl" style="bottom: 120px; right: 180px;"></i>
+    
+    <!-- 메인 콘텐츠 -->
+    <div class="content relative z-10 flex flex-col">
+      <h1 class="title text-4xl mb-8">23-30세 성인 초기 지원계획 (2049-2056년)</h1>
+      
+      <div class="w-16 h-1 bg-blue-800 mb-12"></div>
+      
+      <div class="content-container max-w-4xl">
+        <div class="content-item">
+          <div class="bullet">●</div>
+          <div class="item-text text-lg">
+            <span class="highlight">사회 초년생의 경제적 자립 지원</span>, 취업/진로 안정화, 금융관리(신용, 주택청약, 저축)
+          </div>
+        </div>
+        
+        <div class="content-item">
+          <div class="bullet">●</div>
+          <div class="item-text text-lg">
+            <span class="highlight">월 예상 지원·저축</span>: 30~50만원, 신용관리 중요
+          </div>
+        </div>
+        
+        <div class="content-item">
+          <div class="bullet">●</div>
+          <div class="item-text text-lg">
+            <span class="highlight">부모 역할</span>: 멘토링 및 초기 재정 지원은 점진적으로 줄이기
+          </div>
+        </div>
+        
+        <div class="support-phases">
+          <div class="phase-item">
+            <div class="phase-number">1</div>
+            <div class="phase-title">초기 자립기 (23-25세)</div>
+            <div class="phase-desc">
+              - 취업지원 및 취업준비금<br>
+              - 자기개발비 일부 지원<br>
+              - 주거비 지원 (초기 6개월~1년)
+            </div>
+          </div>
+          
+          <div class="phase-item">
+            <div class="phase-number">2</div>
+            <div class="phase-title">자립 정착기 (26-28세)</div>
+            <div class="phase-desc">
+              - 긴급자금 마련 지원<br>
+              - 주택자금 청약 관련 상담<br>
+              - 재정 멘토링으로 전환
+            </div>
+          </div>
+          
+          <div class="phase-item">
+            <div class="phase-number">3</div>
+            <div class="phase-title">완전 독립기 (29-30세)</div>
+            <div class="phase-desc">
+              - 직접적 금전지원 종료<br>
+              - 심리적/정서적 지원 지속<br>
+              - 대등한 성인관계로 전환
+            </div>
+          </div>
+        </div>
+        
+        <div class="info-card mt-6">
+          <p class="text-base">
+            <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+            <span class="highlight">자녀 독립 지원 TIP</span>: 자녀가 경제적 결정을 직접 내리도록 하되, 조언자 역할로 전환하세요. 
+            부모의 과도한 개입은 자녀의 독립심과 자립능력 발달을 저해할 수 있습니다.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 하단 푸터 -->
+    <div class="footer">
+      <span class="page-number">11 / 14</span>
+    </div>
+  </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <title>단계별 예상 비용 분석</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .slide-container {
+      width: 1280px;
+      min-height: 720px;
+      background: linear-gradient(to bottom right, #ffffff, #f5f7fa);
+      position: relative;
+      overflow: hidden;
+    }
+    .title {
+      color: #1a5586;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.3;
+    }
+    .content-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .bullet {
+      color: #1a5586;
+      font-weight: bold;
+      margin-right: 12px;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+    .item-text {
+      color: #333;
+      line-height: 1.6;
+    }
+    .chart-container {
+      width: 550px;
+      height: 300px;
+      margin: 0 auto;
+    }
+    .data-card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 12px 16px;
+      margin-bottom: 14px;
+      border-left: 4px solid #1a5586;
+    }
+    .data-title {
+      color: #1a5586;
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+    .data-value {
+      font-size: 22px;
+      font-weight: 700;
+      color: #333;
+    }
+    .data-desc {
+      font-size: 14px;
+      color: #666;
+      margin-top: 2px;
+    }
+    .bg-pattern {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(26,85,134,0.03) 0%, rgba(26,85,134,0.01) 70%, rgba(255,255,255,0) 100%);
+      border-radius: 0 0 0 50%;
+      z-index: 1;
+    }
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      color: #666;
+    }
+    .page-number {
+      font-size: 14px;
+      color: #888;
+    }
+    .decoration-icon {
+      position: absolute;
+      color: #1a5586;
+      opacity: 0.1;
+      z-index: 1;
+    }
+    .highlight {
+      color: #1a5586;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-container flex flex-col px-24 py-16">
+    <!-- 배경 요소 -->
+    <div class="bg-pattern"></div>
+    <i class="fas fa-chart-line decoration-icon text-8xl" style="top: 100px; right: 100px;"></i>
+    <i class="fas fa-coins decoration-icon text-7xl" style="bottom: 120px; right: 180px;"></i>
+    
+    <!-- 메인 콘텐츠 -->
+    <div class="content relative z-10 flex flex-col">
+      <h1 class="title text-4xl mb-8">단계별 예상 비용 분석</h1>
+      
+      <div class="w-16 h-1 bg-blue-800 mb-8"></div>
+      
+      <div class="flex">
+        <!-- 왼쪽: 차트 및 그래프 -->
+        <div class="w-1/2 pr-6">
+          <div class="chart-container mb-4">
+            <canvas id="costChart"></canvas>
+          </div>
+        </div>
+        
+        <!-- 오른쪽: 주요 비용 데이터 -->
+        <div class="w-1/2 pl-6">
+          <div class="data-card">
+            <div class="data-title">0-18세 (고등학교 졸업까지)</div>
+            <div class="data-value">3억 ~ 4억원</div>
+            <div class="data-desc">월 60만~200만원, 사교육비 비중 약 40%</div>
+          </div>
+          
+          <div class="data-card">
+            <div class="data-title">대학교육 (등록금+생활비)</div>
+            <div class="data-value">3,000만 ~ 5,000만원</div>
+            <div class="data-desc">4년 기준, 전공 및 학교유형에 따라 차이</div>
+          </div>
+          
+          <div class="data-card">
+            <div class="data-title">성인기 (초기 자립 지원)</div>
+            <div class="data-value">1,000만 ~ 2,000만원</div>
+            <div class="data-desc">취업 준비, 주거, 결혼 등 초기 지원비</div>
+          </div>
+          
+          <div class="content-item mt-6">
+            <div class="bullet">●</div>
+            <div class="item-text">
+              <span class="highlight">주요 비용 변동요인</span>: 사교육비, 지역(수도권/비수도권), 가족상황
+            </div>
+          </div>
+          
+          <div class="content-item">
+            <div class="bullet">●</div>
+            <div class="item-text">
+              정부 지원금과 정책 활용으로 실질 부담 <span class="highlight">약 15~20% 경감</span> 가능
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 하단 푸터 -->
+    <div class="footer">
+      <span class="page-number">12 / 14</span>
+    </div>
+  </div>
+  
+  <script>
+    // 비용 차트 생성
+    const ctx = document.getElementById('costChart').getContext('2d');
+    const costChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['영유아기(0-2세)', '유아기(3-5세)', '초등(6-12세)', '중학교(13-15세)', '고등학교(16-18세)', '대학교', '성인초기'],
+        datasets: [{
+          label: '예상 지출 비용(만원)',
+          data: [2800, 3600, 8400, 5400, 7200, 4000, 1500],
+          backgroundColor: [
+            'rgba(26, 85, 134, 0.6)',
+            'rgba(26, 85, 134, 0.65)',
+            'rgba(26, 85, 134, 0.7)',
+            'rgba(26, 85, 134, 0.75)',
+            'rgba(26, 85, 134, 0.8)',
+            'rgba(26, 85, 134, 0.85)',
+            'rgba(26, 85, 134, 0.5)'
+          ],
+          borderColor: [
+            'rgba(26, 85, 134, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: '비용 (만원)'
+            }
+          },
+          x: {
+            title: {
+              display: true,
+              text: '생애주기'
+            }
+          }
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: '30년간 단계별 예상 교육/양육비용',
+            font: {
+              size: 16
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <title>재정 계획 및 준비 방법</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .slide-container {
+      width: 1280px;
+      min-height: 720px;
+      background: linear-gradient(to bottom right, #ffffff, #f5f7fa);
+      position: relative;
+      overflow: hidden;
+    }
+    .title {
+      color: #1a5586;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.3;
+    }
+    .content-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .bullet {
+      color: #1a5586;
+      font-weight: bold;
+      margin-right: 12px;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+    .item-text {
+      color: #333;
+      line-height: 1.6;
+    }
+    .chart-container {
+      width: 550px;
+      height: 300px;
+      margin: 0 auto;
+    }
+    .strategy-card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 16px;
+      margin-bottom: 14px;
+      border-left: 4px solid #1a5586;
+      transition: all 0.3s ease;
+    }
+    .strategy-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .strategy-title {
+      color: #1a5586;
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+    }
+    .strategy-title i {
+      margin-right: 8px;
+    }
+    .strategy-desc {
+      font-size: 14px;
+      color: #666;
+      margin-top: 2px;
+    }
+    .bg-pattern {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(26,85,134,0.03) 0%, rgba(26,85,134,0.01) 70%, rgba(255,255,255,0) 100%);
+      border-radius: 0 0 0 50%;
+      z-index: 1;
+    }
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      color: #666;
+    }
+    .page-number {
+      font-size: 14px;
+      color: #888;
+    }
+    .decoration-icon {
+      position: absolute;
+      color: #1a5586;
+      opacity: 0.1;
+      z-index: 1;
+    }
+    .highlight {
+      color: #1a5586;
+      font-weight: 500;
+    }
+    .tip-box {
+      background-color: rgba(26, 85, 134, 0.05);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-top: 16px;
+    }
+    .tip-box-title {
+      font-weight: 600;
+      color: #1a5586;
+      display: flex;
+      align-items: center;
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+    .tip-box-title i {
+      margin-right: 8px;
+    }
+    .tip-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+    .tip-icon {
+      color: #1a5586;
+      margin-right: 8px;
+      margin-top: 3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-container flex flex-col px-24 py-16">
+    <!-- 배경 요소 -->
+    <div class="bg-pattern"></div>
+    <i class="fas fa-piggy-bank decoration-icon text-8xl" style="top: 100px; right: 100px;"></i>
+    <i class="fas fa-calculator decoration-icon text-7xl" style="bottom: 120px; right: 180px;"></i>
+    
+    <!-- 메인 콘텐츠 -->
+    <div class="content relative z-10 flex flex-col">
+      <h1 class="title text-4xl mb-8">재정 계획 및 준비 방법</h1>
+      
+      <div class="w-16 h-1 bg-blue-800 mb-8"></div>
+      
+      <div class="flex">
+        <!-- 왼쪽: 차트 및 그래프 -->
+        <div class="w-1/2 pr-6">
+          <div class="chart-container mb-4">
+            <canvas id="savingsChart"></canvas>
+          </div>
+          
+          <div class="tip-box">
+            <div class="tip-box-title"><i class="fas fa-lightbulb"></i> 재정 계획 포인트</div>
+            <div class="tip-item">
+              <i class="fas fa-check-circle tip-icon"></i>
+              <div class="tip-text text-sm">생애주기별 필요자금 시뮬레이션을 통한 목표액 설정</div>
+            </div>
+            <div class="tip-item">
+              <i class="fas fa-check-circle tip-icon"></i>
+              <div class="tip-text text-sm">인플레이션을 고려한 실질 가치 계산 (연 3~4% 적용)</div>
+            </div>
+            <div class="tip-item">
+              <i class="fas fa-check-circle tip-icon"></i>
+              <div class="tip-text text-sm">예상하지 못한 지출에 대비한 비상자금 확보 (생활비 6개월분)</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 오른쪽: 전략 및 조언 -->
+        <div class="w-1/2 pl-6">
+          <div class="strategy-card">
+            <div class="strategy-title"><i class="fas fa-coins"></i> 월 단위 저축 및 투자 전략</div>
+            <div class="strategy-desc">월 소득의 15~20%를 자녀 교육비로 저축, 장기/중기/단기 상품 분산</div>
+            <div class="strategy-desc">- 학자금 펀드: 월 20~30만원 (연 3~5% 수익률 목표)</div>
+            <div class="strategy-desc">- 교육비 적금: 월 30~50만원 (안정적 저축)</div>
+          </div>
+          
+          <div class="strategy-card">
+            <div class="strategy-title"><i class="fas fa-shield-alt"></i> 보험 및 위험 관리</div>
+            <div class="strategy-desc">어린이보험 가입: 실손의료비 + 질병·상해보장</div>
+            <div class="strategy-desc">부모의 소득보장보험: 양육자 질병/사고 대비</div>
+          </div>
+          
+          <div class="strategy-card">
+            <div class="strategy-title"><i class="fas fa-file-invoice-dollar"></i> 가계부 및 재무관리</div>
+            <div class="strategy-desc">자녀 전용 가계부 작성, 지출 카테고리별 예산 설정</div>
+            <div class="strategy-desc">분기별 재무 점검, 연 1회 종합 재무상담</div>
+          </div>
+          
+          <div class="strategy-card">
+            <div class="strategy-title"><i class="fas fa-hand-holding-usd"></i> 정부·지자체 지원금 활용</div>
+            <div class="strategy-desc">아동수당, 가정양육수당, 보육료 지원금을 전용 계좌에 적립</div>
+            <div class="strategy-desc">국가장학금, 학자금 대출 제도 사전 연구</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 하단 푸터 -->
+    <div class="footer">
+      <span class="page-number">13 / 14</span>
+    </div>
+  </div>
+  
+  <script>
+    // 저축 계획 차트 생성
+    const ctx = document.getElementById('savingsChart').getContext('2d');
+    const savingsChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['영유아기', '유아기', '초등학교', '중학교', '고등학교', '대학교', '사회진출기'],
+        datasets: [
+          {
+            label: '월 저축/투자 권장액(만원)',
+            data: [30, 40, 50, 60, 80, 50, 30],
+            borderColor: 'rgba(26, 85, 134, 1)',
+            backgroundColor: 'rgba(26, 85, 134, 0.1)',
+            borderWidth: 2,
+            fill: true,
+            tension: 0.3
+          },
+          {
+            label: '누적 자산 목표(백만원)',
+            data: [10, 30, 80, 150, 250, 400, 450],
+            borderColor: 'rgba(75, 192, 192, 1)',
+            backgroundColor: 'transparent',
+            borderWidth: 2,
+            borderDashed: [5, 5],
+            pointRadius: 5,
+            yAxisID: 'y1'
+          }
+        ]
+      },
+      options: {
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: '월 저축액(만원)'
+            }
+          },
+          y1: {
+            beginAtZero: true,
+            position: 'right',
+            title: {
+              display: true,
+              text: '누적 자산(백만원)'
+            },
+            grid: {
+              drawOnChartArea: false
+            }
+          },
+          x: {
+            title: {
+              display: true,
+              text: '생애주기'
+            }
+          }
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: '자녀 생애주기별 재정 준비 계획',
+            font: {
+              size: 16
+            }
+          },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                let label = context.dataset.label || '';
+                if (label) {
+                  label += ': ';
+                }
+                label += context.parsed.y;
+                return label;
+              }
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <title>실행 체크리스트 및 마무리</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .slide-container {
+      width: 1280px;
+      min-height: 720px;
+      background: linear-gradient(to bottom right, #ffffff, #f5f7fa);
+      position: relative;
+      overflow: hidden;
+    }
+    .title {
+      color: #1a5586;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.3;
+    }
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 15px;
+      position: relative;
+    }
+    .checkbox {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 28px;
+      height: 28px;
+      border: 2px solid #1a5586;
+      border-radius: 6px;
+      margin-right: 12px;
+      color: #1a5586;
+      font-size: 15px;
+    }
+    .item-text {
+      color: #333;
+      line-height: 1.6;
+    }
+    .bg-pattern {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(26,85,134,0.03) 0%, rgba(26,85,134,0.01) 70%, rgba(255,255,255,0) 100%);
+      border-radius: 0 0 0 50%;
+      z-index: 1;
+    }
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      color: #666;
+    }
+    .page-number {
+      font-size: 14px;
+      color: #888;
+    }
+    .decoration-icon {
+      position: absolute;
+      color: #1a5586;
+      opacity: 0.1;
+      z-index: 1;
+    }
+    .highlight {
+      color: #1a5586;
+      font-weight: 500;
+    }
+    .advice-box {
+      background-color: rgba(26, 85, 134, 0.05);
+      border-left: 4px solid #1a5586;
+      padding: 15px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-top: 20px;
+    }
+    .advice-title {
+      color: #1a5586;
+      font-weight: 600;
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+    .checklist-section {
+      margin-bottom: 20px;
+    }
+    .section-title {
+      font-weight: 600;
+      color: #1a5586;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+    .section-title i {
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-container flex flex-col px-24 py-16">
+    <!-- 배경 요소 -->
+    <div class="bg-pattern"></div>
+    <i class="fas fa-tasks decoration-icon text-8xl" style="top: 100px; right: 100px;"></i>
+    <i class="fas fa-check-double decoration-icon text-7xl" style="bottom: 120px; right: 180px;"></i>
+    
+    <!-- 메인 콘텐츠 -->
+    <div class="content relative z-10 flex flex-col">
+      <h1 class="title text-4xl mb-6">실행 체크리스트 및 마무리</h1>
+      
+      <div class="w-16 h-1 bg-blue-800 mb-8"></div>
+      
+      <div class="grid grid-cols-2 gap-x-8">
+        <!-- 왼쪽: 체크리스트 -->
+        <div>
+          <div class="checklist-section">
+            <div class="section-title text-lg">
+              <i class="fas fa-baby"></i> 영유아기 (0-2세)
+            </div>
+            <div class="checklist-item">
+              <div class="checkbox"><i class="fas fa-check"></i></div>
+              <div class="item-text">정부지원금 신청 (첫만남이용권, 부모급여)</div>
+            </div>
+            <div class="checklist-item">
+              <div class="checkbox"><i class="fas fa-check"></i></div>
+              <div class="item-text">예방접종 일정 관리 및 건강검진 등록</div>
+            </div>
+          </div>
+          
+          <div class="checklist-section">
+            <div class="section-title text-lg">
+              <i class="fas fa-child"></i> 유아기~초등 (3-12세)
+            </div>
+            <div class="checklist-item">
+              <div class="checkbox"><i class="fas fa-check"></i></div>
+              <div class="item-text">어린이집/유치원/초등학교 입학 준비</div>
+            </div>
+            <div class="checklist-item">
+              <div class="checkbox"><i class="fas fa-check"></i></div>
+              <div class="item-text">학습 습관 형성 및 방과후 활동 계획</div>
+            </div>
+          </div>
+          
+          <div class="checklist-section">
+            <div class="section-title text-lg">
+              <i class="fas fa-user-graduate"></i> 청소년~성인기 (13-30세)
+            </div>
+            <div class="checklist-item">
+              <div class="checkbox"><i class="fas fa-check"></i></div>
+              <div class="item-text">진로 설계 및 대입 전략 수립</div>
+            </div>
+            <div class="checklist-item">
+              <div class="checkbox"><i class="checkbox"></i></div>
+              <div class="item-text">경제 교육 및 자립 지원 계획</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 오른쪽: 마무리 조언 -->
+        <div>
+          <div class="checklist-section">
+            <div class="section-title text-lg">
+              <i class="fas fa-calendar-check"></i> 중장기 일정 플래너 활용법
+            </div>
+            <div class="checklist-item">
+              <div class="checkbox"><i class="fas fa-check"></i></div>
+              <div class="item-text">연간 중요 이벤트 미리 체크 (입학, 진학, 졸업)</div>
+            </div>
+            <div class="checklist-item">
+              <div class="checkbox"><i class="fas fa-check"></i></div>
+              <div class="item-text">분기별 저축/투자 계획 점검</div>
+            </div>
+            <div class="checklist-item">
+              <div class="checkbox"><i class="checkbox"></i></div>
+              <div class="item-text">필수 문서 관리 (의료기록, 학적부, 재정서류)</div>
+            </div>
+          </div>
+          
+          <div class="advice-box">
+            <div class="advice-title">마무리 조언</div>
+            <p class="text-base">
+              <span class="highlight">유연한 계획 수립</span>이 중요합니다. 아이의 성장과 사회 변화에 맞춰 플랜을 정기적으로 조정하세요.
+            </p>
+            <p class="text-base mt-3">
+              <span class="highlight">정기적인 점검</span>을 통해 중장기 계획이 잘 이행되고 있는지 매년 돌아보세요.
+            </p>
+            <p class="text-base mt-3">
+              <span class="highlight">아이와의 소통</span>이 가장 중요합니다. 모든 계획은 아이의 행복과 성장을 위한 도구일 뿐입니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 하단 푸터 -->
+    <div class="footer">
+      <span class="page-number">14 / 14</span>
+    </div>
+  </div>
+</body>
+</html>
