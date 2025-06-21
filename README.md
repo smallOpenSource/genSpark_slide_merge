@@ -55,7 +55,7 @@ pip install -r requirements.txt
 
 Or manual installation:
 ```bash
-pip install beautifulsoup4>=4.12.0 requests>=2.31.0 lxml>=4.9.0
+pip install altgraph beautifulsoup4 certifi charset-normalizer idna packaging pefile pyinstaller pyinstaller-hooks-contrib pywin32-ctypes requests setuptools soupsieve urllib3 wheel 
 ```
 
 ## 💻 Usage
