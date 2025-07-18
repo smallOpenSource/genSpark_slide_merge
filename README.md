@@ -328,10 +328,15 @@ The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 ```
 
----
+
 
 ## 🌟 Star History
 
 ⭐ **If this project helped you, please give it a star!**
 
 **🚀 Transform GenSpark AI's powerful slides into perfect offline presentations!**
+
+## ✉️ email
+taesoo.kim87@gmail.com
+---
+
