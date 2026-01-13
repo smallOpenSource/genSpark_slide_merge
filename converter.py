@@ -1255,11 +1255,26 @@ class GenSparkConverter:
                         body_attrs.append(f'{attr}="{value}"')
                     body_attrs_str = ' ' + ' '.join(body_attrs) if body_attrs else ''
                     
+                    # body 내용에서 id 패턴 충돌 방지: slide-X → content-slide-X
+                    body_content = body_tag.decode_contents()
+                    # id="slide-숫자" 패턴을 id="content-slide-숫자"로 변경
+                    body_content = re.sub(
+                        r'id="slide-([0-9]+)"',
+                        r'id="content-slide-\1"',
+                        body_content
+                    )
+                    # id='slide-숫자' 패턴도 처리
+                    body_content = re.sub(
+                        r"id='slide-([0-9]+)'",
+                        r"id='content-slide-\1'",
+                        body_content
+                    )
+                    
                     # 올바른 슬라이드 wrapper 생성 - 강제 스타일 포함
                     slide_div = f'''<div id="{slide_id}" class="slide-wrapper" data-slide-index="{i}"{body_attrs_str} style="display: none; width: 100vw; min-height: 100vh; max-height: 100vh; overflow-y: auto; position: relative; justify-content: center; align-items: flex-start;">
     {slide_styles}
     <div class="slide-content" style="width: 100%; max-width: 1280px; margin: 0 auto; padding: 20px; box-sizing: border-box;">
-    {body_tag.decode_contents()}
+    {body_content}
     </div>
     </div>
     '''
@@ -1444,8 +1459,8 @@ class GenSparkConverter:
             function initSlideManager() {{
                 log('슬라이드 매니저 초기화 시작 (네비게이션 수정 + 스크롤 표시기 제거 + 전체화면 추가)');
                 
-                // 슬라이드 요소 찾기
-                slides = Array.from(document.querySelectorAll('div[id^="slide-"]')).sort((a, b) => {{
+                // 슬라이드 요소 찾기 - .slide-wrapper 클래스를 명시적으로 지정하여 내부 content div 제외
+                slides = Array.from(document.querySelectorAll('div.slide-wrapper[id^="slide-"]')).sort((a, b) => {{
                     const aIndex = parseInt(a.id.split('-')[1]) || 0;
                     const bIndex = parseInt(b.id.split('-')[1]) || 0;
                     return aIndex - bIndex;
